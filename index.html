@@ -32,7 +32,7 @@
     header{position:sticky;top:0;z-index:50;background:rgba(11,17,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
     .topbar{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:40px;height:40px;border-radius:10px;background:var(--grad);box-shadow:0 0 0 3px rgba(255,255,255,.06) inset}
+    .logo{width:48px;height:48px;border-radius:12px;object-fit:contain;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 8px 20px rgba(0,0,0,.35);background:transparent} @media (max-width:520px){.logo{width:40px;height:40px;border-radius:10px}}
     .title{display:flex;flex-direction:column}
     .title b{letter-spacing:.3px}
     .mini{color:var(--muted);font-size:.9rem}
@@ -98,18 +98,23 @@
   .tagline{font-size:1.15rem;color:#e6edff;margin:8px 0 18px}.addressline{margin-top:10px;color:#cfe0ff}
   .features-line{font-weight:600;letter-spacing:.2px;margin:6px 0 8px;font-size:1.05rem}
   .features-line .dot{margin:0 10px;opacity:.6}
+  .brandlink{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;cursor:pointer}
+  /* watermark in hero */
+  .hero--minimal{position:relative;overflow:hidden}
+  .hero--minimal::after{content:"";position:absolute;inset:0;background:url('logo.png') center 8% / min(56vmin,520px) no-repeat;opacity:.065;filter:saturate(1.05);pointer-events:none}
+  .hero--minimal > *{position:relative;z-index:1}
   </style>
 </head>
 <body>
   <header>
     <div class="container topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+      <a class="brand brandlink" href="#start" onclick="goHome(); return false;" aria-label="NCNI — wróć do strony głównej">
+        <img class="logo" src="logo.png" alt="NCNI logo" width="48" height="48" />
         <div class="title">
           <b>NCNI — Naukowe Centrum Neuroinnowacji</b>
           <span class="mini">VR • AI • Zero‑Gravity • Anti‑Aging</span>
         </div>
-      </div>
+      </a>
       <nav>
         <button class="navbtn cta" onclick="showOffer(); openTab('flagowe')">Otwórz ofertę</button>
         <button class="navbtn ghost" onclick="scrollToEl('#kontakt')">Zarezerwuj</button>
@@ -462,16 +467,22 @@
       Object.values(panelsMap).forEach(p=>p?.classList.remove('active'));
       panelsMap[id]?.classList.add('active');
     }
+    // powrót na start: chowa zakładki i przewija do góry
+    function goHome(){
+      const oferta = document.getElementById('oferta');
+      oferta?.classList.add('hidden');
+      // ustaw domyślną zakładkę na flagowe
+      try{ openTab('flagowe'); }catch(e){}
+      scrollToEl('#start');
+      history.replaceState(null,'',location.pathname); // czyści hash
+    }
     document.addEventListener('DOMContentLoaded',()=>{
-      // Otwórz ofertę automatycznie tylko, gdy ktoś przyjdzie z hashem
       if(['#oferta','#pakiety','#neurodiversity'].includes(location.hash)){
         showOffer();
         if(location.hash==='#neurodiversity') openTab('neurodiv');
         if(location.hash==='#pakiety') openTab('membership');
       }
-      // Obsługa klików w zakładki
-      const tabs=[...document.querySelectorAll('.tab')];
-      tabs.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
+      document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
     });
     window.addEventListener('hashchange',()=>{
       if(['#oferta','#pakiety','#neurodiversity'].includes(location.hash)){
@@ -483,4 +494,3 @@
   </script>
 </body>
 </html>
-
