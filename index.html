@@ -88,7 +88,7 @@
     /* ABOUT SECTION */
     .about-grid {
         display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
+        grid-template-columns: 1fr 1fr;
         gap: 24px;
         align-items: center;
     }
@@ -104,8 +104,8 @@
     .team-card li { margin-bottom: 4px; }
 
     /* FOOTER */
-    footer{margin:30px 0 20px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;color:#cfe0ff}
-    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    footer{margin:30px 0 20px;padding-top:16px;color:#cfe0ff}
+    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px; border-top:1px solid rgba(255,255,255,.08); padding-top: 24px;}
     @media (max-width:768px){.footgrid{grid-template-columns:1fr}}
     .muted{color:var(--muted)}
     a{color:var(--accent2); text-decoration: none;}
@@ -242,6 +242,29 @@
           <div class="about-text">
             <h3 style="margin-top:0; margin-bottom:.4rem">Czym jest NCNI?</h3>
             <p class="muted" style="margin: 0;">Naukowe Centrum Neuroinnowacji łączy <b>VR, AI, Zero‑Gravity, muzykoterapię, aromaterapię</b> i <b>Device Lab (LED, taVNS, PEMF, vibro)</b> w krótkie protokoły pomagające obniżyć napięcie, uspokoić układ nerwowy, poprawić sen i koncentrację.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="jak-dziala-ncni" style="margin-top: 20px;">
+      <div class="card">
+        <div class="about-grid">
+          <div class="about-text">
+            <h3 style="margin-top:0; margin-bottom:.4rem">Jak działa NCNI?</h3>
+            <p class="muted" style="margin: 0; margin-bottom: 1rem;">Technologie i terapie połączone w jeden spójny protokół: <b>VR, Zero-Gravity, muzykoterapia, aromaterapia i dieta kliniczna.</b></p>
+            <p class="muted" style="margin: 0;">Zobacz, jak nowoczesna nauka i praktyka pomagają odzyskać równowagę, poprawić sen i zwiększyć koncentrację.</p>
+          </div>
+          <div class="video-embed-container">
+            <!-- 
+              UWAGA: Osadzanie wideo z GitHub jest problematyczne. 
+              Zalecane jest użycie YouTube/Vimeo. 
+              Jeśli masz wideo na GitHub Pages, podmień poniższy link.
+            -->
+            <iframe src="https://www.youtube.com/embed/watch?v=R6w6e74_p_M" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -508,7 +531,7 @@
             </article>
             <article class="card team-card">
                 <h4>dr hab. inż. Sebastian Kraszewski</h4>
-                <div class="role">Neurobiochemia i żywienie mózgu • Trener neuroróżnorodności</div>
+                <div class="role">Neurobiochemia i żyienie mózgu • Trener neuroróżnorodności</div>
                 <ul>
                     <li>Protokoły koncentracji i odporności na stres.</li>
                     <li>Standaryzacja suplementacji i żywienia.</li>
@@ -573,18 +596,15 @@
         <p><a class="navbtn cta" href="#">Rezerwuj przez Booksy</a></p>
       </div>
       <div>
-        <h3>NCNI</h3>
-        <p class="muted">„Twój mózg zasługuje na strategię, nie przypadek.”</p>
+          <h3 style="margin-top:0; margin-bottom: 12px;">Znajdź nas na mapie</h3>
+          <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.976527490076!2d17.05497231589574!3d51.12681497957451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c4b0f02371%3A0x8e2c0e35f1a5f6e3!2sStefana%20%C5%BBeromskiego%2060%2F5a%2C%2050-312%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1678886543210!5m2!1spl!2spl" 
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
       </div>
     </div>
-    <div class="card" style="margin-top: 24px;">
-        <h3 style="margin: 0 0 12px;">Znajdź nas na mapie</h3>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.976527490076!2d17.05497231589574!3d51.12681497957451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c4b0f02371%3A0x8e2c0e35f1a5f6e3!2sStefana%20%C5%BBeromskiego%2060%2F5a%2C%2050-312%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1678886543210!5m2!1spl!2spl" 
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
     <div class="copyright-container">
+        <p class="muted" style="margin-bottom: 1rem; font-style: italic;">„Twój mózg zasługuje na strategię, nie przypadek.”</p>
         <p>© 2025 NCNI — Neuroinnowacje.pl. Wszelkie prawa zastrzeżone.</p>
         <p class="muted">Designed & built by Karol Kiszło.</p>
     </div>
@@ -636,18 +656,20 @@
         }
     }
 
-    function goHome(){
-      const oferta = document.getElementById('oferta');
-      if (oferta) {
-          oferta.classList.add('hidden');
-      }
-      try{ openTab('flagowe'); }catch(e){}
-      scrollToEl('#start');
-      if (history.pushState) {
-        history.pushState(null, null, window.location.pathname);
-      } else {
-        location.hash = '';
-      }
+    function goHome() {
+        const oferta = document.getElementById('oferta');
+        if (oferta) {
+            oferta.classList.add('hidden');
+        }
+        try { openTab('flagowe'); } catch (e) { console.error(e); }
+        scrollToEl('#start');
+        try {
+            // Use replaceState to clean the hash from the URL without reloading
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        } catch (e) {
+            // Fallback for sandboxed environments where history manipulation is restricted
+            window.location.hash = '';
+        }
     }
     
     function handleLocationHash() {
