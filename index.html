@@ -42,7 +42,7 @@
     .navbtn{padding:10px 14px;border-radius:999px;background:#0e1526;color:#dbe6ff;border:1px solid rgba(255,255,255,.08);cursor:pointer; font-family: inherit; font-size: .95rem; transition: all .2s ease;}
     .navbtn:hover{transform: scale(1.05); border-color: rgba(255,255,255,.2);}
     .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
-    .hidden{display:none}
+    .hidden{display:none !important;}
     .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#0f172a;color:#dbe6ff;cursor:pointer}
     .segrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
@@ -67,9 +67,6 @@
 
     /* GRIDS */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:1024px){.hero{grid-template-columns:1fr; text-align: center;}.grid{grid-template-columns:1fr}.segrow, .contact {justify-content: center;}}
-    @media (max-width:768px){.grid{grid-template-columns:1fr}}
-
 
     /* CARDS */
     .card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow); transition: all .25s ease;}
@@ -92,11 +89,6 @@
         gap: 24px;
         align-items: center;
     }
-    @media (max-width: 900px) {
-        .about-grid {
-            grid-template-columns: 1fr;
-        }
-    }
     
     /* TEAM CARD */
     .team-card .role { color: var(--accent2); font-size: .9rem; margin-bottom: 8px; font-weight: 600;}
@@ -106,7 +98,6 @@
     /* FOOTER */
     footer{margin:30px 0 20px;padding-top:16px;color:#cfe0ff}
     .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px; border-top:1px solid rgba(255,255,255,.08); padding-top: 24px;}
-    @media (max-width:768px){.footgrid{grid-template-columns:1fr}}
     .muted{color:var(--muted)}
     a{color:var(--accent2); text-decoration: none;}
     a:hover{text-decoration: underline;}
@@ -126,7 +117,6 @@
 
     /* SMALL UTILS */
     .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media (max-width:1024px){.subgrid{grid-template-columns:1fr}}
     .hero--minimal{grid-template-columns:1fr;min-height:62vh;padding:64px 20px;background-image:linear-gradient(180deg,rgba(11,17,32,.55),rgba(11,17,32,.88)), var(--hero-image, radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent));background-size:cover;background-position:center;border-radius:22px}
     .hero--minimal h1{font-size:2.1rem;margin:0 0 12px}
     .hero--minimal .contact{gap:12px}
@@ -156,7 +146,6 @@
         pointer-events: none;
         font-size: .95rem;
     }
-
     .floating-offer-btn.visible {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -176,7 +165,6 @@
       height: 0;
       width: 100%;
     }
-
     .video-embed-container iframe {
       position: absolute;
       top: 0;
@@ -184,6 +172,41 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px){
+      .hero{grid-template-columns:1fr; text-align: center;}
+      .segrow, .contact {justify-content: center;}
+      .subgrid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 900px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+        .grid{grid-template-columns:repeat(2,1fr);}
+    }
+
+    @media (max-width: 768px){
+      .footgrid{grid-template-columns:1fr}
+      .title b { font-size: .95rem; }
+      .mini { display: none; }
+      .hero h1 { font-size: 2rem; }
+    }
+    
+    @media (max-width: 640px) {
+        .grid{grid-template-columns:1fr;}
+    }
+
+    @media (max-width: 480px) {
+        .topbar {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .hero h1 { font-size: 1.8rem; }
+        .tagline { font-size: 1.05rem; }
     }
   </style>
 </head>
@@ -613,6 +636,13 @@
   <a href="#oferta" class="floating-offer-btn" id="floatingBtn">Oferta</a>
 
   <script>
+    const homeViewElements = [
+        document.getElementById('start'),
+        document.getElementById('o-ncni'),
+        document.getElementById('jak-dziala-ncni')
+    ];
+    const offerViewElement = document.getElementById('oferta');
+
     function scrollToEl(sel){
         const element = document.querySelector(sel);
         if (element) {
@@ -621,10 +651,8 @@
     }
 
     function showOffer(){
-        const ofertaSection = document.getElementById('oferta');
-        if (ofertaSection) {
-            ofertaSection.classList.remove('hidden');
-        }
+        homeViewElements.forEach(el => el && el.classList.add('hidden'));
+        if(offerViewElement) offerViewElement.classList.remove('hidden');
     }
     
     function openTab(id) {
@@ -646,10 +674,11 @@
             activeTab.classList.add('active');
             activeTab.setAttribute('aria-selected', 'true');
             activePanel.classList.add('active');
-            // Przewiń do sekcji z ofertą, jeśli nie jest jeszcze widoczna
+            
             setTimeout(() => {
-                const ofertaRect = document.getElementById('oferta').getBoundingClientRect();
-                if (ofertaRect.top < 80) { // 80px to wysokość nagłówka
+                const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                const ofertaRect = offerViewElement.getBoundingClientRect();
+                if (ofertaRect.top < headerHeight) {
                     scrollToEl('#oferta');
                 }
             }, 100);
@@ -657,17 +686,14 @@
     }
 
     function goHome() {
-        const oferta = document.getElementById('oferta');
-        if (oferta) {
-            oferta.classList.add('hidden');
-        }
+        if(offerViewElement) offerViewElement.classList.add('hidden');
+        homeViewElements.forEach(el => el && el.classList.remove('hidden'));
+        
         try { openTab('flagowe'); } catch (e) { console.error(e); }
-        scrollToEl('#start');
+        scrollToEl('body');
         try {
-            // Use replaceState to clean the hash from the URL without reloading
             history.replaceState(null, null, window.location.pathname + window.location.search);
         } catch (e) {
-            // Fallback for sandboxed environments where history manipulation is restricted
             window.location.hash = '';
         }
     }
