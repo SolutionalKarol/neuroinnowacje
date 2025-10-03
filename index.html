@@ -1,1 +1,486 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neuroinnowacje.pl — NCNI • Oferta i Cennik</title>
+  <meta name="description" content="NCNI — Naukowe Centrum Neuroinnowacji. VR • Zero-Gravity • Aromaterapia • Muzykoterapia • Device Lab (Anti‑Aging). Rezerwacje: 600 608 333." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1120;          /* tło */
+      --bg2:#111827;         /* karty */
+      --ink:#e6ecff;         /* tekst jasny */
+      --muted:#9fb0d8;       /* tekst pomocniczy */
+      --accent:#8b5cf6;      /* fiolet */
+      --accent2:#22d3ee;     /* błękit */
+      --ok:#10b981;          /* ok */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --grad:linear-gradient(135deg,var(--accent) 0%, var(--accent2) 100%);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:
+      radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.18),transparent),
+      radial-gradient(1000px 500px at 110% 10%,rgba(139,92,246,.12),transparent),
+      var(--bg);
+      color:var(--ink);font:16px/1.5 "Manrope", Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;margin-inline:auto;padding:20px}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,17,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .topbar{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px;border-radius:10px;background:var(--grad);box-shadow:0 0 0 3px rgba(255,255,255,.06) inset}
+    .title{display:flex;flex-direction:column}
+    .title b{letter-spacing:.3px}
+    .mini{color:var(--muted);font-size:.9rem}
+    nav{display:flex;flex-wrap:wrap;gap:8px}
+    .navbtn{padding:10px 14px;border-radius:999px;background:#0e1526;color:#dbe6ff;border:1px solid rgba(255,255,255,.08);cursor:pointer}
+    .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
+    .hidden{display:none}
+    .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#0f172a;color:#dbe6ff;cursor:pointer}
+    .segrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .navbtn{padding:10px 14px;border-radius:999px;background:#0e1526;color:#dbe6ff;border:1px solid rgba(255,255,255,.08);cursor:pointer}
+    .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
+    .hero h1{font-size:2rem;line-height:1.2;margin:0}
+    .hero p{color:var(--muted);margin:.45rem 0 1.1rem}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:.8rem 0 1.2rem}
+    .badge{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:#0f172a}
+    .contact{display:flex;flex-wrap:wrap;gap:10px}
+    .ghost{background:#0e1526;border:1px solid rgba(255,255,255,.08)}
+    .heroCard{border-radius:var(--radius);background:radial-gradient(120% 120% at 0% 0%,rgba(139,92,246,.16),transparent),#0d1425;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.06)}
+    .heroCard h3{margin:.2rem 0 .6rem}
+    .heroCard ul{margin:0;padding-left:18px;color:#c8d6ff}
+
+    /* TABS */
+    .tabs{margin-top:10px}
+    .tablist{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+    .tab{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f172a;color:#dbe6ff;cursor:pointer}
+    .tab.active{background:var(--grad);color:#071021;border-color:transparent}
+    .panel{display:none}
+    .panel.active{display:block;animation:fade .25s ease}
+    @keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    /* GRIDS */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:1024px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+
+    /* CARDS */
+    .card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h4{margin:.2rem 0 .4rem;font-size:1.08rem}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:.5rem;align-items:center}
+    .chip{font-size:.85rem;padding:6px 10px;border-radius:999px;background:#0e1628;border:1px solid rgba(255,255,255,.08);color:#cfe0ff}
+    .price{margin-left:auto;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#04101f}
+    .who,.effect{color:#cfe0ff;margin:.6rem 0}
+    .btnrow{display:flex;gap:8px;margin-top:10px}
+    .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0e1526;color:#dbe6ff;text-decoration:none;text-align:center;flex:1}
+    .btn.primary{background:var(--grad);color:#061123;border:0}
+    .note{color:#9fb0d8;font-size:.9rem;margin-top:8px}
+
+    /* FOOTER */
+    footer{margin:30px 0 80px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;color:#cfe0ff}
+    .footgrid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+    @media (max-width:1024px){.footgrid{grid-template-columns:1fr}}
+    .muted{color:var(--muted)}
+    .tick::before{content:"✔";margin-right:6px;color:var(--ok)}
+
+    /* SMALL UTILS */
+    .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:1024px){.subgrid{grid-template-columns:1fr}}
+  .hero--minimal{grid-template-columns:1fr;min-height:62vh;padding:64px 0;background-image:linear-gradient(180deg,rgba(11,17,32,.55),rgba(11,17,32,.88)), var(--hero-image, radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent));background-size:cover;background-position:center;border-radius:22px}
+  .hero--minimal h1{font-size:2.1rem;margin:0 0 12px}
+  .hero--minimal .contact{gap:12px}
+  .tagline{font-size:1.15rem;color:#e6edff;margin:8px 0 18px}.addressline{margin-top:10px;color:#cfe0ff}
+  .features-line{font-weight:600;letter-spacing:.2px;margin:6px 0 8px;font-size:1.05rem}
+  .features-line .dot{margin:0 10px;opacity:.6}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <b>NCNI — Naukowe Centrum Neuroinnowacji</b>
+          <span class="mini">VR • AI • Zero‑Gravity • Anti‑Aging</span>
+        </div>
+      </div>
+      <nav>
+        <button class="navbtn cta" onclick="showOffer(); openTab('flagowe')">Otwórz ofertę</button>
+        <button class="navbtn ghost" onclick="scrollToEl('#kontakt')">Zarezerwuj</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container hero hero--minimal" id="start">
+    <div>
+      <h1>Pierwsze w Polsce centrum łączące VR, AI i terapie zero‑gravity.</h1>
+      <p class="tagline">Zmęczenie? Stres? Bezsenność? <b>NCNI to Twój reset.</b></p>
+      <p class="features-line">Masaż Zero‑Gravity <span class="dot">•</span> Biofeedback Premium <span class="dot">•</span> Muzykoterapia <span class="dot">•</span> Aromaterapia</p>
+
+      <div class="segrow" aria-label="Szybkie skróty">
+        <button class="pill" onclick="showOffer(); openTab('rytualy')">Relaks & Stres</button>
+        <button class="pill" onclick="showOffer(); openTab('rytualy')">Sen</button>
+        <button class="pill" onclick="showOffer(); openTab('flagowe')">Fokus</button>
+        <button class="pill" onclick="showOffer(); openTab('device')">Anti‑Aging (LED/Device Lab)</button>
+        <button class="pill" onclick="showOffer(); openTab('neurodiv')">Neuroróżnorodność</button>
+      </div>
+
+      <div class="contact" style="margin-top:14px">
+        <button class="navbtn cta" onclick="showOffer(); openTab('flagowe')">Otwórz ofertę</button>
+        <button class="navbtn ghost" onclick="scrollToEl('#kontakt')">Zarezerwuj</button>
+      </div>
+
+      <p class="addressline">ul. Żeromskiego 60/5a, 50‑312 Wrocław • <a href="tel:+48600608333">600 608 333</a> • <a href="mailto:kontakt@ncni.pl">kontakt@ncni.pl</a></p>
+    </div>
+  </section>
+
+  <section class="container" id="o-ncni">
+    <div class="card">
+      <h3 style="margin:.2rem 0 .4rem">Co to jest NCNI?</h3>
+      <p class="muted">Naukowe Centrum Neuroinnowacji łączy <b>VR, AI, Zero‑Gravity, muzykoterapię, aromaterapię</b> i <b>Device Lab (LED, taVNS, PEMF, vibro)</b> w krótkie protokoły pomagające obniżyć napięcie, uspokoić układ nerwowy, poprawić sen i koncentrację.</p>
+    </div>
+  </section>
+  <section class="container tabs hidden" id="oferta">
+    <div id="neurodiversity"></div>
+    <div class="tablist" role="tablist" aria-label="Zakładki oferty">
+            <button class="tab" data-tab="neurodiv" role="tab">Neuroróżnorodność</button>
+      <button class="tab active" data-tab="flagowe" role="tab" aria-selected="true">Flagowe sesje</button>
+      <button class="tab" data-tab="rytualy" role="tab">Rytuały NCNI</button>
+      <button class="tab" data-tab="device" role="tab">Device Lab</button>
+      <button class="tab" data-tab="membership" role="tab">Pakiety & Club</button>
+    </div>
+
+    <!-- NEURODIVERSITY -->
+    <div class="panel" id="panel-neurodiv" role="tabpanel">
+      <div class="grid">
+        <article class="card">
+          <h4>ADHD / ADD</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 260 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> trudności z utrzymaniem uwagi, „skoki” energii, chaos zadań.</div>
+          <div class="effect"><b>Efekty:</b> klarowny fokus, mniej rozpraszaczy, lepsze przełączanie.</div>
+          <div class="note">Focus Sprint 35’ — 260 • Deep Focus 55’ — 390 • add‑on Vagus Calm +149</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Autyzm / ASD</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 160 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przebodźcowanie, potrzeba przewidywalnych bodźców.</div>
+          <div class="effect"><b>Efekty:</b> mniejsze napięcie sensoryczne, poczucie bezpieczeństwa.</div>
+          <div class="note">Forest Flow 50’ — 360 • Sensory Blackout 20’ — 160 • Mind Spa DUO 60’ — 740</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>AuDHD / WWO</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 320 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> wrażliwość sensoryczna + huśtawki pobudzenia.</div>
+          <div class="effect"><b>Efekty:</b> wyciszenie „szumu” nerwowego, stabilizacja energii.</div>
+          <div class="note">NeuroDetox 60’ — 390 • Forest Flow 50’ — 360 • LED Sleep add‑on +129</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Sen / Bezsenność</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 220 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> trudności z zasypianiem, wybudzanie w nocy.</div>
+          <div class="effect"><b>Efekty:</b> wieczorne wyciszenie, lepszy rytm dobowy.</div>
+          <div class="note">Sleep Prime 40’ — 310 • Night Reset 60’ — 420 • LED Sleep add‑on +129</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Napięcia kark/barki</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 190 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> praca biurowa, kierowcy, stres.</div>
+          <div class="effect"><b>Efekty:</b> ulga miejscowa, większa mobilność.</div>
+          <div class="note">Ulga Napięciowa 45’ — 340 • TENS Comfort 30’ — 240 • Percussive Release 20’ — 190</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Przeciążenie / brak energii</h4>
+          <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 260 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> spadek energii, „ciężkość” ciała, po okresie wysiłku.</div>
+          <div class="effect"><b>Efekty:</b> odciążenie, poczucie lekkości, regeneracja.</div>
+          <div class="note">PEMF 30’ — 260 • VibroAcoustic 40’ — 320 • Oceanic Reset 45’ — 320</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+      </div>
+      <p class="note">Przestrzeń przyjazna sensorycznie. Język szacunku. Możliwość trybu bez‑VR oraz sesji w duecie (DUO).</p>
+    </div>
+
+    <!-- FLAGOWE -->
+    <div class="panel active" id="panel-flagowe" role="tabpanel">
+      <div class="grid">
+        <article class="card">
+          <h4>NeuroSanctum 360°</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">450 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> wysoki stres, potrzeba odcięcia od bodźców.</div>
+          <div class="effect"><b>Efekty:</b> głęboka immersja i wyciszenie.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>NeuroDetox Cyfrowy</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">390 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> praca przy ekranach, gamerzy, twórcy.</div>
+          <div class="effect"><b>Efekty:</b> spadek „szumu” neuronalnego, więcej ciszy.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Głębia Spokoju</h4>
+          <div class="meta"><span class="chip">90 min</span><span class="chip price">640 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> bezsenność, wysokie napięcie.</div>
+          <div class="effect"><b>Efekty:</b> głęboka ulga i poprawa snu.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Focus & Flow</h4>
+          <div class="meta"><span class="chip">50 min</span><span class="chip price">360 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> trudności w koncentracji, WWO, mgła poznawcza.</div>
+          <div class="effect"><b>Efekty:</b> wzrost „flow” i klarowności.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Ulga Napięciowa — Głowa/Kark</h4>
+          <div class="meta"><span class="chip">45 min</span><span class="chip price">340 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> praca biurowa, kierowcy, stres.</div>
+          <div class="effect"><b>Efekty:</b> ulga i większa mobilność.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Regeneracja & Odporność — Lymph Boost</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">420 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> „ciężkość” nóg, okres spadku formy (po konsultacji).</div>
+          <div class="effect"><b>Efekty:</b> lekkość i odprężenie.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+      </div>
+      <p class="note">Szybki start? Dostępny <b>NeuroStart 30’ — 190 PLN</b>.</p>
+    </div>
+
+    <!-- RYTUAŁY -->
+    <div class="panel" id="panel-rytualy" role="tabpanel">
+      <div class="grid">
+        <article class="card">
+          <h4>Oceanic Reset</h4>
+          <div class="meta"><span class="chip">45 min</span><span class="chip price">320 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przebodźcowanie, szybki reset w ciągu dnia.</div>
+          <div class="effect"><b>Efekty:</b> miękki zjazd układu nerwowego.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Forest Flow</h4>
+          <div class="meta"><span class="chip">50 min</span><span class="chip price">360 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> gonitwa myśli, napięcie sensoryczne.</div>
+          <div class="effect"><b>Efekty:</b> ugruntowanie i cisza wewnętrzna.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Cosmic Drift</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">440 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przewlekły stres, napięciowy ból.</div>
+          <div class="effect"><b>Efekty:</b> głęboka regeneracja psychofizyczna.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Focus Sprint</h4>
+          <div class="meta"><span class="chip">35 min</span><span class="chip price">260 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przerwa w pracy, egzamin.</div>
+          <div class="effect"><b>Efekty:</b> klarowny fokus bez przebodźcowania.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Deep Focus</h4>
+          <div class="meta"><span class="chip">55 min</span><span class="chip price">390 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> praca kreatywna, analiza.</div>
+          <div class="effect"><b>Efekty:</b> długotrwałe skupienie.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Sleep Prime</h4>
+          <div class="meta"><span class="chip">40 min</span><span class="chip price">310 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> trudności z zasypianiem.</div>
+          <div class="effect"><b>Efekty:</b> miękki zjazd układu nerwowego przed snem.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Night Reset</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">420 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> rozregulowany sen, wybudzanie w nocy.</div>
+          <div class="effect"><b>Efekty:</b> reset rytmu dobowego.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Sound & Gravity Bath</h4>
+          <div class="meta"><span class="chip">45 min</span><span class="chip price">340 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> stres, napięcia nerwowo‑mięśniowe.</div>
+          <div class="effect"><b>Efekty:</b> ukojenie i odpuszczenie napięć.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Mind Spa DUO (2 os.)</h4>
+          <div class="meta"><span class="chip">60 min</span><span class="chip price">740 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> pary, przyjaciele.</div>
+          <div class="effect"><b>Efekty:</b> wspólna regulacja i quality time.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- DEVICE LAB -->
+    <div class="panel" id="panel-device" role="tabpanel">
+      <div class="grid">
+        <article class="card">
+          <h4>LED Glow Anti‑Aging</h4>
+          <div class="meta"><span class="chip">30 min</span><span class="chip price">220 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> skóra napięta/sucha, stres.</div>
+          <div class="effect"><b>Efekty:</b> „glow” skóry + ukojenie.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>LED Sleep & Soothe</h4>
+          <div class="meta"><span class="chip">30 min</span><span class="chip price">220 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> wieczorne napięcie, trudności z zasypianiem.</div>
+          <div class="effect"><b>Efekty:</b> wyciszenie wieczorne; anti‑aging snu.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Vagus Calm</h4>
+          <div class="meta"><span class="chip">30 min</span><span class="chip price">260 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> stres, nadpobudliwość.</div>
+          <div class="effect"><b>Efekty:</b> parasympatyczny „boost”, balans napięcia.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>TENS Comfort</h4>
+          <div class="meta"><span class="chip">30 min</span><span class="chip price">240 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> kark, lędźwie, barki — miejscowa ulga.</div>
+          <div class="effect"><b>Efekty:</b> redukcja napięć/bólu → lepsza regeneracja.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>PEMF Recovery</h4>
+          <div class="meta"><span class="chip">30 min</span><span class="chip price">260 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przeciążenie, spadek energii.</div>
+          <div class="effect"><b>Efekty:</b> „cocoon” regeneracji i odciążenia.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>VibroAcoustic Therapy</h4>
+          <div class="meta"><span class="chip">40 min</span><span class="chip price">320 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> „szum” nerwowy, stres, napięcia.</div>
+          <div class="effect"><b>Efekty:</b> kojąca wibracja zsynchronizowana z muzyką.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Sensory Blackout</h4>
+          <div class="meta"><span class="chip">20 min</span><span class="chip price">160 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> przebodźcowanie wzrokowe, skłonność do migren.</div>
+          <div class="effect"><b>Efekty:</b> szybkie wyciszenie — reset kory wzrokowej.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+        <article class="card">
+          <h4>Percussive Release</h4>
+          <div class="meta"><span class="chip">20 min</span><span class="chip price">190 PLN</span></div>
+          <div class="who"><b>Dla kogo:</b> zastane barki/kark, sztywne plecy.</div>
+          <div class="effect"><b>Efekty:</b> uwolnienie DOMS, przygotowanie do VR.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+        </article>
+      </div>
+      <p class="note">Add‑ony: LED +129 • Vagus +149 • Vibro +179 • Hands‑On 15’ +79 • Aroma +29 • VR Add‑On +49.</p>
+    </div>
+
+    <!-- MEMBERSHIP/PACKS -->
+    <div class="panel" id="panel-membership" role="tabpanel">
+      <div class="grid">
+        <article class="card">
+          <h4>4‑pack</h4>
+          <div class="who"><b>Zniżka:</b> −8% na 4 sesje tej samej usługi.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Kup 4‑pack</a></div>
+        </article>
+        <article class="card">
+          <h4>8‑pack</h4>
+          <div class="who"><b>Zniżka:</b> −15% na 8 sesji tej samej usługi.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Kup 8‑pack</a></div>
+        </article>
+        <article class="card">
+          <h4>NeuroClub</h4>
+          <div class="meta"><span class="chip price">299 PLN / mies.</span></div>
+          <div class="who"><b>W pakiecie:</b> 1× NeuroStart 30’ / mies. + −15% na Rytuały & Device Lab + priorytet rezerwacji.</div>
+          <div class="btnrow"><a class="btn primary" href="#kontakt">Dołącz do Club</a></div>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h4>Gotowe kombosy</h4>
+        <div class="subgrid">
+          <div>
+            <p><b>Relax & Glow</b> — Oceanic Reset 45’ + LED Glow → <b>449 PLN</b></p>
+            <p><b>Insomnia Care</b> — Night Reset 60’ + LED Sleep → <b>549 PLN</b></p>
+          </div>
+          <div>
+            <p><b>Deep Forest Bath</b> — Forest Flow 50’ + VibroAcoustic → <b>499 PLN</b></p>
+            <p><b>Executive Focus</b> — Deep Focus 55’ + Vagus Calm → <b>549 PLN</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="container" id="kontakt">
+    <div class="footgrid">
+      <div>
+        <h3>Kontakt & Rezerwacje</h3>
+        <p class="muted">ul. Żeromskiego 60/5a, <b>50‑312</b> Wrocław</p>
+        <p><a href="tel:+48600608333" class="navbtn ghost">📞 600 608 333</a></p>
+        <p><a href="mailto:kontakt@ncni.pl" class="navbtn ghost">✉ kontakt@ncni.pl</a></p>
+        <p><a class="navbtn cta" href="#">Rezerwuj przez Booksy</a></p>
+      </div>
+      <div>
+        <h3>NCNI</h3>
+        <p class="muted">„Twój mózg zasługuje na strategię, nie przypadek.”</p>
+        <p class="muted">Designed & built by Karol Kiszło.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToEl(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'})}
+    function showOffer(){document.getElementById('oferta')?.classList.remove('hidden'); scrollToEl('#oferta');}
+    function openTab(id){
+      const tabs=[...document.querySelectorAll('.tab')];
+      const panelsMap={
+        neurodiv:document.getElementById('panel-neurodiv'),
+        flagowe:document.getElementById('panel-flagowe'),
+        rytualy:document.getElementById('panel-rytualy'),
+        device:document.getElementById('panel-device'),
+        membership:document.getElementById('panel-membership')
+      };
+      tabs.forEach(b=>b.classList.remove('active'));
+      document.querySelector(`.tab[data-tab="${id}"]`)?.classList.add('active');
+      Object.values(panelsMap).forEach(p=>p?.classList.remove('active'));
+      panelsMap[id]?.classList.add('active');
+    }
+    document.addEventListener('DOMContentLoaded',()=>{
+      // Otwórz ofertę automatycznie tylko, gdy ktoś przyjdzie z hashem
+      if(['#oferta','#pakiety','#neurodiversity'].includes(location.hash)){
+        showOffer();
+        if(location.hash==='#neurodiversity') openTab('neurodiv');
+        if(location.hash==='#pakiety') openTab('membership');
+      }
+      // Obsługa klików w zakładki
+      const tabs=[...document.querySelectorAll('.tab')];
+      tabs.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
+    });
+    window.addEventListener('hashchange',()=>{
+      if(['#oferta','#pakiety','#neurodiversity'].includes(location.hash)){
+        showOffer();
+        if(location.hash==='#neurodiversity') openTab('neurodiv');
+        if(location.hash==='#pakiety') openTab('membership');
+      }
+    });
+  </script>
+</body>
+</html>
 
