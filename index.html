@@ -117,7 +117,19 @@
 
     /* SMALL UTILS */
     .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .hero--minimal{grid-template-columns:1fr;min-height:62vh;padding:64px 20px;background-image:linear-gradient(180deg,rgba(11,17,32,.55),rgba(11,17,32,.88)), var(--hero-image, radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent));background-size:cover;background-position:center;border-radius:22px}
+    .hero--minimal{
+      grid-template-columns:1fr;
+      min-height:62vh;
+      padding:64px 20px;
+      background-image: 
+        linear-gradient(180deg, rgba(11,17,32,.65), rgba(11,17,32,.92)),
+        url('logo.png'),
+        radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent);
+      background-size: cover, min(50vmin, 480px), cover;
+      background-position: center, center, center;
+      background-repeat: no-repeat;
+      border-radius:22px;
+    }
     .hero--minimal h1{font-size:2.1rem;margin:0 0 12px}
     .hero--minimal .contact{gap:12px}
     .tagline{font-size:1.15rem;color:#e6edff;margin:8px 0 18px}.addressline{margin-top:10px;color:#cfe0ff}
