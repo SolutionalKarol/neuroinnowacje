@@ -5,32 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neuroinnowacje.pl — NCNI • Oferta i Cennik</title>
   <meta name="description" content="NCNI — Naukowe Centrum Neuroinnowacji. VR • Zero-Gravity • Aromaterapia • Muzykoterapia • Device Lab (Anti‑Aging). Rezerwacje: 600 608 333." />
+  <link rel="icon" href="logo.png" type="image/png">
+  <meta property="og:title" content="NCNI — Naukowe Centrum Neuroinnowacji" />
+  <meta property="og:description" content="Pierwsze w Polsce centrum łączące VR, AI i terapie zero‑gravity. Twój reset dla ciała i umysłu." />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:url" content="https://neuroinnowacje.pl" />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1120;        /* tło */
-      --bg2:#111827;       /* karty */
-      --ink:#e6ecff;       /* tekst jasny */
-      --muted:#9fb0d8;     /* tekst pomocniczy */
-      --accent:#8b5cf6;     /* fiolet */
-      --accent2:#22d3ee;     /* błękit */
-      --ok:#10b981;        /* ok */
+      --bg:#0b1120;
+      --bg2:#111827;
+      --ink:#e6ecff;
+      --muted:#9fb0d8;
+      --accent:#8b5cf6;
+      --accent2:#22d3ee;
+      --ok:#10b981;
       --radius:18px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --grad:linear-gradient(135deg,var(--accent) 0%, var(--accent2) 100%);
     }
     *{box-sizing:border-box}
     html{
-        scroll-padding-top: 100px; /* Offset for sticky header */
-        scroll-behavior: smooth; /* POPRAWA: Płynne przewijanie do kotwic */
+        scroll-padding-top: 100px;
+        scroll-behavior: smooth;
     } 
     body{margin:0;background:
       radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.18),transparent),
       radial-gradient(1000px 500px at 110% 10%,rgba(139,92,246,.12),transparent),
       var(--bg);
       color:var(--ink);font:16px/1.5 "Lexend", "Manrope", Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;margin-inline:auto;}
+
+    :focus-visible {
+        outline: 2px solid var(--accent2);
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+    header :focus-visible {
+        border-radius: 999px;
+    }
 
     /* HEADER */
     header{position:sticky;top:0;z-index:50;background:rgba(11,17,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
@@ -72,7 +88,7 @@
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
     /* CARDS */
-    .card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow); transition: all .25s ease;}
+    .card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow); transition: all .25s ease; display: flex; flex-direction: column;}
     .card:hover{transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,.4);} 
     .card h4{margin:.2rem 0 .4rem;font-size:1.15rem}
     .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:.5rem;align-items:center}
@@ -80,19 +96,27 @@
     .price{margin-left:auto;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#04101f; font-weight: 600;}
     .who,.effect{color:#cfe0ff;margin:.6rem 0; display: flex; align-items: start; gap: 8px;}
     .who b, .effect b {min-width: 70px; font-weight: 600;}
-    .btnrow{display:flex;gap:8px;margin-top:10px}
+    .btnrow{display:flex;gap:8px;margin-top:auto; padding-top: 10px;}
     .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0e1526;color:#dbe6ff;text-decoration:none;text-align:center;flex:1;font-weight:600;}
     .btn.primary{background:var(--grad);color:#061123;border:0}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.15);color:#cfe0ff}
     .note{color:#9fb0d8;font-size:.9rem;margin-top:8px}
 
-    /* ABOUT SECTION */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+    /* ABOUT SECTION & SUBMENU */
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; }
+    .submenu-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 12px; }
+    .submenu-tab { padding: 8px 14px; border-radius: 999px; background: transparent; color: var(--muted); border: 1px solid rgba(255,255,255,.1); cursor: pointer; font-family: inherit; font-size: .9rem; transition: all .2s ease; }
+    .submenu-tab:hover { background: rgba(255,255,255,.05); color: var(--ink); }
+    .submenu-tab.active { background: var(--grad); color: #051024; font-weight: 700; border-color: transparent; }
+    .submenu-panel { display: none; }
+    .submenu-panel.active { display: block; animation: fade .3s ease; }
+    .reference { display: inline-block; font-size: .75rem; padding: 2px 6px; border-radius: 4px; background-color: rgba(139, 92, 246, 0.2); color: var(--accent); margin: 0 2px; font-weight: 500; }
 
     /* TEAM CARD */
     .team-card .role { color: var(--accent2); font-size: .9rem; margin-bottom: 8px; font-weight: 600;}
     .team-card ul { padding-left: 18px; margin: 0; color: var(--muted);} 
     .team-card li { margin-bottom: 4px; }
+    .team-card .contact-reason { font-size: .85rem; color: var(--muted); margin-top: 12px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 10px; }
 
     /* FOOTER */
     footer{margin:30px 0 20px;padding-top:16px;color:#cfe0ff}
@@ -104,6 +128,9 @@
     .map-container iframe{position: absolute; top:0; left: 0; width: 100%; height: 100%;}
     .copyright-container { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; margin-top: 30px; text-align: center; font-size: .9rem; }
     .copyright-container .muted { font-size: .85rem; margin-top: 4px; }
+    .direct-contact-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; }
+    .direct-contact-list li a { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .9rem; }
+    .direct-contact-list li a:hover { color: var(--accent2); }
 
     /* SMALL UTILS */
     .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -123,34 +150,10 @@
     .hero--minimal{position:relative;overflow:hidden}
     .hero--minimal > *{position:relative;z-index:1}
 
-    /* POPRAWA: Menu terapii (lepsze zawijanie na mobile) */
-    .menu-therapy {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px 24px;
-        text-align: center;
-        font-weight: 500;
-        color: #a9c1ff;
-        letter-spacing: .02em;
-        margin: 28px 0 18px;
-    }
-    .menu-therapy a {
-        color: #c4d5ff;
-        text-decoration: none;
-        transition: color .2s ease;
-        position: relative;
-    }
+    .menu-therapy { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; text-align: center; font-weight: 500; color: #a9c1ff; letter-spacing: .02em; margin: 28px 0 18px; }
+    .menu-therapy a { color: #c4d5ff; text-decoration: none; transition: color .2s ease; position: relative; }
     .menu-therapy a:hover { color: #ffffff; }
-    .menu-therapy a:not(:last-child)::after {
-        content: "•";
-        color: #a9c1ff;
-        position: absolute;
-        right: -15px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-    }
+    .menu-therapy a:not(:last-child)::after { content: "•"; color: #a9c1ff; position: absolute; right: -15px; top: 50%; transform: translateY(-50%); pointer-events: none; }
 
     .therapy-section { max-width: 900px; margin: 0 auto 18px; }
     .therapy-section .card { margin: 0; }
@@ -159,25 +162,29 @@
     .mini-offer{ display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin-top:.85rem; }
     .minipill{ font-size:.9rem; padding:.25rem .6rem; border-radius:999px; background:rgba(255,255,255,.06); color:#e6ecff; border:1px solid rgba(255,255,255,.08); }
 
-    /* Floating Offer Button */
     .floating-offer-btn { position: fixed; bottom: 25px; right: 25px; z-index: 100; background: var(--grad); color: #051024; font-weight: 700; padding: 12px 18px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(0,0,0,.3); opacity: 0; transform: translateY(20px) scale(0.9); transition: opacity .3s ease, transform .3s ease, background .3s ease; pointer-events: none; font-size: .95rem; }
     .floating-offer-btn.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
     .floating-offer-btn:hover { transform: scale(1.05); text-decoration: none; }
 
-    /* Video Embed Container */
-    .video-embed-container { border-radius: var(--radius); overflow: hidden; position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; width: 100%; }
+    .video-embed-container { border-radius: var(--radius); overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; width: 100%; }
     .video-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     
-    /* POPRAWA: Kontener na przyciski w stopce dla lepszej kontroli na mobile */
-    .footer-contact-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-        margin-top: 1rem;
-    }
+    .footer-contact-buttons { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 1rem; }
 
-    /* --- POPRAWKI RESPONSIVE --- */
+    .section-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin: 40px 0 20px; color: var(--ink); }
+    .testimonial-card { display: flex; flex-direction: column; justify-content: space-between; }
+    .testimonial-card blockquote { margin: 0 0 1rem; padding: 0; font-style: italic; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 1rem; }
+    .testimonial-card footer { margin: 0; padding: 0; font-weight: 600; color: var(--ink); }
+    .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--bg2); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; }
+    .faq-item summary { padding: 16px; font-weight: 600; cursor: pointer; position: relative; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5rem; transition: transform .2s ease; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item div { padding: 0 16px 16px; color: var(--muted); }
+
+
+    /* --- RESPONSIVE --- */
     @media (max-width: 1024px){ 
         .hero{grid-template-columns:1fr; text-align: center;} 
         .segrow, .contact {justify-content: center;} 
@@ -192,12 +199,9 @@
         .title b { font-size: .95rem; } 
         .mini { display: none; } 
         .hero h1 { font-size: 2rem; line-height: 1.25; } 
-        /* POPRAWA: Centrowanie zakładek oferty na mobile */
         .tablist { justify-content: center; }
-        /* POPRAWA: Ukrywanie separatorów w menu terapii, gdy się zawija */
         .menu-therapy { gap: 12px; }
         .menu-therapy a:not(:last-child)::after { display: none; }
-        /* POPRAWA: Przyciski w stopce na całą szerokość dla łatwiejszego klikania */
         .footer-contact-buttons { align-items: stretch; }
         .footer-contact-buttons .navbtn { text-align: center; }
     }
@@ -209,19 +213,11 @@
         .hero h1 { font-size: 1.8rem; } 
         .tagline { font-size: 1.05rem; } 
     }
-    /* POPRAWA: Drobne korekty dla bardzo wąskich ekranów */
     @media (max-width: 420px) {
         .container { padding-inline: 15px; }
         .card { padding: 16px; }
-        /* POPRAWA: Zapobiega "wypychaniu" treści w kartach oferty na małych ekranach */
-        .who, .effect {
-            flex-direction: column;
-            gap: 2px;
-            align-items: flex-start;
-        }
-        .who b, .effect b {
-            min-width: auto;
-        }
+        .who, .effect { flex-direction: column; gap: 2px; align-items: flex-start; }
+        .who b, .effect b { min-width: auto; }
     }
   </style>
 </head>
@@ -237,7 +233,7 @@
       </a>
       <nav>
         <button class="navbtn cta" onclick="showOffer(); openTab('flagowe')">Oferta</button>
-        <button class="navbtn ghost" onclick="showOffer(); openTab('zespol')">Zespół</button>
+        <button class="navbtn ghost" onclick="showOffer(); openTab('o-nas')">O nas</button>
         <button class="navbtn ghost" onclick="scrollToEl('#kontakt')">Kontakt</button>
       </nav>
     </div>
@@ -268,7 +264,6 @@
       </div>
     </section>
 
-    <!-- ZMIANA: Usunięto '•' z HTML, CSS dodaje je teraz dynamicznie -->
     <section class="container" id="terapie">
       <nav class="menu-therapy">
         <a href="#zero-gravity">Masaż Zero‑Gravity</a>
@@ -326,39 +321,44 @@
       </div>
     </section>
 
-    <section class="container" id="o-ncni" style="margin-top: 20px;">
-      <div class="card">
-        <div class="about-grid">
-          <div class="video-embed-container">
-            <iframe src="https://www.youtube.com/embed/R6w6e74_p_M"  
-                    title="YouTube video player"  
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  
-                    allowfullscreen></iframe>
-          </div>
-          <div class="about-text">
-            <h3 style="margin-top:0; margin-bottom:.4rem">Czym jest NCNI?</h3>
-            <p class="muted" style="margin: 0;">Naukowe Centrum Neuroinnowacji łączy <b>VR, AI, Zero‑Gravity, muzykoterapię, aromaterapię</b> i <b>Device Lab (LED, taVNS, PEMF, vibro)</b> w krótkie protokoły pomagające obniżyć napięcie, uspokoić układ nerwowy, poprawić sen i koncentrację.</p>
-          </div>
+    <section class="container" id="opinie">
+        <h2 class="section-title">Co mówią nasi klienci</h2>
+        <div class="grid">
+            <article class="card testimonial-card">
+                <blockquote>Po sesji NeuroSanctum czułam się jak nowo narodzona. Napięcie z całego tygodnia po prostu zniknęło. Niesamowite doświadczenie.</blockquote>
+                <footer>— Anna K., Manager Projektu</footer>
+            </article>
+            <article class="card testimonial-card">
+                <blockquote>Jako programista walczę z koncentracją. Sesje Focus & Flow naprawdę pomogły mi odzyskać klarowność myślenia. Wrócę na pewno.</blockquote>
+                <footer>— Tomasz B., Senior Developer</footer>
+            </article>
+            <article class="card testimonial-card">
+                <blockquote>Przyszliśmy z partnerem na Mind Spa DUO i było to fantastyczne. Pełen relaks i świetny sposób na wspólne spędzenie czasu inaczej niż zwykle.</blockquote>
+                <footer>— Ewa i Piotr S.</footer>
+            </article>
         </div>
-      </div>
     </section>
 
-    <section class="container" id="jak-dziala-ncni" style="margin-top: 20px;">
-      <div class="card">
-        <div class="about-grid">
-          <div class="about-text">
-            <h3 style="margin-top:0; margin-bottom:.4rem">Jak działa NCNI?</h3>
-            <p class="muted" style="margin: 0; margin-bottom: 1rem;">Technologie i terapie połączone w jeden spójny protokół: <b>VR, Zero-Gravity, muzykoterapia, aromaterapia i dieta kliniczna.</b></p>
-            <p class="muted" style="margin: 0;">Zobacz, jak nowoczesna nauka i praktyka pomagają odzyskać równowagę, poprawić sen i zwiększyć koncentrację.</p>
-          </div>
-          <div class="video-embed-container">
-            <iframe src="https://www.youtube.com/embed/R6w6e74_p_M"  
-                    title="YouTube video player"  
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  
-                    allowfullscreen></iframe>
-          </div>
+    <section class="container" id="faq">
+        <h2 class="section-title">Najczęściej zadawane pytania</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Jak mam się przygotować do pierwszej wizyty?</summary>
+                <div>Wystarczy przyjść z otwartą głową! Zalecamy wygodny strój, który nie krępuje ruchów. Przed sesją unikaj picia dużej ilości kawy lub napojów energetycznych. Poza tym, my zadbamy o wszystko.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Czy terapie VR są bezpieczne?</summary>
+                <div>Tak, absolutnie. Korzystamy z certyfikowanego sprzętu najwyższej klasy. Nasze programy są zaprojektowane tak, aby były komfortowe i relaksujące. Zespół NCNI jest zawsze obecny, aby zapewnić pełne bezpieczeństwo i wsparcie podczas sesji.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Dla kogo są te terapie? Czy muszę mieć jakiś konkretny problem?</summary>
+                <div>Nasze terapie są dla każdego, kto czuje się przebodźcowany, zestresowany, ma problemy ze snem lub po prostu szuka głębokiej regeneracji. Nie musisz mieć diagnozy – jeśli czujesz, że potrzebujesz resetu, NCNI jest dla Ciebie.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Ile sesji potrzebuję, żeby zobaczyć efekty?</summary>
+                <div>Wielu klientów odczuwa znaczną ulgę i wyciszenie już po pierwszej sesji. Dla uzyskania trwałych efektów, zwłaszcza w obszarze koncentracji czy snu, zalecamy serię 4-8 sesji. Chętnie doradzimy indywidualny plan podczas konsultacji.</div>
+            </details>
         </div>
-      </div>
     </section>
 
     <section class="container tabs hidden" id="oferta">
@@ -367,7 +367,7 @@
         <button class="tab active" id="tab-flagowe" data-tab="flagowe" role="tab" aria-selected="true" aria-controls="panel-flagowe">Flagowe sesje</button>
         <button class="tab" id="tab-rytualy" data-tab="rytualy" role="tab" aria-selected="false" aria-controls="panel-rytualy">Rytuały NCNI</button>
         <button class="tab" id="tab-device" data-tab="device" role="tab" aria-selected="false" aria-controls="panel-device">Device Lab</button>
-        <button class="tab" id="tab-zespol" data-tab="zespol" role="tab" aria-selected="false" aria-controls="panel-zespol">Zespół</button>
+        <button class="tab" id="tab-o-nas" data-tab="o-nas" role="tab" aria-selected="false" aria-controls="panel-o-nas">O nas</button>
         <button class="tab" id="tab-membership" data-tab="membership" role="tab" aria-selected="false" aria-controls="panel-membership">Pakiety & Club</button>
       </div>
 
@@ -607,35 +607,133 @@
         <p class="note">Add‑ony: LED +129 • Vagus +149 • Vibro +179 • Hands‑On 15’ +79 • Aroma +29 • VR Add‑On +49.</p>
       </div>
      
-      <!-- ZESPÓŁ -->
-      <div class="panel" id="panel-zespol" role="tabpanel" aria-labelledby="tab-zespol">
-        <h3 style="font-weight: 600; font-size: 1.5rem;">Ludzie i nauka stojące za NCNI</h3>
-        <div class="grid">
-            <article class="card team-card">
-                <h4>dr inż. Marlena Gąsior‑Głogowska</h4>
-                <div class="role">Architekt sensorycznej przestrzeni • Neuroestetyka</div>
+      <!-- O NAS - ROZBUDOWANE -->
+      <div class="panel" id="panel-o-nas" role="tabpanel" aria-labelledby="tab-o-nas">
+        <div class="submenu-nav">
+          <button class="submenu-tab active" data-subtab="misja">Nasza Misja</button>
+          <button class="submenu-tab" data-subtab="zespol">Zespół</button>
+          <button class="submenu-tab" data-subtab="technologie">Technologie i Nauka</button>
+          <button class="submenu-tab" data-subtab="biznes">Dla Biznesu</button>
+        </div>
+
+        <div class="submenu-panel active" id="subpanel-misja">
+          <div class="card">
+            <div class="about-grid">
+              <div class="about-text">
+                <h3 style="margin-top:0;">NCNI — Naukowe Centrum NeuroInnowacji.</h3>
+                <p class="muted">Tworzymy mierzalne doświadczenia regulacji układu nerwowego, łącząc VR, Zero-Gravity, biofeedback oraz interwencje sensoryczne. Naszą misją jest bezpiecznie, nowocześnie i w oparciu o naukę pomagać ludziom obniżać stres, poprawiać sen, fokus oraz dobrostan — tak, by efekty były odczuwalne tu i teraz i utrwalane treningiem.</p>
+                <p class="muted"><b>Dlaczego to robimy?</b> Bo zdrowy układ nerwowy to fundament pracy, relacji i sprawczości. Chcemy, by najnowsze technologie służyły ludziom w sposób etyczny, skuteczny i transparentny.</p>
+                 <p class="muted" style="margin-bottom:1rem;"><b>Dokąd zmierzamy?</b> Do standardu „neuro-wellbeing”, w którym łączymy praktyki kliniczne i inżynierię z doświadczeniem użytkownika.</p>
+                 <a href="https://ncni.pl" target="_blank" rel="noopener">Zobacz stronę korporacyjną NCNI →</a>
+              </div>
+              <div class="video-embed-container">
+                <iframe src="https://www.youtube.com/embed/R6w6e74_p_M" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="submenu-panel" id="subpanel-zespol">
+            <div class="card" style="margin-bottom: 20px;">
+              <p class="muted">Za NCNI stoją inżynierowie, badacze i praktycy, którzy łączą naukę, technologię i projektowanie doświadczeń. Wierzymy w jasną komunikację, weryfikowalne efekty i partnerstwo z klientem.</p>
+            </div>
+            <div class="grid">
+                <article class="card team-card">
+                    <h4>dr inż. Marlena Gąsior‑Głogowska</h4>
+                    <div class="role">Architekt sensorycznej przestrzeni • Neuroestetyka</div>
+                    <ul>
+                        <li>Mapowanie bodźców i redukcja przebodźcowania.</li>
+                        <li>Światło/dźwięk pod relaks i fokus.</li>
+                        <li>Aromaty i materiały przyjazne sensorycznie.</li>
+                    </ul>
+                    <p class="contact-reason muted">Kontakt w sprawach dot. neuroestetyki i przestrzeni sensorycznych.</p>
+                    <div class="btnrow">
+                        <a href="mailto:m.gasior@ncni.pl" class="btn ghost">Skontaktuj się</a>
+                    </div>
+                </article>
+                <article class="card team-card">
+                    <h4>dr hab. inż. Sebastian Kraszewski</h4>
+                    <div class="role">Neurobiochemia i żyienie mózgu • Trener neuroróżnorodności</div>
+                    <ul>
+                        <li>Protokoły koncentracji i odporności na stres.</li>
+                        <li>Standaryzacja suplementacji i żywienia.</li>
+                    </ul>
+                    <p class="contact-reason muted">Kontakt w sprawach dot. neurobiochemii i programów dla neuroróżnorodności.</p>
+                     <div class="btnrow">
+                        <a href="mailto:s.kraszewski@ncni.pl" class="btn ghost">Skontaktuj się</a>
+                    </div>
+                </article>
+                <article class="card team-card">
+                    <h4>Karol Kiszło</h4>
+                    <div class="role">Head of NeuroPerformance • NeuroWellbeing Coach</div>
+                    <ul>
+                        <li>Programy Focus & Flow (B2B), Executive NeuroCoaching.</li>
+                        <li>Higiena bodźców i standardy pracy głębokiej.</li>
+                    </ul>
+                    <p class="contact-reason muted">Kontakt w sprawach dot. oferty dla biznesu (B2B) i executive coaching.</p>
+                     <div class="btnrow">
+                        <a href="mailto:k.kiszlo@ncni.pl" class="btn ghost">Skontaktuj się</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div class="submenu-panel" id="subpanel-technologie">
+            <h3 style="margin-top: 0;">Krótko i po ludzku: dlaczego to działa.</h3>
+            <p class="muted" style="margin-top:0; margin-bottom: 20px;">Poniższe karty wyjaśniają mechanizmy i pokazują bazę dowodów.</p>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="card">
+                <h4>1) VR w Terapii i Treningu</h4>
+                <p class="muted"><b>Co robimy:</b> Wykorzystujemy imersyjne środowiska VR (relaksacyjne, edukacyjne, ekspozycyjne) oraz protokoły oddechowo-somatyczne, aby obniżać pobudzenie, przełączać układ nerwowy w tryb przywspółczulny i trenować skupienie.</p>
+                <p class="muted"><b>Dlaczego działa:</b> VR łatwo modyfikuje uwagę i kontekst, co pozwala redukować lęk i stres, wspierać ekspozycję oraz praktyki uważności. Metaanalizy wskazują istotne efekty VR w redukcji objawów lękowych/stresu i poprawie dobrostanu. <span class="reference">PMC</span> <span class="reference">ScienceDirect</span></p>
+                <p class="muted"><b>U nas:</b> VR łączymy z biofeedbackiem (HR/HRV), by mierzyć reakcję w czasie sesji i optymalizować protokół.</p>
+              </div>
+               <div class="card">
+                <h4>2) Potęga Zero-Gravity (odciążenie ciała)</h4>
+                <p class="muted"><b>Co robimy:</b> Wprowadzamy ciało w pozycję neutralną/odciążającą („zero-gravity”), by równomiernie rozłożyć ciężar, zmniejszyć kompresję i wyciszyć napięcia mięśniowo-powięziowe.</p>
+                <p class="muted"><b>Dlaczego działa:</b> Badania nad Neutral Body Posture (NBP) w mikrograwitacji oraz ergonomii wskazują, że postawy zbliżone do NBP minimalizują obciążenia i sprzyjają komfortowi. Flotacja (Floatation-REST), jako model „quasi-odciążenia”, wykazała krótkoterminową redukcję lęku/stresu oraz dobrą tolerancję i bezpieczeństwo. <span class="reference">PLOS</span> <span class="reference">NTRS</span> <span class="reference">PMC</span></p>
+                <p class="muted"><b>U nas:</b> Odciążenie łączymy z dźwiękiem i oddechem, by pogłębić efekt przywspółczulny.</p>
+              </div>
+               <div class="card">
+                <h4>3) Biofeedback i Mózg (HR/HRV)</h4>
+                <p class="muted"><b>Co robimy:</b> Trenujemy zmienność rytmu serca (HRV) i koherencję oddech-serce, ucząc samoregulacji w stresie.</p>
+                <p class="muted"><b>Dlaczego działa:</b> Metaanalizy pokazują, że HRV-biofeedback istotnie obniża lęk i stres. Pojedyncze sesje mogą dawać odczuwalne, krótkoterminowe wyciszenie; długofalowo budujemy sprawność nerwową. <span class="reference">PubMed</span> <span class="reference">PMC</span></p>
+                <p class="muted"><b>U nas:</b> W sesjach łączymy feedback na żywo z VR/Zero-Gravity, a postępy śledzimy na dashboardzie.</p>
+              </div>
+            </div>
+            <p class="note" style="margin-top: 16px; text-align: center;">W skrócie: nie oferujemy „gadżetów”, tylko metody z udokumentowanymi mechanizmami działania i metrykami efektu.</p>
+        </div>
+        
+        <div class="submenu-panel" id="subpanel-biznes">
+            <div class="card">
+                <h3 style="margin-top: 0;">NCNI dla organizacji</h3>
+                <p class="muted">Oferujemy programy, które realnie redukują stres, poprawiają energię i fokus oraz budują odporność nerwową zespołów i liderów.</p>
+                <h4 style="margin-top: 1.5rem;">Oferta modułowa:</h4>
                 <ul>
-                    <li>Mapowanie bodźców i redukcja przebodźcowania.</li>
-                    <li>Światło/dźwięk pod relaks i fokus.</li>
-                    <li>Aromaty i materiały przyjazne sensorycznie.</li>
+                    <li class="muted"><b>Programy NeuroWellbeing dla Zespołów (4–8 tygodni):</b> Cykl sesji VR/Zero-Gravity + HRV-biofeedback + mikro-nawyki. Raport efektów: HRV, skale stresu.</li>
+                    <li class="muted"><b>Executive NeuroCoaching (1:1, 6–10 sesji):</b> Trening regulacji i koncentracji pod presją, protokoły „resetu” przed wystąpieniami i decyzjami.</li>
+                    <li class="muted"><b>Warsztaty: Zarządzanie Stresem i Energią (½–1 dzień):</b> Od teorii do praktyki – protokoły 5–10 min, higiena snu, praca z układem nerwowym.</li>
                 </ul>
-            </article>
-            <article class="card team-card">
-                <h4>dr hab. inż. Sebastian Kraszewski</h4>
-                <div class="role">Neurobiochemia i żyienie mózgu • Trener neuroróżnorodności</div>
-                <ul>
-                    <li>Protokoły koncentracji i odporności na stres.</li>
-                    <li>Standaryzacja suplementacji i żywienia.</li>
-                </ul>
-            </article>
-            <article class="card team-card">
-                <h4>Karol Kiszło</h4>
-                <div class="role">Head of NeuroPerformance • NeuroWellbeing Coach</div>
-                <ul>
-                    <li>Programy Focus & Flow (B2B), Executive NeuroCoaching.</li>
-                    <li>Higiena bodźców i standardy pracy głębokiej.</li>
-                </ul>
-            </article>
+                <h4 style="margin-top: 1.5rem;">Dlaczego biznes to wybiera?</h4>
+                 <p class="muted">Analizy Deloitte wskazują średni zwrot ok. 5:1 z inwestycji w wellbeing (produktywność, absencja). Oferujemy szybki efekt + plan utrwalenia nawyków, przy niskim tarciu wdrożenia. <span class="reference">Deloitte Italia</span> <span class="reference">WHO</span> <span class="reference">ILO</span></p>
+                 <div class="btnrow" style="margin-top: 1rem;">
+                    <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn primary">Zapytaj o program</a>
+                    <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn ghost">Poproś o pilotaż</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 24px;">
+            <h4>Pytania i transparentność</h4>
+            <ul class="muted" style="padding-left: 18px; margin: 0;">
+                <li><b>Bezpieczeństwo:</b> pracujemy w granicach komfortu, z opcją przerwania i modyfikacji bodźców.</li>
+                <li><b>Medyczne vs. wellbeing:</b> nie zastępujemy konsultacji medycznej; nasze działania to interwencje prozdrowotne i treningowe.</li>
+                <li><b>Mierzalność:</b> pokazujemy wskaźniki przed/po i uczymy samodzielnych protokołów.</li>
+            </ul>
+             <div class="btnrow" style="margin-top: 1rem;">
+                <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn primary">Skontaktuj się z NCNI</a>
+                <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn ghost">Umów pierwszą sesję</a>
+            </div>
         </div>
       </div>
 
@@ -682,18 +780,23 @@
       <div>
         <h3>Kontakt & Rezerwacje</h3>
         <p class="muted">ul. Żeromskiego 60/5a, <b>50‑312</b> Wrocław</p>
-        <!-- ZMIANA: Przyciski opakowane w kontener dla lepszego stylowania -->
         <div class="footer-contact-buttons">
             <a href="tel:+48600608333" class="navbtn ghost">📞 600 608 333</a>
             <a href="mailto:kontakt@ncni.pl" class="navbtn ghost">✉ kontakt@ncni.pl</a>
             <a class="navbtn cta" href="#">Rezerwuj przez Booksy</a>
         </div>
+        <h4 style="margin-top: 24px; font-weight: 600; font-size: 1rem; color: var(--ink);">Kontakt bezpośredni z zespołem</h4>
+        <ul class="direct-contact-list">
+          <li><a href="mailto:m.gasior@ncni.pl"><span>Marlena Gąsior-Głogowska</span></a></li>
+          <li><a href="mailto:s.kraszewski@ncni.pl"><span>Sebastian Kraszewski</span></a></li>
+          <li><a href="mailto:k.kiszlo@ncni.pl"><span>Karol Kiszło</span></a></li>
+        </ul>
       </div>
       <div>
           <h3 style="margin-top:0; margin-bottom: 12px;">Znajdź nas na mapie</h3>
           <div class="map-container">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.976527490076!2d17.05497231589574!3d51.12681497957451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c4b0f02371%3A0x8e2c0e35f1a5f6e3!2sStefana%20%C5%BBeromskiego%2060%2F5a%2C%2050-312%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1678886543210!5m2!1spl!2spl"  
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              width="600" height="450" style="border:0; filter: grayscale(1) invert(0.9) brightness(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
       </div>
     </div>
@@ -710,8 +813,8 @@
     const homeViewElements = [
         document.getElementById('start'),
         document.getElementById('terapie'),
-        document.getElementById('o-ncni'),
-        document.getElementById('jak-dziala-ncni')
+        document.getElementById('opinie'),
+        document.getElementById('faq')
     ];
     const offerViewElement = document.getElementById('oferta');
 
@@ -747,6 +850,10 @@
             activeTab.setAttribute('aria-selected', 'true');
             activePanel.classList.add('active');
             
+            if (id === 'o-nas') {
+                openSubTab('misja'); // Ustaw domyślną pod-zakładkę
+            }
+
             setTimeout(() => {
                 const headerHeight = document.querySelector('header')?.offsetHeight || 80;
                 const ofertaRect = offerViewElement.getBoundingClientRect();
@@ -754,6 +861,22 @@
                     scrollToEl('#oferta');
                 }
             }, 100);
+        }
+    }
+
+    function openSubTab(id) {
+        const subTabs = document.querySelectorAll('.submenu-tab');
+        const subPanels = document.querySelectorAll('.submenu-panel');
+
+        subTabs.forEach(tab => tab.classList.remove('active'));
+        subPanels.forEach(panel => panel.classList.remove('active'));
+
+        const activeSubTab = document.querySelector(`.submenu-tab[data-subtab="${id}"]`);
+        const activeSubPanel = document.getElementById(`subpanel-${id}`);
+
+        if (activeSubTab && activeSubPanel) {
+            activeSubTab.classList.add('active');
+            activeSubPanel.classList.add('active');
         }
     }
 
@@ -772,13 +895,13 @@
     
     function handleLocationHash() {
         const hash = location.hash;
-        const validHashes = ['#oferta', '#pakiety', '#neurodiversity', '#zespol'];
+        const validHashes = ['#oferta', '#pakiety', '#neurodiversity', '#o-nas'];
         if (validHashes.includes(hash)){
             showOffer();
             let tabToOpen = 'flagowe'; // Domyślna
             if (hash === '#neurodiversity') tabToOpen = 'neurodiv';
             else if (hash === '#pakiety') tabToOpen = 'membership';
-            else if (hash === '#zespol') tabToOpen = 'zespol';
+            else if (hash === '#o-nas') tabToOpen = 'o-nas';
             openTab(tabToOpen);
         }
     }
@@ -792,7 +915,13 @@
         })
       );
 
-      // Floating button logic
+      document.querySelectorAll('.submenu-tab').forEach(btn => 
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openSubTab(btn.dataset.subtab);
+        })
+      );
+
       const floatingBtn = document.getElementById('floatingBtn');
       if (floatingBtn) {
           window.addEventListener('scroll', () => {
@@ -816,3 +945,6 @@
   </script>
 </body>
 </html>
+
+
+
