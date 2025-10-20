@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neuroinnowacje.pl — NCNI • Oferta i Cennik</title>
-  <meta name="description" content="NCNI — Naukowe Centrum Neuroinnowacji. VR • Zero-Gravity • Aromaterapia • Muzykoterapia • Device Lab (Anti‑Aging). Rezerwacje: 600 608 333." />
-  <link rel="icon" href="logo.png" type="image/png">
+  <title>NCNI Neuroinnowacje • Terapie VR, ADHD, Stres • Wrocław</title>
+  <meta name="description" content="Szukasz ulgi od stresu, ADHD lub bezsenności? Odkryj innowacyjne terapie VR i zero-gravity w NCNI we Wrocławiu. Zarezerwuj sesję i poczuj różnicę." />
+  <link rel="icon" href="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" type="image/png">
   <meta property="og:title" content="NCNI — Naukowe Centrum Neuroinnowacji" />
   <meta property="og:description" content="Pierwsze w Polsce centrum łączące VR, AI i terapie zero‑gravity. Twój reset dla ciała i umysłu." />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" />
   <meta property="og:url" content="https://neuroinnowacje.pl" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,6 +84,7 @@
     .tab.active{color:var(--ink);font-weight: 600;}
     .tab.active::after{content: ''; position: absolute; bottom: -17px; left: 10px; right: 10px; height: 2px; background: var(--grad);} 
     .panel{display:none}
+    .panel:focus-visible { outline: none; }
     .panel.active{display:block;animation:fade .25s ease}
     @keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
 
@@ -119,7 +121,76 @@
     .team-card ul { padding-left: 18px; margin: 0; color: var(--muted);} 
     .team-card li { margin-bottom: 4px; }
     .team-card .contact-reason { font-size: .85rem; color: var(--muted); margin-top: 12px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 10px; }
+    
+    /* BIO DETAILS (EXPANDABLE) */
+    .bio-details { margin-top: 12px; }
+    .bio-details summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--accent2);
+      list-style: none;
+      display: inline-block;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    .bio-details summary:hover {
+      border-bottom-color: var(--accent2);
+    }
+    .bio-details summary::-webkit-details-marker { display: none; }
+    .bio-details summary::after {
+      content: ' ▼';
+      font-size: .8em;
+      display: inline-block;
+      transition: transform .2s ease;
+    }
+    .bio-details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .bio-content {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      animation: fade .3s ease;
+    }
+    .bio-content h4 {
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-top: .8rem;
+      margin-bottom: .4rem;
+    }
+    .bio-content p, .bio-content ul {
+        margin-bottom: 1rem;
+        font-size: .95rem;
+    }
+    .bio-content ul {
+        padding-left: 20px;
+    }
 
+    /* RESERVATION FORM STYLES */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group.full-width { grid-column: 1 / -1; }
+    .form-group label { margin-bottom: 6px; font-size: .9rem; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: #0e1526;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    #form-status { margin-top: 16px; text-align: center; font-weight: 600; min-height: 24px; }
+    #form-status.success { color: var(--ok); }
+    
     /* FOOTER */
     footer{margin:30px 0 20px;padding-top:16px;color:#cfe0ff}
     .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px; border-top:1px solid rgba(255,255,255,.08); padding-top: 24px;}
@@ -136,13 +207,19 @@
 
     /* SMALL UTILS */
     .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .hero--minimal{ grid-template-columns:1fr; min-height:62vh; padding:64px 20px; background-image:  
-        linear-gradient(180deg, rgba(11,17,32,.65), rgba(11,17,32,.92)),
-        url('logo.png'),
+    .hero--minimal{ 
+      grid-template-columns:1fr; 
+      min-height:62vh; 
+      padding:64px 20px; 
+      background-image:  
+        linear-gradient(180deg, rgba(11,17,32,.8), rgba(11,17,32,1)),
+        url('https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/tlo.jpg'),
         radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent);
-      background-size: cover, min(50vmin, 480px), cover;
+      background-size: cover, cover, cover;
       background-position: center, center, center;
-      background-repeat: no-repeat; border-radius:22px; }
+      background-repeat: no-repeat; 
+      border-radius:22px; 
+    }
     .hero--minimal h1{font-size:2.1rem;margin:0 0 12px}
     .hero--minimal .contact{gap:12px}
     .tagline{font-size:1.15rem;color:#e6edff;margin:8px 0 18px}.addressline{margin-top:10px;color:#cfe0ff}
@@ -232,6 +309,7 @@
     }
     @media (max-width: 768px){ 
         .footgrid{grid-template-columns:1fr} 
+        .form-grid { grid-template-columns: 1fr; }
         .title b { font-size: .95rem; } 
         .mini { display: none; } 
         .hero h1 { font-size: 2rem; line-height: 1.25; } 
@@ -291,12 +369,162 @@
         .who b, .effect b { min-width: auto; }
     }
   </style>
+  
+  <!-- NOWY, ZINTEGROWANY BLOK JSON-LD DLA SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://neuroinnowacje.pl/#sebastian-kraszewski",
+        "name": "dr hab. inż. Sebastian Kraszewski",
+        "additionalName": "prof. PWr",
+        "jobTitle": "Dyrektor Naukowy; Profesor inżynierii biomedycznej; Współzałożyciel NCNI",
+        "description": "Profesor PWr, ekspert AI w zdrowiu, lider NCNI. Specjalizacje: sen, stres, koncentracja, anti-aging neurologiczny; narzędzia: VR, Zero-G, HRV, LED, taVNS, EEG-biofeedback.",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Politechnika Wrocławska"
+        },
+        "worksFor": { "@id": "https://neuroinnowacje.pl/#org-ncni" },
+        "memberOf": [{
+          "@type": "Organization",
+          "name": "GRAI — Grupa ds. Sztucznej Inteligencji przy Ministerstwie Cyfryzacji"
+        }],
+        "award": [
+          "Polska Nagroda Inteligentnego Rozwoju — Naukowiec Przyszłości (2019)",
+          "Naukowiec Przyszłości (2023)"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "EEG Biofeedback",
+            "dateCreated": "2025-10-20"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Psychotraumatologia",
+            "dateCreated": "2025-10-16"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Trener Neuroróżnorodności — Certified Excellence",
+            "dateCreated": "2025-07-20"
+          }
+        ],
+        "knowsAbout": [
+          "AI w medycynie", "HRV", "biofeedback EEG", "VR w terapii", "fotobiomodulacja LED", "taVNS", "terapia wibroakustyczna", "well-aging", "higiena snu", "neuroróżnorodność"
+        ],
+        "email": "mailto:s.kraszewski@ncni.pl",
+        "sameAs": [
+          "https://www.researchgate.net/profile/Sebastian-Kraszewski"
+        ]
+      },
+       {
+        "@type": "Person",
+        "@id": "https://neuroinnowacje.pl/#karol-kiszlo",
+        "name": "Karol Kiszło",
+        "jobTitle": "Współzałożyciel, Executive Director, Head of NeuroPerformance & Strategic Communication",
+        "description": "Współzałożyciel i pomysłodawca NCNI. Projektuje modele Focus & Flow, NeuroRegeneration i NeuroLeadership, łącząc doświadczenie biznesowe z regulacją układu nerwowego.",
+        "worksFor": { "@id": "https://neuroinnowacje.pl/#org-ncni" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Loyola University Chicago" },
+          { "@type": "CollegeOrUniversity", "name": "Triton College" }
+        ],
+        "knowsAbout": [
+          "NeuroPerformance", "Executive NeuroCoaching", "Komunikacja strategiczna", "Neurodiversity", "VR w rozwoju", "AI w terapii", "Zarządzanie projektami"
+        ],
+        "email": "mailto:k.kiszlo@ncni.pl"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://neuroinnowacje.pl/#org-ncni",
+        "name": "NCNI — Naukowe Centrum Neuroinnowacji",
+        "url": "https://neuroinnowacje.pl/",
+        "logo": "https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png",
+        "founder": [
+            { "@id": "https://neuroinnowacje.pl/#sebastian-kraszewski" },
+            { "@id": "https://neuroinnowacje.pl/#karol-kiszlo" }
+        ],
+        "slogan": "Twój mózg zasługuje na strategię, nie przypadek."
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://neuroinnowacje.pl/#localbusiness",
+        "name": "NCNI — Naukowe Centrum Neuroinnowacji",
+        "url": "https://neuroinnowacje.pl/",
+        "telephone": "+48600608333",
+        "email": "kontakt@ncni.pl",
+        "priceRange": "160 PLN - 740 PLN",
+        "image": "https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Stefana Żeromskiego 60/5a",
+          "addressLocality": "Wrocław",
+          "postalCode": "50-312",
+          "addressCountry": "PL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.1079",
+          "longitude": "17.0385"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        ],
+        "parentOrganization": { "@id": "https://neuroinnowacje.pl/#org-ncni" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://neuroinnowacje.pl/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czym jest NCNI i dla kogo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NCNI to Naukowe Centrum Neuroinnowacji, gdzie łączymy neurobiologię z technologiami (VR, Zero-Gravity, biofeedback). Pomagamy osobom z wysokim stresem, problemami ze snem i koncentracją, a także wspieramy osoby neurodywergentne (ADHD, ASD)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy VR jest konieczne?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nie. Dla osób wrażliwych na bodźce mamy pełny tryb bez-VR, który wykorzystuje pozycję Zero-Gravity, terapię dźwiękiem i odpowiednią higienę światła. Zawsze dopasowujemy bodźce do Twojego komfortu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak mierzycie efekty sesji?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Każda sesja zawiera obiektywne pomiary (tętno, HRV) oraz subiektywne skale odczuć (stres, napięcie). Dzięki temu widzisz konkretne dane pokazujące efekt przed i po sesji."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
   <header>
     <div class="container topbar">
       <a class="brand brandlink" href="#start" onclick="goHome(); return false;" aria-label="NCNI — wróć do strony głównej">
-        <img class="logo" src="logo.png" alt="NCNI logo" />
+        <img class="logo" src="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" alt="NCNI logo" />
         <div class="title">
           <b>NCNI — Naukowe Centrum Neuroinnowacji</b>
           <span class="mini">VR • AI • Zero‑Gravity • Anti‑Aging</span>
@@ -318,7 +546,7 @@
   <main>
     <section class="container hero hero--minimal" id="start">
       <div>
-        <h1>Pierwsze w Polsce centrum łączące VR, AI i terapie zero‑gravity.</h1>
+        <h1>Pierwsze w Polsce centrum łączące VR, AI i terapie zero‑gravity</h1>
         <p class="tagline">Zmęczenie? Stres? Bezsenność? <b>NCNI to Twój reset.</b></p>
         <p class="features-line">Masaż Zero‑Gravity <span class="dot">•</span> Biofeedback Premium <span class="dot">•</span> Muzykoterapia <span class="dot">•</span> Aromaterapia</p>
 
@@ -333,10 +561,10 @@
 
         <div class="contact" style="margin-top:14px">
           <button class="navbtn cta" onclick="showOffer(); openTab('flagowe')">Otwórz ofertę</button>
-          <button class="navbtn ghost" onclick="scrollToEl('#kontakt')">Zarezerwuj</button>
+          <button class="navbtn ghost" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</button>
         </div>
 
-        <p class="addressline">ul. Żeromskiego 60/5a, 50‑312 Wrocław • <a href="tel:+48600608333">600 608 333</a> • <a href="mailto:kontakt@ncni.pl">kontakt@ncni.pl</a></p>
+        <p class="addressline">ul. Stefana Żeromskiego 60/5a, 50‑312 Wrocław • <a href="tel:+48600608333">600 608 333</a> • <a href="mailto:kontakt@ncni.pl">kontakt@ncni.pl</a></p>
       </div>
     </section>
 
@@ -355,7 +583,7 @@
           <div class="mini-offer">
             <span class="minipill">od 320 zł</span>
             <a class="btn ghost" href="#oferta" onclick="showOffer(); openTab('rytualy')">Cennik</a>
-            <a class="btn primary" href="#kontakt">Rezerwuj</a>
+            <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Rezerwuj</a>
           </div>
         </div>
       </div>
@@ -367,7 +595,7 @@
           <div class="mini-offer">
             <span class="minipill">od 320 zł</span>
             <a class="btn ghost" href="#oferta" onclick="showOffer(); openTab('flagowe')">Cennik</a>
-            <a class="btn primary" href="#kontakt">Rezerwuj</a>
+            <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Rezerwuj</a>
           </div>
         </div>
       </div>
@@ -379,7 +607,7 @@
           <div class="mini-offer">
             <span class="minipill">od 320 zł</span>
             <a class="btn ghost" href="#oferta" onclick="showOffer(); openTab('rytualy')">Cennik</a>
-            <a class="btn primary" href="#kontakt">Rezerwuj</a>
+            <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Rezerwuj</a>
           </div>
         </div>
       </div>
@@ -391,7 +619,7 @@
           <div class="mini-offer">
             <span class="minipill">od 320 zł</span>
             <a class="btn ghost" href="#oferta" onclick="showOffer(); openTab('rytualy')">Cennik</a>
-            <a class="btn primary" href="#kontakt">Rezerwuj</a>
+            <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Rezerwuj</a>
           </div>
         </div>
       </div>
@@ -400,18 +628,7 @@
     <section class="container" id="opinie">
         <h2 class="section-title">Co mówią nasi klienci</h2>
         <div class="grid">
-            <article class="card testimonial-card">
-                <blockquote>Po sesji NeuroSanctum czułam się jak nowo narodzona. Napięcie z całego tygodnia po prostu zniknęło. Niesamowite doświadczenie.</blockquote>
-                <footer>— Anna K., Manager Projektu</footer>
-            </article>
-            <article class="card testimonial-card">
-                <blockquote>Jako programista walczę z koncentracją. Sesje Focus & Flow naprawdę pomogły mi odzyskać klarowność myślenia. Wrócę na pewno.</blockquote>
-                <footer>— Tomasz B., Senior Developer</footer>
-            </article>
-            <article class="card testimonial-card">
-                <blockquote>Przyszliśmy z partnerem na Mind Spa DUO i było to fantastyczne. Pełen relaks i świetny sposób na wspólne spędzenie czasu inaczej niż zwykle.</blockquote>
-                <footer>— Ewa i Piotr S.</footer>
-            </article>
+            <!-- Testimonials will be dynamically inserted here by JavaScript -->
         </div>
     </section>
 
@@ -448,243 +665,172 @@
       </div>
 
       <!-- NEURODIVERSITY -->
-      <div class="panel" id="panel-neurodiv" role="tabpanel" aria-labelledby="tab-neurodiv">
+      <div class="panel" id="panel-neurodiv" role="tabpanel" tabindex="-1" aria-labelledby="tab-neurodiv">
         <div class="grid">
           <article class="card">
+            <h4>Metoda Kraszewskiego</h4>
+            <div class="meta"><span class="chip">Program Autorski</span><span class="chip price" data-price-id="metodaKraszewskiegoRange"></span></div>
+            <div class="who"><b>Dla kogo:</b> spersonalizowany protokół optymalizacji pracy mózgu.</div>
+            <div class="effect"><b>Efekty:</b> wzrost wydajności, odporność na stres, lepsza pamięć.</div>
+            <div class="btnrow">
+              <a class="btn ghost" href="http://ncni.pl/metoda-kraszewskiego.html" target="_blank">Dowiedz się więcej</a>
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
+            </div>
+          </article>
+          <article class="card">
             <h4>ADHD / ADD</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 260 PLN</span></div>
+            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price" data-price-id="adhdRange"></span></div>
             <div class="who"><b>Dla kogo:</b> trudności z utrzymaniem uwagi, „skoki” energii, chaos zadań.</div>
             <div class="effect"><b>Efekty:</b> klarowny fokus, mniej rozpraszaczy, lepsze przełączanie.</div>
-            <div class="note">Focus Sprint 35’ — 260 • Deep Focus 55’ — 390 • add‑on Vagus Calm +149</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="note" data-note-id="adhdNote"></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Autyzm / ASD</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 160 PLN</span></div>
+            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price" data-price-id="asdRange"></span></div>
             <div class="who"><b>Dla kogo:</b> przebodźcowanie, potrzeba przewidywalnych bodźców.</div>
             <div class="effect"><b>Efekty:</b> mniejsze napięcie sensoryczne, poczucie bezpieczeństwa.</div>
-            <div class="note">Forest Flow 50’ — 360 • Sensory Blackout 20’ — 160 • Mind Spa DUO 60’ — 740</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="note" data-note-id="asdNote"></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
-            <h4>AuDHD / WWO</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 320 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> wrażliwość sensoryczna + huśtawki pobudzenia.</div>
-            <div class="effect"><b>Efekty:</b> wyciszenie „szumu” nerwowego, stabilizacja energii.</div>
-            <div class="note">NeuroDetox 60’ — 390 • Forest Flow 50’ — 360 • LED Sleep add‑on +129</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <h4>Wysoka Wrażliwość (WWO)</h4>
+            <div class="meta"><span class="chip">Zarządzanie Energią</span><span class="chip price" data-price-id="wwoRange"></span></div>
+            <div class="who"><b>Dla kogo:</b> głębokie przetwarzanie bodźców, ryzyko przestymulowania.</div>
+            <div class="effect"><b>Efekty:</b> trening sensoryczny, budowanie odporności, ochrona energii.</div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
-            <h4>Sen / Bezsenność</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 220 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> trudności z zasypianiem, wybudzanie w nocy.</div>
-            <div class="effect"><b>Efekty:</b> wieczorne wyciszenie, lepszy rytm dobowy.</div>
-            <div class="note">Sleep Prime 40’ — 310 • Night Reset 60’ — 420 • LED Sleep add‑on +129</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <h4>Dysleksja</h4>
+            <div class="meta"><span class="chip">Trening Poznawczy</span><span class="chip price" data-price-id="dysleksjaRange"></span></div>
+            <div class="who"><b>Dla kogo:</b> trudności z płynnością czytania, przetwarzaniem tekstu.</div>
+            <div class="effect"><b>Efekty:</b> poprawa szlaków neuronalnych, mniejsza frustracja, nowe strategie.</div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
-            <h4>Napięcia kark/barki</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 190 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> praca biurowa, kierowcy, stres.</div>
-            <div class="effect"><b>Efekty:</b> ulga miejscowa, większa mobilność.</div>
-            <div class="note">Ulga Napięciowa 45’ — 340 • TENS Comfort 30’ — 240 • Percussive Release 20’ — 190</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Przeciążenie / brak energii</h4>
-            <div class="meta"><span class="chip">Rekomendowane</span><span class="chip price">od 260 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> spadek energii, „ciężkość” ciała, po okresie wysiłku.</div>
-            <div class="effect"><b>Efekty:</b> odciążenie, poczucie lekkości, regeneracja.</div>
-            <div class="note">PEMF 30’ — 260 • VibroAcoustic 40’ — 320 • Oceanic Reset 45’ — 320</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <h4>Tiki / Zespół Tourette'a</h4>
+            <div class="meta"><span class="chip">Regulacja Napięcia</span><span class="chip price" data-price-id="tikiRange"></span></div>
+            <div class="who"><b>Dla kogo:</b> potrzeba wyciszenia układu nerwowego i redukcji stresu.</div>
+            <div class="effect"><b>Efekty:</b> obniżenie pobudzenia, wsparcie w zarządzaniu impulsami.</div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
         </div>
         <p class="note">Przestrzeń przyjazna sensorycznie. Język szacunku. Możliwość trybu bez‑VR oraz sesji w duecie (DUO).</p>
       </div>
 
       <!-- FLAGOWE -->
-      <div class="panel active" id="panel-flagowe" role="tabpanel" aria-labelledby="tab-flagowe">
+      <div class="panel active" id="panel-flagowe" role="tabpanel" tabindex="-1" aria-labelledby="tab-flagowe">
         <div class="grid">
           <article class="card">
             <h4>NeuroSanctum 360°</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">450 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="neuroSanctum"></span><span class="chip price" data-price-id="neuroSanctum"></span></div>
             <div class="who"><b>Dla kogo:</b> wysoki stres, potrzeba odcięcia od bodźców.</div>
             <div class="effect"><b>Efekty:</b> głęboka immersja i wyciszenie.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>NeuroDetox Cyfrowy</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">390 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="neuroDetox"></span><span class="chip price" data-price-id="neuroDetox"></span></div>
             <div class="who"><b>Dla kogo:</b> praca przy ekranach, gamerzy, twórcy.</div>
             <div class="effect"><b>Efekty:</b> spadek „szumu” neuronalnego, więcej ciszy.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Głębia Spokoju</h4>
-            <div class="meta"><span class="chip">90 min</span><span class="chip price">640 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="glebiaSpokoju"></span><span class="chip price" data-price-id="glebiaSpokoju"></span></div>
             <div class="who"><b>Dla kogo:</b> bezsenność, wysokie napięcie.</div>
             <div class="effect"><b>Efekty:</b> głęboka ulga i poprawa snu.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Focus & Flow</h4>
-            <div class="meta"><span class="chip">50 min</span><span class="chip price">360 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> trudności w koncentracji, WWO, mgła poznazwacza.</div>
+            <div class="meta"><span class="chip" data-duration-id="focusFlow"></span><span class="chip price" data-price-id="focusFlow"></span></div>
+            <div class="who"><b>Dla kogo:</b> trudności w koncentracji, WWO, mgła poznawcza.</div>
             <div class="effect"><b>Efekty:</b> wzrost „flow” i klarowności.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Ulga Napięciowa — Głowa/Kark</h4>
-            <div class="meta"><span class="chip">45 min</span><span class="chip price">340 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="ulgaNapieciowa"></span><span class="chip price" data-price-id="ulgaNapieciowa"></span></div>
             <div class="who"><b>Dla kogo:</b> praca biurowa, kierowcy, stres.</div>
             <div class="effect"><b>Efekty:</b> ulga i większa mobilność.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Regeneracja & Odporność — Lymph Boost</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">420 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="lymphBoost"></span><span class="chip price" data-price-id="lymphBoost"></span></div>
             <div class="who"><b>Dla kogo:</b> „ciężkość” nóg, okres spadku formy (po konsultacji).</div>
             <div class="effect"><b>Efekty:</b> lekkość i odprężenie.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
         </div>
-        <p class="note">Szybki start? Dostępny <b>NeuroStart 30’ — 190 PLN</b>.</p>
+        <p class="note">Szybki start? Dostępny <b data-note-id="neuroStart"></b>.</p>
       </div>
 
       <!-- RYTUAŁY -->
-      <div class="panel" id="panel-rytualy" role="tabpanel" aria-labelledby="tab-rytualy">
+      <div class="panel" id="panel-rytualy" role="tabpanel" tabindex="-1" aria-labelledby="tab-rytualy">
         <div class="grid">
           <article class="card">
             <h4>Oceanic Reset</h4>
-            <div class="meta"><span class="chip">45 min</span><span class="chip price">320 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="oceanicReset"></span><span class="chip price" data-price-id="oceanicReset"></span></div>
             <div class="who"><b>Dla kogo:</b> przebodźcowanie, szybki reset w ciągu dnia.</div>
             <div class="effect"><b>Efekty:</b> miękki zjazd układu nerwowego.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Forest Flow</h4>
-            <div class="meta"><span class="chip">50 min</span><span class="chip price">360 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="forestFlow"></span><span class="chip price" data-price-id="forestFlow"></span></div>
             <div class="who"><b>Dla kogo:</b> gonitwa myśli, napięcie sensoryczne.</div>
             <div class="effect"><b>Efekty:</b> ugruntowanie i cisza wewnętrzna.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Cosmic Drift</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">440 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="cosmicDrift"></span><span class="chip price" data-price-id="cosmicDrift"></span></div>
             <div class="who"><b>Dla kogo:</b> przewlekły stres, napięciowy ból.</div>
             <div class="effect"><b>Efekty:</b> głęboka regeneracja psychofizyczna.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Focus Sprint</h4>
-            <div class="meta"><span class="chip">35 min</span><span class="chip price">260 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> przerwa w pracy, egzamin.</div>
-            <div class="effect"><b>Efekty:</b> klarowny fokus bez przebodźcowania.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Deep Focus</h4>
-            <div class="meta"><span class="chip">55 min</span><span class="chip price">390 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> praca kreatywna, analiza.</div>
-            <div class="effect"><b>Efekty:</b> długotrwałe skupienie.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Sleep Prime</h4>
-            <div class="meta"><span class="chip">40 min</span><span class="chip price">310 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> trudności z zasypianiem.</div>
-            <div class="effect"><b>Efekty:</b> miękki zjazd układu nerwowego przed snem.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Night Reset</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">420 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> rozregulowany sen, wybudzanie w nocy.</div>
-            <div class="effect"><b>Efekty:</b> reset rytmu dobowego.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Sound & Gravity Bath</h4>
-            <div class="meta"><span class="chip">45 min</span><span class="chip price">340 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> stres, napięcia nerwowo‑mięśniowe.</div>
-            <div class="effect"><b>Efekty:</b> ukojenie i odpuszczenie napięć.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Mind Spa DUO (2 os.)</h4>
-            <div class="meta"><span class="chip">60 min</span><span class="chip price">740 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="mindSpaDuo"></span><span class="chip price" data-price-id="mindSpaDuo"></span></div>
             <div class="who"><b>Dla kogo:</b> pary, przyjaciele.</div>
             <div class="effect"><b>Efekty:</b> wspólna regulacja i quality time.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
         </div>
       </div>
 
       <!-- DEVICE LAB -->
-      <div class="panel" id="panel-device" role="tabpanel" aria-labelledby="tab-device">
+      <div class="panel" id="panel-device" role="tabpanel" tabindex="-1" aria-labelledby="tab-device">
         <div class="grid">
           <article class="card">
             <h4>LED Glow Anti‑Aging</h4>
-            <div class="meta"><span class="chip">30 min</span><span class="chip price">220 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="ledGlow"></span><span class="chip price" data-price-id="ledGlow"></span></div>
             <div class="who"><b>Dla kogo:</b> skóra napięta/sucha, stres.</div>
             <div class="effect"><b>Efekty:</b> „glow” skóry + ukojenie.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>LED Sleep & Soothe</h4>
-            <div class="meta"><span class="chip">30 min</span><span class="chip price">220 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> wieczorne napięcie, trudności z zasypianiem.</div>
-            <div class="effect"><b>Efekty:</b> wyciszenie wieczorne; anti‑aging snu.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Vagus Calm</h4>
-            <div class="meta"><span class="chip">30 min</span><span class="chip price">260 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="vagusCalm"></span><span class="chip price" data-price-id="vagusCalm"></span></div>
             <div class="who"><b>Dla kogo:</b> stres, nadpobudliwość.</div>
             <div class="effect"><b>Efekty:</b> parasympatyczny „boost”, balans napięcia.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>TENS Comfort</h4>
-            <div class="meta"><span class="chip">30 min</span><span class="chip price">240 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> kark, lędźwie, barki — miejscowa ulga.</div>
-            <div class="effect"><b>Efekty:</b> redukcja napięć/bólu → lepsza regeneracja.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>PEMF Recovery</h4>
-            <div class="meta"><span class="chip">30 min</span><span class="chip price">260 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> przeciążenie, spadek energii.</div>
-            <div class="effect"><b>Efekty:</b> „cocoon” regeneracji i odciążenia.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>VibroAcoustic Therapy</h4>
-            <div class="meta"><span class="chip">40 min</span><span class="chip price">320 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> „szum” nerwowy, stres, napięcia.</div>
-            <div class="effect"><b>Efekty:</b> kojąca wibracja zsynchronizowana z muzyką.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
           <article class="card">
             <h4>Sensory Blackout</h4>
-            <div class="meta"><span class="chip">20 min</span><span class="chip price">160 PLN</span></div>
+            <div class="meta"><span class="chip" data-duration-id="sensoryBlackout"></span><span class="chip price" data-price-id="sensoryBlackout"></span></div>
             <div class="who"><b>Dla kogo:</b> przebodźcowanie wzrokowe, skłonność do migren.</div>
             <div class="effect"><b>Efekty:</b> szybkie wyciszenie — reset kory wzrokowej.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
-          </article>
-          <article class="card">
-            <h4>Percussive Release</h4>
-            <div class="meta"><span class="chip">20 min</span><span class="chip price">190 PLN</span></div>
-            <div class="who"><b>Dla kogo:</b> zastane barki/kark, sztywne plecy.</div>
-            <div class="effect"><b>Efekty:</b> uwolnienie DOMS, przygotowanie do VR.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Zarezerwuj</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a></div>
           </article>
         </div>
-        <p class="note">Add‑ony: LED +129 • Vagus +149 • Vibro +179 • Hands‑On 15’ +79 • Aroma +29 • VR Add‑On +49.</p>
+        <p class="note" data-note-id="addons"></p>
       </div>
       
       <!-- O NAS - ROZBUDOWANE -->
-      <div class="panel" id="panel-o-nas" role="tabpanel" aria-labelledby="tab-o-nas">
+      <div class="panel" id="panel-o-nas" role="tabpanel" tabindex="-1" aria-labelledby="tab-o-nas">
         <div class="submenu-nav">
           <button class="submenu-tab active" data-subtab="misja">Nasza Misja</button>
           <button class="submenu-tab" data-subtab="zespol">Zespół</button>
@@ -703,7 +849,6 @@
                  <a href="https://ncni.pl" target="_blank" rel="noopener">Zobacz stronę korporacyjną NCNI →</a>
               </div>
               <div class="video-embed-container">
-                <!-- Zaktualizowany iframe z linkiem do Twojego filmu -->
                 <iframe src="https://www.youtube.com/embed/8zuFnKzckVs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
               </div>
             </div>
@@ -729,25 +874,66 @@
                     </div>
                 </article>
                 <article class="card team-card">
-                    <h4>dr hab. inż. Sebastian Kraszewski</h4>
-                    <div class="role">Neurobiochemia i żyienie mózgu • Trener neuroróżnorodności</div>
-                    <ul>
-                        <li>Protokoły koncentracji i odporności na stres.</li>
-                        <li>Standaryzacja suplementacji i żywienia.</li>
-                    </ul>
-                    <p class="contact-reason muted">Kontakt w sprawach dot. neurobiochemii i programów dla neuroróżnorodności.</p>
+                    <h4>dr hab. inż. Sebastian Kraszewski, prof. PWr</h4>
+                    <div class="role">Dyrektor Naukowy • Profesor inżynierii biomedycznej • Współzałożyciel NCNI</div>
+                     <p class="muted" style="margin: 0.5rem 0;">
+                        Specjalizuje się w łączeniu nauki o mózgu z technologią: VR, Zero-Gravity, HR/HRV, LED oraz taVNS, przekładając to na mierzalne protokoły snu, koncentracji i regulacji stresu. W NCNI odpowiada za architekturę programów NeuroWellness & Anti-Aging.
+                    </p>
+                    <details class="bio-details">
+                        <summary>Czytaj więcej o dorobku i filozofii pracy</summary>
+                        <div class="bio-content">
+                            <h4>Kim jestem i czym zajmuje się NCNI</h4>
+                            <p>Jestem profesorem Politechniki Wrocławskiej (inżynieria biomedyczna) oraz praktykiem wdrażającym technologie regulacji układu nerwowego w warunkach gabinetowych. Badam i projektuję rozwiązania „4P” (personalized, predictive, preventive, participatory) — od modeli AI w medycynie po bezpieczne protokoły dla snu, koncentracji, redukcji napięcia i dobrostanu. Na co dzień współtworzę NCNI — Naukowe Centrum Neuroinnowacji — gdzie nauka spotyka się z wygodą użytkownika i rzetelnym pomiarem efektów.</p>
+                            <h4>Dorobek i wiarygodność</h4>
+                            <ul>
+                                <li><b>Nauka:</b> 45 publikacji (H-index 19); promotor >40 prac dyplomowych i 5 doktoratów. Obszary: biofizyka molekularna, modelowanie układów biologicznych i leków, skale kliniczne oraz modele predykcyjne oparte o AI.</li>
+                                <li><b>Ekspertura publiczna:</b> od 10.2024 — ekspert GRAI (Grupa ds. Sztucznej Inteligencji) przy Ministerstwie Cyfryzacji.</li>
+                                <li><b>Nagrody:</b> Polska Nagroda Inteligentnego Rozwoju „Naukowiec Przyszłości” (2019, 2023), nominacja „Zasłużony dla Inteligentnego Rozwoju” (2020), stypendium MNiSW dla Wybitnych Młodych Naukowców, I miejsce „Pokolenie W”.</li>
+                                <li><b>Biznes i wdrożenia:</b> prezes Advanced Health Dynamics (od 10.2023) — projektowanie aplikacji zdrowotnych z modułami AI.</li>
+                            </ul>
+                            <h4>Filozofia pracy: „strategia, nie przypadek”</h4>
+                            <p>Każdy protokół w NCNI jest mierzalny (HR/HRV, skale odczuć), powtarzalny (scenariusze minuta-po-minucie) i bezpieczny (jasne przeciwwskazania oraz alternatywa bez gogli VR). To kluczowe dla osób wysoko wrażliwych sensorycznie, po urazach, w stresie lub z bezsennością.</p>
+                             <h4>Standardy i szkolenia (2025)</h4>
+                             <ul>
+                                <li>EEG-Biofeedback — wprowadzenie, trening na aparaturze, zastosowania kliniczne (Wrocław, 20.10.2025).</li>
+                                <li>Psychotraumatologia — stres, PTSD u dorosłych i dzieci, podstawy psychoterapii PTSD (Wrocław, 16.10.2025).</li>
+                                <li>Trener Neuroróżnorodności — Certified Excellence USA (20.07.2025).</li>
+                             </ul>
+                        </div>
+                    </details>
+                    <p class="contact-reason muted">Kontakt w sprawach dot. neurobiochemii, programów dla neuroróżnorodności i oferty B2B.</p>
                      <div class="btnrow">
                         <a href="mailto:s.kraszewski@ncni.pl" class="btn ghost">Skontaktuj się</a>
                     </div>
                 </article>
                 <article class="card team-card">
                     <h4>Karol Kiszło</h4>
-                    <div class="role">Head of NeuroPerformance • NeuroWellbeing Coach</div>
-                    <ul>
-                        <li>Programy Focus & Flow (B2B), Executive NeuroCoaching.</li>
-                        <li>Higiena bodźców i standardy pracy głębokiej.</li>
-                    </ul>
-                    <p class="contact-reason muted">Kontakt w sprawach dot. oferty dla biznesu (B2B) i executive coaching.</p>
+                    <div class="role">Współzałożyciel • Executive Director • Head of NeuroPerformance</div>
+                    <p class="muted" style="margin: 0.5rem 0;">
+                        Jako pomysłodawca NCNI, łączę doświadczenie w komunikacji i zarządzaniu z pasją do technologii. Projektuję programy NeuroPerformance, wspierając liderów i zespoły w odzyskiwaniu równowagi między technologią a dobrostanem.
+                    </p>
+                     <details class="bio-details">
+                        <summary>Czytaj więcej o mojej drodze i filozofii pracy</summary>
+                        <div class="bio-content">
+                            <h4>Moja droga: od Chicago do NCNI</h4>
+                            <p>Jestem absolwentem Loyola University Chicago. Karierę rozpocząłem w USA, pracując w międzynarodowym środowisku, gdzie rozwijałem kompetencje w zarządzaniu projektami i komunikacji. Po powrocie do Polski przez lata współtworzyłem projekty w obszarze e-commerce, marketingu i nowych technologii.</p>
+                            <p>Pomysł na NCNI zrodził się z mojego osobistego doświadczenia – z lat pracy w środowiskach wysokiego stresu. Obserwacja, jak bodźce i tempo życia wpływają na nasze funkcjonowanie, doprowadziła mnie do idei połączenia nauki, VR i biofeedbacku w praktyczne narzędzia do neuroregulacji.</p>
+                            
+                            <h4>Filozofia pracy: od doświadczenia do strategii</h4>
+                             <p>W NCNI odpowiadam za strategię i komunikację. Projektuję modele Focus & Flow, NeuroRegeneration i NeuroLeadership. Moją rolą jest budowanie mostu między światem nauki a rzeczywistością życia i pracy.</p>
+                             <blockquote>„Nie jestem naukowcem z laboratorium. Jestem praktykiem, który przeszedł przez systemy, rynki i emocje. NCNI powstało z życia – z potrzeby połączenia nauki i świadomości z doświadczeniem codzienności.”</blockquote>
+
+                            <h4>Obszary specjalizacji</h4>
+                            <ul>
+                                <li>Strategia komunikacji i rozwoju organizacji</li>
+                                <li>NeuroPerformance i Executive NeuroCoaching</li>
+                                <li>Neurodiversity & regulacja poznawcza</li>
+                                <li>VR / AI w rozwoju i terapii</li>
+                                <li>Zarządzanie projektami międzynarodowymi</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <p class="contact-reason muted">Kontakt w sprawach dot. strategii, komunikacji i programów NeuroPerformance.</p>
                      <div class="btnrow">
                         <a href="mailto:k.kiszlo@ncni.pl" class="btn ghost">Skontaktuj się</a>
                     </div>
@@ -809,30 +995,30 @@
             </ul>
              <div class="btnrow" style="margin-top: 1rem;">
                 <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn primary">Skontaktuj się z NCNI</a>
-                <a href="#kontakt" onclick="scrollToEl('#kontakt')" class="btn ghost">Umów pierwszą sesję</a>
+                <a href="#rezerwacja" onclick="scrollToEl('#rezerwacja')" class="btn ghost">Umów pierwszą sesję</a>
             </div>
         </div>
       </div>
 
 
       <!-- MEMBERSHIP/PACKS -->
-      <div class="panel" id="panel-membership" role="tabpanel" aria-labelledby="tab-membership">
+      <div class="panel" id="panel-membership" role="tabpanel" tabindex="-1" aria-labelledby="tab-membership">
         <div class="grid">
           <article class="card">
             <h4>4‑pack</h4>
             <div class="who"><b>Zniżka:</b> −8% na 4 sesje tej samej usługi.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Kup 4‑pack</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Kup 4‑pack</a></div>
           </article>
           <article class="card">
             <h4>8‑pack</h4>
             <div class="who"><b>Zniżka:</b> −15% na 8 sesji tej samej usługi.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Kup 8‑pack</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Kup 8‑pack</a></div>
           </article>
           <article class="card">
             <h4>NeuroClub</h4>
-            <div class="meta"><span class="chip price">299 PLN / mies.</span></div>
+            <div class="meta"><span class="chip price" data-price-id="neuroClub"></span></div>
             <div class="who"><b>W pakiecie:</b> 1× NeuroStart 30’ / mies. + −15% na Rytuały & Device Lab + priorytet rezerwacji.</div>
-            <div class="btnrow"><a class="btn primary" href="#kontakt">Dołącz do Club</a></div>
+            <div class="btnrow"><a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Dołącz do Club</a></div>
           </article>
         </div>
 
@@ -840,27 +1026,68 @@
           <h4>Gotowe kombosy</h4>
           <div class="subgrid">
             <div>
-              <p><b>Relax & Glow</b> — Oceanic Reset 45’ + LED Glow → <b>449 PLN</b></p>
-              <p><b>Insomnia Care</b> — Night Reset 60’ + LED Sleep → <b>549 PLN</b></p>
+              <p><b>Relax & Glow</b> — Oceanic Reset 45’ + LED Glow → <b data-price-id="comboRelaxGlow" style="color: var(--accent2);"></b></p>
+              <p><b>Insomnia Care</b> — Night Reset 60’ + LED Sleep → <b data-price-id="comboInsomnia" style="color: var(--accent2);"></b></p>
             </div>
             <div>
-              <p><b>Deep Forest Bath</b> — Forest Flow 50’ + VibroAcoustic → <b>499 PLN</b></p>
-              <p><b>Executive Focus</b> — Deep Focus 55’ + Vagus Calm → <b>549 PLN</b></p>
+              <p><b>Deep Forest Bath</b> — Forest Flow 50’ + VibroAcoustic → <b data-price-id="comboForest" style="color: var(--accent2);"></b></p>
+              <p><b>Executive Focus</b> — Deep Focus 55’ + Vagus Calm → <b data-price-id="comboExecutive" style="color: var(--accent2);"></b></p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ZAKTUALIZOWANA SEKCJA REZERWACJI Z FORMULARZEM -->
+    <section class="container" id="rezerwacja">
+        <h2 class="section-title">Zarezerwuj sesję</h2>
+        <div class="card">
+            <p class="muted" style="text-align: center; margin-bottom: 1.5rem;">Wypełnij formularz, a my skontaktujemy się z Tobą, aby potwierdzić termin. Możesz też zadzwonić: <a href="tel:+48600608333">600 608 333</a>.</p>
+            
+            <form id="reservation-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adres e-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numer telefonu</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Preferowana usługa</label>
+                        <select id="service" name="service">
+                            <option value="">Wybierz usługę (opcjonalnie)</option>
+                            <!-- Opcje zostaną dodane przez JS -->
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Wiadomość</label>
+                        <textarea id="message" name="message" placeholder="Napisz, jeśli masz pytania lub preferowany termin..."></textarea>
+                    </div>
+                </div>
+                <div class="btnrow" style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn primary" style="width: 100%;">Wyślij zapytanie</button>
+                </div>
+            </form>
+            <div id="form-status"></div>
+        </div>
+    </section>
+
   </main>
   <footer class="container" id="kontakt">
     <div class="footgrid">
       <div>
-        <h3>Kontakt & Rezerwacje</h3>
-        <p class="muted">ul. Żeromskiego 60/5a, <b>50‑312</b> Wrocław</p>
+        <h3>Kontakt & Lokalizacja</h3>
+        <p class="muted">ul. Stefana Żeromskiego 60/5a, <b>50‑312</b> Wrocław</p>
         <div class="footer-contact-buttons">
             <a href="tel:+48600608333" class="navbtn ghost">📞 600 608 333</a>
             <a href="mailto:kontakt@ncni.pl" class="navbtn ghost">✉ kontakt@ncni.pl</a>
-            <a class="navbtn cta" href="#">Rezerwuj przez Booksy</a>
+            <a class="navbtn cta" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj sesję</a>
         </div>
         <div class="social-links">
           <a href="https://x.com/Neuroinnowacje" target="_blank" rel="noopener" aria-label="Profil NCNI na platformie X">
@@ -899,11 +1126,70 @@
   <a href="#oferta" class="floating-offer-btn" id="floatingBtn">Oferta</a>
 
   <script>
+    // ### BLOK ZARZĄDZANIA CENAMI ###
+    const serviceData = {
+        neuroSanctum:     { name: "NeuroSanctum 360°", duration: '60 min', price: 450 },
+        neuroDetox:       { name: "NeuroDetox Cyfrowy", duration: '60 min', price: 390 },
+        glebiaSpokoju:    { name: "Głębia Spokoju", duration: '90 min', price: 640 },
+        focusFlow:        { name: "Focus & Flow", duration: '50 min', price: 360 },
+        ulgaNapieciowa:   { name: "Ulga Napięciowa - Głowa/Kark", duration: '45 min', price: 340 },
+        lymphBoost:       { name: "Regeneracja & Odporność - Lymph Boost", duration: '60 min', price: 420 },
+        neuroStart:       { name: "NeuroStart (Szybki start)", duration: '30 min', price: 190 },
+        oceanicReset:     { name: "Oceanic Reset", duration: '45 min', price: 320 },
+        forestFlow:       { name: "Forest Flow", duration: '50 min', price: 360 },
+        cosmicDrift:      { name: "Cosmic Drift", duration: '60 min', price: 440 },
+        mindSpaDuo:       { name: "Mind Spa DUO (dla 2 os.)", duration: '60 min', price: 740 },
+        ledGlow:          { name: "LED Glow Anti-Aging", duration: '30 min', price: 220 },
+        vagusCalm:        { name: "Vagus Calm", duration: '30 min', price: 260 },
+        sensoryBlackout:  { name: "Sensory Blackout", duration: '20 min', price: 160 },
+        focusSprint:      { name: "ADHD/ADD: Focus Sprint", duration: "35'", price: 350 },
+        deepFocus:        { name: "ADHD/ADD: Deep Focus", duration: "55'", price: 390 },
+        metodaKraszewskiego: { name: "Metoda Kraszewskiego", price: 450},
+        wwo:              { name: "Wysoka Wrażliwość (WWO)", price: 360},
+        dysleksja:        { name: "Dysleksja", price: 360},
+        tiki:             { name: "Tiki / Zespół Tourette'a", price: 360},
+        neuroClub:        { price: 299 },
+        addonLed:         { price: 129 },
+        addonVagus:       { price: 149 }
+    };
+
+    const derivedData = {
+        comboRelaxGlow: serviceData.oceanicReset.price + serviceData.ledGlow.price - 91,
+        comboInsomnia: serviceData.glebiaSpokoju.price + serviceData.ledGlow.price - 111,
+        comboForest: serviceData.forestFlow.price + 179 - 40,
+        comboExecutive: serviceData.deepFocus.price + serviceData.addonVagus.price - 90,
+        adhdNote: `Focus Sprint ${serviceData.focusSprint.duration} — ${serviceData.focusSprint.price} • Deep Focus ${serviceData.deepFocus.duration} — ${serviceData.deepFocus.price} • add-on Vagus Calm +${serviceData.addonVagus.price}`,
+        asdNote: `Forest Flow 50’ — ${serviceData.forestFlow.price} • Mind Spa DUO 60’ — ${serviceData.mindSpaDuo.price}`,
+        audhdNote: `NeuroDetox 60’ — ${serviceData.neuroDetox.price} • Forest Flow 50’ — ${serviceData.forestFlow.price} • LED Sleep add-on +${serviceData.addonLed.price}`,
+        adhdRange: `od ${serviceData.focusSprint.price} PLN`,
+        asdRange: `od ${serviceData.forestFlow.price} PLN`,
+        audhdRange: `od ${serviceData.forestFlow.price} PLN`,
+        metodaKraszewskiegoRange: `od ${serviceData.metodaKraszewskiego.price} PLN`,
+        wwoRange: `od ${serviceData.wwo.price} PLN`,
+        dysleksjaRange: `od ${serviceData.dysleksja.price} PLN`,
+        tikiRange: `od ${serviceData.tiki.price} PLN`,
+        addons: `Add-ony: LED +${serviceData.addonLed.price} • Vagus +${serviceData.addonVagus.price} • Vibro +179 • Hands-On 15’ +79 • Aroma +29 • VR Add-On +49.`,
+        neuroStart: `NeuroStart ${serviceData.neuroStart.duration} — ${serviceData.neuroStart.price} PLN`
+    };
+
+    // ### BLOK ZARZĄDZANIA OPINIAMI ###
+    const allTestimonials = [
+        { quote: "Po sesji NeuroSanctum czułam się jak nowo narodzona. Napięcie z całego tygodnia po prostu zniknęło. Niesamowite doświadczenie.", author: "Anna K., Manager Projektu" },
+        { quote: "Jako programista walczę z koncentracją. Sesje Focus & Flow naprawdę pomogły mi odzyskać klarowność myślenia. Wrócę na pewno.", author: "Tomasz B., Senior Developer" },
+        { quote: "Przyszliśmy z partnerem na Mind Spa DUO i było to fantastyczne. Pełen relaks i świetny sposób na wspólne spędzenie czasu inaczej niż zwykle.", author: "Ewa i Piotr S." },
+        { quote: "Metoda Kraszewskiego to przełom. Wreszcie rozumiem, jak zarządzać swoją energią przy ADHD. Polecam każdemu, kto czuje się przytłoczony.", author: "Marcin J., Przedsiębiorca" },
+        { quote: "Sesje na bezsenność naprawdę działają. Od tygodni śpię znacznie lepiej, a techniki relaksacyjne stosuję też w domu. Dziękuję!", author: "Katarzyna W., Prawniczka" },
+        { quote: "Idealne miejsce na reset po ciężkim kwartale. Zero-gravity w połączeniu z VR to coś, czego trzeba doświadczyć. Pełna regeneracja.", author: "Adam P., Dyrektor Finansowy" }
+    ];
+    
+    // ### KONIEC BLOKÓW ZARZĄDZANIA ###
+    
     const homeViewElements = [
         document.getElementById('start'),
         document.getElementById('terapie'),
         document.getElementById('opinie'),
-        document.getElementById('faq')
+        document.getElementById('faq'),
+        document.getElementById('rezerwacja')
     ];
     const offerViewElement = document.getElementById('oferta');
 
@@ -939,8 +1225,11 @@
             activeTab.setAttribute('aria-selected', 'true');
             activePanel.classList.add('active');
             
+            activePanel.setAttribute('tabindex', '-1');
+            activePanel.focus({ preventScroll: true });
+            
             if (id === 'o-nas') {
-                openSubTab('misja'); // Ustaw domyślną pod-zakładkę
+                openSubTab('misja');
             }
 
             setTimeout(() => {
@@ -984,10 +1273,15 @@
     
     function handleLocationHash() {
         const hash = location.hash;
-        const validHashes = ['#oferta', '#pakiety', '#neurodiversity', '#o-nas'];
+        const validHashes = ['#oferta', '#pakiety', '#neurodiversity', '#o-nas', '#rezerwacja'];
         if (validHashes.includes(hash)){
+            if (hash === '#rezerwacja') {
+              goHome();
+              setTimeout(() => scrollToEl('#rezerwacja'), 50);
+              return;
+            }
             showOffer();
-            let tabToOpen = 'flagowe'; // Domyślna
+            let tabToOpen = 'flagowe';
             if (hash === '#neurodiversity') tabToOpen = 'neurodiv';
             else if (hash === '#pakiety') tabToOpen = 'membership';
             else if (hash === '#o-nas') tabToOpen = 'o-nas';
@@ -995,8 +1289,99 @@
         }
     }
     
+    function populateServiceData() {
+        const allData = { ...serviceData, ...derivedData };
+
+        for (const id in allData) {
+            const data = allData[id];
+            
+            const priceEl = document.querySelector(`[data-price-id="${id}"]`);
+            if (priceEl && data.price) {
+                priceEl.textContent = `${data.price} PLN`;
+            } else if (priceEl) {
+                 priceEl.textContent = typeof data === 'number' ? `${data} PLN` : data;
+            }
+            
+            const durationEl = document.querySelector(`[data-duration-id="${id}"]`);
+            if (durationEl && data.duration) {
+                durationEl.textContent = data.duration;
+            }
+            
+            const noteEl = document.querySelector(`[data-note-id="${id}"]`);
+            if (noteEl) {
+                noteEl.innerHTML = typeof data === 'string' ? data : '';
+            }
+        }
+    }
+
+    function populateServicesDropdown() {
+      const select = document.getElementById('service');
+      if (!select) return;
+
+      const servicesForDropdown = [
+        'metodaKraszewskiego', 'neuroSanctum', 'neuroDetox', 'glebiaSpokoju', 'focusFlow', 'ulgaNapieciowa',
+        'lymphBoost', 'oceanicReset', 'forestFlow', 'cosmicDrift', 'mindSpaDuo', 'ledGlow',
+        'vagusCalm', 'sensoryBlackout', 'focusSprint', 'deepFocus', 'wwo', 'dysleksja', 'tiki'
+      ];
+
+      servicesForDropdown.forEach(key => {
+        const service = serviceData[key];
+        if (service && service.name) {
+          const option = document.createElement('option');
+          option.value = service.name;
+          option.textContent = `${service.name} (${service.price} PLN)`;
+          select.appendChild(option);
+        }
+      });
+    }
+
+    function showRotatingTestimonials() {
+        const grid = document.querySelector('#opinie .grid');
+        if (!grid || allTestimonials.length === 0) return;
+
+        const now = new Date();
+        const startOfYear = new Date(now.getFullYear(), 0, 0);
+        const diff = now - startOfYear;
+        const oneDay = 1000 * 60 * 60 * 24;
+        const dayOfYear = Math.floor(diff / oneDay);
+
+        // Zmieniaj opinie co 3 dni
+        const rotationPeriod = 3; 
+        const periodIndex = Math.floor(dayOfYear / rotationPeriod);
+
+        const testimonialsPerSet = 3;
+        const numSets = Math.ceil(allTestimonials.length / testimonialsPerSet);
+        if (numSets === 0) return;
+
+        const setIndex = periodIndex % numSets;
+        const startIndex = setIndex * testimonialsPerSet;
+        
+        // Zapewnij, że zawsze wyświetlamy 3 opinie, nawet jeśli ostatni set jest niepełny
+        let testimonialsToShow = [];
+        for (let i = 0; i < testimonialsPerSet; i++) {
+            testimonialsToShow.push(allTestimonials[(startIndex + i) % allTestimonials.length]);
+        }
+
+        grid.innerHTML = ''; // Wyczyść istniejące opinie
+
+        testimonialsToShow.forEach(testimonial => {
+            if (!testimonial) return;
+            const article = document.createElement('article');
+            article.className = 'card testimonial-card';
+            article.innerHTML = `
+                <blockquote>${testimonial.quote}</blockquote>
+                <footer>— ${testimonial.author}</footer>
+            `;
+            grid.appendChild(article);
+        });
+    }
+    
     document.addEventListener('DOMContentLoaded',()=>{
+      populateServiceData();
+      populateServicesDropdown();
+      showRotatingTestimonials();
       handleLocationHash();
+
       document.querySelectorAll('.tab').forEach(btn => 
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1029,7 +1414,6 @@
           });
       }
 
-      // --- Mobile Menu Toggle ---
       const toggleButton = document.getElementById('mobile-menu-toggle');
       const mainNav = document.getElementById('main-nav');
       if (toggleButton && mainNav) {
@@ -1053,7 +1437,41 @@
         });
       }
 
-      // Dynamic year in footer
+      const form = document.getElementById('reservation-form');
+      const formStatus = document.getElementById('form-status');
+      if (form && formStatus) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const name = form.querySelector('#name').value;
+          const email = form.querySelector('#email').value;
+          const phone = form.querySelector('#phone').value;
+          const service = form.querySelector('#service').value;
+          const message = form.querySelector('#message').value;
+
+          const subject = `Zapytanie o rezerwację od ${name}`;
+          
+          let body = `Nowe zapytanie o rezerwację:\n\n`;
+          body += `Imię i nazwisko: ${name}\n`;
+          body += `E-mail: ${email}\n`;
+          if (phone) body += `Telefon: ${phone}\n`;
+          if (service) body += `Wybrana usługa: ${service}\n`;
+          body += `\n---\n\n`;
+          body += `Wiadomość:\n${message}\n`;
+
+          const mailtoLink = `mailto:kontakt@ncni.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+          formStatus.textContent = 'Przekierowuję do Twojej aplikacji e-mail...';
+          formStatus.className = 'success';
+          
+          setTimeout(() => {
+             window.location.href = mailtoLink;
+             form.reset();
+             formStatus.textContent = '';
+          }, 1500);
+        });
+      }
+
       const yearSpan = document.getElementById('footer-year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
@@ -1064,3 +1482,4 @@
   </script>
 </body>
 </html>
+
