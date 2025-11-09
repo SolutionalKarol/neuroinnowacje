@@ -559,6 +559,7 @@
           <button class="pill" onclick="showOffer(); openTab('flagowe')">Fokus</button>
           <button class="pill" onclick="showOffer(); openTab('device')">Anti‑Aging (LED/Device Lab)</button>
           <button class="pill" onclick="showOffer(); openTab('neurodiv')">Neuroróżnorodność</button>
+          <a href="coaching.html" class="pill">Neuro Coaching</a>
           <button class="pill" onclick="showOffer(); openTab('dieta')">Dietetyka Kliniczna</button>
         </div>
 
@@ -661,7 +662,7 @@
     <section class="container tabs hidden" id="oferta">
       <div class="tablist" role="tablist" aria-label="Zakładki oferty">
         <button class="tab" id="tab-neurodiv" data-tab="neurodiv" role="tab" aria-selected="false" aria-controls="panel-neurodiv">Neuroróżnorodność</button>
-        <button class="tab" id="tab-coaching" data-tab="coaching" role="tab" aria-selected="false" aria-controls="panel-coaching">NeuroCoaching</button>
+        <a href="coaching.html" class="tab" role="tab">NeuroCoaching</a>
         <button class="tab" id="tab-dieta" data-tab="dieta" role="tab" aria-selected="false" aria-controls="panel-dieta">Dietetyka Kliniczna</button>
         <button class="tab active" id="tab-flagowe" data-tab="flagowe" role="tab" aria-selected="true" aria-controls="panel-flagowe">Flagowe sesje</button>
         <button class="tab" id="tab-rytualy" data-tab="rytualy" role="tab" aria-selected="false" aria-controls="panel-rytualy">Rytuały NCNI</button>
@@ -724,38 +725,8 @@
         <p class="note">Przestrzeń przyjazna sensorycznie. Język szacunku. Możliwość trybu bez‑VR oraz sesji w duecie (DUO).</p>
       </div>
 
-      <!-- NOWA ZAKŁADKA: NEUROCOACHING -->
-      <div class="panel" id="panel-coaching" role="tabpanel" tabindex="-1" aria-labelledby="tab-coaching">
-        <div class="grid">
-          <article class="card">
-            <h4>Sesja NeuroCoaching</h4>
-            <div class="meta"><span class="chip" data-duration-id="neuroCoaching"></span><span class="chip price" data-price-id="coachingRange"></span></div>
-            <div class="who"><b>Dla kogo:</b> chcesz zrozumieć, jak działa Twój mózg i lepiej zarządzać energią.</div>
-            <div class="effect"><b>Efekty:</b> klarowność celów, nowe strategie radzenia sobie ze stresem.</div>
-            <div class="btnrow">
-              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
-            </div>
-          </article>
-          <article class="card">
-            <h4>Executive NeuroCoaching</h4>
-            <div class="meta"><span class="chip" data-duration-id="execCoaching"></span><span class="chip price" data-price-id="execCoaching"></span></div>
-            <div class="who"><b>Dla kogo:</b> liderzy, managerowie, osoby pod presją.</div>
-            <div class="effect"><b>Efekty:</b> optymalizacja decyzji, odporność na presję, zarządzanie energią.</div>
-            <div class="btnrow">
-              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
-            </div>
-          </article>
-          <article class="card">
-            <h4>Coaching dla Neuroróżnorodnych</h4>
-            <div class="meta"><span class="chip" data-duration-id="neurodivCoaching"></span><span class="chip price" data-price-id="neurodivCoaching"></span></div>
-            <div class="who"><b>Dla kogo:</b> osoby z ADHD, ASD, WWO szukające narzędzi.</div>
-            <div class="effect"><b>Efekty:</b> budowanie strategii opartych na swoich mocnych stronach.</div>
-            <div class="btnrow">
-              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
-            </div>
-          </article>
-        </div>
-      </div>
+      <!-- USUNIĘTA ZAKŁADKA: NEUROCOACHING -->
+      <!-- Treść przeniesiona do pliku coaching.html -->
 
       <!-- NOWA ZAKŁADKA: DIETETYKA KLINICZNA -->
       <div class="panel" id="panel-dieta" role="tabpanel" tabindex="-1" aria-labelledby="tab-dieta">
@@ -1234,10 +1205,7 @@
         neuroClub:        { price: 299 },
         addonLed:         { price: 129 },
         addonVagus:       { price: 149 },
-        // Nowe usługi - Coaching
-        neuroCoaching:    { name: "Sesja NeuroCoaching", duration: "50 min", price: 320 },
-        execCoaching:     { name: "Executive NeuroCoaching", duration: "60 min", price: 480 },
-        neurodivCoaching: { name: "Coaching dla Neuroróżnorodnych", duration: "50 min", price: 360 },
+        // Usługi Coaching - przeniesione do coaching.html
         // Nowe usługi - Dietetyka
         dietaKonsultacja: { name: "Konsultacja neuro-dietetyczna", duration: "50 min", price: 380 },
         dietaPlan:        { name: "Plan żywieniowy (ADHD/Stres)", price: 450 },
@@ -1260,9 +1228,8 @@
         dysleksjaRange: `od ${serviceData.dysleksja.price} PLN`,
         tikiRange: `od ${serviceData.tiki.price} PLN`,
         addons: `Add-ony: LED +${serviceData.addonLed.price} PLN • Vagus +${serviceData.addonVagus.price} PLN • Vibro +179 PLN • Hands-On 15’ +79 PLN • Aroma +29 PLN • VR Add-On +49 PLN.`,
-        neuroStart: `NeuroStart ${serviceData.neuroStart.duration} — ${serviceData.neuroStart.price} PLN`,
-        // Nowe dane - Coaching
-        coachingRange: `od ${serviceData.neuroCoaching.price} PLN`
+        neuroStart: `NeuroStart ${serviceData.neuroStart.duration} — ${serviceData.neuroStart.price} PLN`
+        // Dane Coaching - przeniesione do coaching.html
     };
 
     // ### BLOK ZARZĄDZANIA OPINIAMI - USUNIĘTY ###
@@ -1413,9 +1380,9 @@
         'Dla Neuroróżnorodności': [
             'metodaKraszewskiego', 'focusSprint', 'deepFocus', 'wwo', 'dysleksja', 'tiki'
         ],
-        'NeuroCoaching': [
-            'neuroCoaching', 'execCoaching', 'neurodivCoaching'
-        ],
+        // 'NeuroCoaching': [
+        //     'neuroCoaching', 'execCoaching', 'neurodivCoaching'
+        // ], // Przeniesione do coaching.html
         'Dietetyka Kliniczna': [
             'dietaKonsultacja', 'dietaPlan', 'dietaMikrobiota'
         ],
