@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neurocoaching Wrocław • Executive & ADHD Coaching • NCNI</title>
+  <meta name="description" content="Odkryj Neurocoaching NCNI we Wrocławiu. Oferujemy programy Executive Coaching oraz wsparcie dla ADHD/ASD (dorośli i dzieci 8+). Programy od 320 PLN. Umów konsultację." />
+  <link rel="icon" href="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" type="image/png">
+  <meta property="og:title" content="Neurocoaching Wrocław • Executive & ADHD Coaching • NCNI" />
+  <meta property="og:description" content="Odkryj Neurocoaching NCNI we Wrocławiu. Oferujemy programy Executive Coaching oraz wsparcie dla ADHD/ASD (dorośli i dzieci 8+). Programy od 320 PLN." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" />
+  <meta property="og:url" content="https://neuroinnowacje.pl/coaching.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- UŻYWANY JEST TEN SAM BLOK STYLÓW CO W INDEX.HTML DLA SPÓJNOŚCI -->
+  <style>
+    :root{
+      --bg:#0b1120;
+      --bg2:#111827;
+      --ink:#e6ecff;
+      --muted:#9fb0d8;
+      --accent:#8b5cf6;
+      --accent2:#22d3ee;
+      --ok:#10b981;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --grad:linear-gradient(135deg,var(--accent) 0%, var(--accent2) 100%);
+    }
+    *{box-sizing:border-box}
+    html{
+        scroll-padding-top: 100px;
+        scroll-behavior: smooth;
+    } 
+    body{margin:0;background:
+      radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.18),transparent),
+      radial-gradient(1000px 500px at 110% 10%,rgba(139,92,246,.12),transparent),
+      var(--bg);
+      color:var(--ink);font:16px/1.5 "Lexend", "Manrope", Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;margin-inline:auto;}
+    
+    body.nav-open { overflow: hidden; }
+
+    :focus-visible {
+        outline: 2px solid var(--accent2);
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+    header :focus-visible {
+        border-radius: 999px;
+    }
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,17,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .container{max-width:1100px;margin-inline:auto;padding-inline:20px}
+    .topbar{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:12px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 8px 20px rgba(0,0,0,.35);background:transparent; object-fit: contain;} @media (max-width:520px){.logo{width:40px;height:40px;border-radius:10px}}
+    .title{display:flex;flex-direction:column}
+    .title b{letter-spacing:.3px; font-size: 1.05rem;}
+    .mini{color:var(--muted);font-size:.8rem; letter-spacing: .5px;}
+    .main-nav{display:flex;flex-wrap:wrap;gap:8px}
+    .navbtn{padding:10px 14px;border-radius:999px;background:#0e1526;color:#dbe6ff;border:1px solid rgba(255,255,255,.08);cursor:pointer; font-family: inherit; font-size: .95rem; transition: all .2s ease; text-decoration: none; display: inline-block; text-align: center;}
+    .navbtn:hover{transform: scale(1.05); border-color: rgba(255,255,255,.2);} 
+    .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
+    .hidden{display:none !important;}
+    .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#0f172a;color:#dbe6ff;cursor:pointer}
+    .segrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:28px 0}
+    .hero h1{font-size:2.2rem;line-height:1.2;margin:0; font-weight: 700;}
+    .hero p{color:var(--muted);margin:.45rem 0 1.1rem}
+    .contact{display:flex;flex-wrap:wrap;gap:10px}
+    .ghost{background:#0e1526;border:1px solid rgba(255,255,255,.08)}
+
+    /* GRIDS */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+    /* CARDS */
+    .card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow); transition: all .25s ease; display: flex; flex-direction: column;}
+    .card:hover{transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,.4);} 
+    .card h3{margin-top:0;}
+    .card h4{margin:.2rem 0 .4rem;font-size:1.15rem}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:.5rem;align-items:center}
+    .chip{font-size:.85rem;padding:6px 10px;border-radius:999px;background:#0e1628;border:1px solid rgba(255,255,255,.08);color:#cfe0ff}
+    .price{margin-left:auto;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#04101f; font-weight: 600;}
+    .who,.effect{color:#cfe0ff;margin:.6rem 0; display: flex; align-items: start; gap: 8px;}
+    .who b, .effect b {min-width: 70px; font-weight: 600;}
+    .btnrow{display:flex;gap:8px;margin-top:auto; padding-top: 10px;}
+    .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0e1526;color:#dbe6ff;text-decoration:none;text-align:center;flex:1;font-weight:600; display: inline-block;}
+    .btn.primary{background:var(--grad);color:#061123;border:0}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.15);color:#cfe0ff}
+    .note{color:#9fb0d8;font-size:.9rem;margin-top:8px}
+    
+    .card ul { padding-left: 18px; margin: 0 0 1rem; color: var(--muted);} 
+    .card li { margin-bottom: 4px; }
+    .price-static { font-weight: 700; color: var(--accent2); } /* Nowy styl dla cen statycznych */
+    
+    /* TEAM CARD - SKOPIOWANE Z INDEX */
+    .team-card .role { color: var(--accent2); font-size: .9rem; margin-bottom: 8px; font-weight: 600;}
+    .team-card ul { padding-left: 18px; margin: 0; color: var(--muted);} 
+    .team-card li { margin-bottom: 4px; }
+    .team-card .contact-reason { font-size: .85rem; color: var(--muted); margin-top: 12px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 10px; }
+    .bio-details { margin-top: 12px; }
+    .bio-details summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--accent2);
+      list-style: none;
+      display: inline-block;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    .bio-details summary:hover {
+      border-bottom-color: var(--accent2);
+    }
+    .bio-details summary::-webkit-details-marker { display: none; }
+    .bio-details summary::after {
+      content: ' ▼';
+      font-size: .8em;
+      display: inline-block;
+      transition: transform .2s ease;
+    }
+    .bio-details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .bio-content {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      animation: fade .3s ease;
+    }
+    @keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .bio-content h4 {
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-top: .8rem;
+      margin-bottom: .4rem;
+    }
+    .bio-content p, .bio-content ul {
+        margin-bottom: 1rem;
+        font-size: .95rem;
+    }
+    .bio-content ul {
+        padding-left: 20px;
+    }
+    
+    /* OPINIE - SKOPIOWANE Z INDEX */
+    .testimonial-card { display: flex; flex-direction: column; justify-content: space-between; }
+    .testimonial-card blockquote { margin: 0 0 1rem; padding: 0; font-style: italic; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 1rem; }
+    .testimonial-card footer { margin: 0; padding: 0; font-weight: 600; color: var(--ink); }
+
+    /* FOOTER */
+    footer{margin:30px 0 20px;padding-top:16px;color:#cfe0ff}
+    .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px; border-top:1px solid rgba(255,255,255,.08); padding-top: 24px;}
+    .muted{color:var(--muted)}
+    a{color:var(--accent2); text-decoration: none;}
+    a:hover{text-decoration: underline;}
+    .map-container{position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.08);} 
+    .map-container iframe{position: absolute; top:0; left: 0; width: 100%; height: 100%;}
+    .copyright-container { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; margin-top: 30px; text-align: center; font-size: .9rem; }
+    .copyright-container .muted { font-size: .85rem; margin-top: 4px; }
+    .direct-contact-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; }
+    .direct-contact-list li a { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .9rem; }
+    .direct-contact-list li a:hover { color: var(--accent2); }
+
+    /* SMALL UTILS */
+    .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .hero--minimal{ 
+      /* ZMIANA: Usunięty grid-template-columns:1fr; */ 
+      min-height:auto; 
+      padding: 64px 20px;
+      /* Tło zostaje, ale będzie tłem dla całej sekcji */
+      background-image:  
+        linear-gradient(180deg, rgba(11,17,32,.8), rgba(11,17,32,1)),
+        url('https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/tlo.jpg'),
+        radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,.20), transparent);
+      background-size: cover, cover, cover;
+      background-position: center, center, center;
+      background-repeat: no-repeat; 
+      border-radius:22px; 
+      /* ZMIANA: Usunięte text-align: center; */
+    }
+    .hero--minimal h1{font-size:2.1rem;margin:0 0 12px}
+    .hero--minimal .contact{gap:12px; justify-content: flex-start;} /* ZMIANA: justify-content */
+    .tagline{font-size:1.15rem;color:#e6edff;margin:8px 0 18px}.addressline{margin-top:10px;color:#cfe0ff}
+    .features-line{font-weight:600;letter-spacing:.2px;margin:6px 0 8px;font-size:1.05rem}
+    .features-line .dot{margin:0 10px;opacity:.6}
+    .brandlink{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;cursor:pointer}
+    .hero--minimal{position:relative;overflow:hidden}
+    .hero--minimal > *{position:relative;z-index:1}
+    
+    /* NOWY STYL DLA OBRAZKÓW */
+    .content-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background-color: var(--bg2); /* Tło zastępcze */
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-contact-buttons { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 1rem; }
+
+    .section-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin: 40px 0 20px; color: var(--ink); }
+
+    .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--bg2); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; }
+    .faq-item summary { padding: 16px; font-weight: 600; cursor: pointer; position: relative; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5rem; transition: transform .2s ease; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item div { padding: 0 16px 16px; color: var(--muted); }
+
+    /* --- SOCIAL LINKS (UPDATED) --- */
+    .social-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-top: 24px; /* Adjusted margin for new position */
+    }
+    .social-links a {
+      color: var(--muted);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .social-links a:hover {
+      color: var(--accent2);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    /* --- MOBILE NAVIGATION --- */
+    .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .mobile-menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px){ 
+        .hero{grid-template-columns:1fr; text-align: center;} 
+        .segrow, .contact {justify-content: center;} 
+        .subgrid{grid-template-columns:1fr} 
+    }
+    @media (max-width: 900px) { 
+        .grid{grid-template-columns:repeat(2,1fr);} 
+        .grid-2{grid-template-columns:1fr;}
+        .hero--minimal { /* Poprawka dla mobilnego hero */
+            padding: 40px 20px;
+            text-align: center; /* Wracamy do centrowania na mobilce */
+        }
+        .hero--minimal .contact {
+            justify-content: center; /* Centrowanie przycisków na mobilce */
+        }
+    }
+    @media (max-width: 768px){ 
+        .footgrid{grid-template-columns:1fr} 
+        .title b { font-size: .95rem; } 
+        .mini { display: none; } 
+        .hero h1 { font-size: 2rem; line-height: 1.25; } 
+        .footer-contact-buttons { align-items: stretch; }
+        .footer-contact-buttons .navbtn { text-align: center; }
+
+        .mobile-menu-toggle { display: block; }
+        .main-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: min(400px, 85vw);
+          height: 100vh;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+          background: var(--bg);
+          box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+          transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .main-nav.is-open {
+          right: 0;
+        }
+        .main-nav .navbtn {
+          font-size: 1.2rem;
+          width: 80%;
+          text-align: center;
+          padding: 14px;
+        }
+
+        .mobile-menu-toggle.is-active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-menu-toggle.is-active span:nth-child(2) {
+          opacity: 0;
+        }
+        .mobile-menu-toggle.is-active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+    }
+    @media (max-width: 640px) { 
+        .grid{grid-template-columns:1fr;} 
+    }
+    @media (max-width: 480px) { 
+        .topbar { flex-wrap: nowrap; justify-content: space-between; } /* Prevent brand from wrapping */
+        .hero h1 { font-size: 1.8rem; } 
+        .tagline { font-size: 1.05rem; } 
+    }
+    @media (max-width: 420px) {
+        .container { padding-inline: 15px; }
+        .card { padding: 16px; }
+        .who, .effect { flex-direction: column; gap: 2px; align-items: flex-start; }
+        .who b, .effect b { min-width: auto; }
+    }
+  </style>
+  
+  <!-- ZAKTUALIZOWANY BLOK JSON-LD DLA PODSTRONY COACHING (BARDZIEJ ROZBUDOWANY) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://neuroinnowacje.pl/#sebastian-kraszewski",
+        "name": "dr hab. inż. Sebastian Kraszewski",
+        "additionalName": "prof. PWr",
+        "jobTitle": "Dyrektor Naukowy; Profesor inżynii biomedycznej; Współzałożyciel NCNI",
+        "description": "Profesor PWr, ekspert AI w zdrowiu, lider NCNI. Specjalizacje: sen, stres, koncentracja, anti-aging neurologiczny; narzędzia: VR, Zero-G, HRV, LED, taVNS, EEG-biofeedback.",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Politechnika Wrocławska"
+        },
+        "worksFor": { "@id": "https://neuroinnowacje.pl/#org-ncni" },
+        "knowsAbout": [
+          "AI w medycynie", "HRV", "biofeedback EEG", "VR w terapii", "fotobiomodulacja LED", "taVNS", "terapia wibroakustyczna", "well-aging", "higiena snu", "neuroróżnorodność", "neurocoaching"
+        ],
+        "email": "mailto:s.kraszewski@ncni.pl",
+        "sameAs": [
+          "https://www.researchgate.net/profile/Sebastian-Kraszewski"
+        ]
+      },
+       {
+        "@type": "Person",
+        "@id": "https://neuroinnowacje.pl/#karol-kiszlo",
+        "name": "Karol Kiszło",
+        "jobTitle": "Współzałożyciel, Executive Director, Head of NeuroPerformance & Strategic Communication",
+        "description": "Współzałożyciel i pomysłodawca NCNI. Projektuje modele Focus & Flow, NeuroRegeneration i NeuroLeadership, łącząc doświadczenie biznesowe z regulacją układu nerwowego.",
+        "worksFor": { "@id": "https://neuroinnowacje.pl/#org-ncni" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Loyola University Chicago" },
+          { "@type": "CollegeOrUniversity", "name": "Triton College" }
+        ],
+        "knowsAbout": [
+          "NeuroPerformance", "Executive NeuroCoaching", "Komunikacja strategiczna", "Neurodiversity", "VR w rozwoju", "AI w terapii", "Zarządzanie projektami", "neurocoaching"
+        ],
+        "email": "mailto:k.kiszlo@ncni.pl"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://neuroinnowacje.pl/#org-ncni",
+        "name": "NCNI — Naukowe Centrum Neuroinnowacji",
+        "url": "https://neuroinnowacje.pl/",
+        "logo": "https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png",
+        "founder": [
+            { "@id": "https://neuroinnowacje.pl/#sebastian-kraszewski" },
+            { "@id": "https://neuroinnowacje.pl/#karol-kiszlo" }
+        ],
+        "slogan": "Twój mózg zasługuje na strategię, nie przypadek."
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://neuroinnowacje.pl/#localbusiness",
+        "name": "NCNI — Neurocoaching Wrocław",
+        "description": "NCNI we Wrocławiu oferuje specjalistyczny neurocoaching dla liderów (Executive Coaching) oraz wsparcie dla osób neuroróżnorodnych (ADHD, ASD, WWO). Nasze sesje łączą naukę o mózgu z praktycznymi strategiami budowania odporności i efektywności. Programy zaczynają się od 320 PLN.",
+        "keywords": "neurocoaching Wrocław, executive coaching Wrocław, coaching dla ADHD, coaching dla ASD, coaching dla liderów, neuroperformance, Karol Kiszło coaching, Sebastian Kraszewski coaching, NCNI coaching, coaching dla dorosłych, coaching dla dzieci 8+",
+        "url": "https://neuroinnowacje.pl/coaching.html",
+        "telephone": "+48600608333",
+        "email": "kontakt@ncni.pl",
+        "priceRange": "od 320 PLN",
+        "image": "https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Stefana Żeromskiego 60/5a",
+          "addressLocality": "Wrocław",
+          "postalCode": "50-312",
+          "addressCountry": "PL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.1079",
+          "longitude": "17.0385"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "23:00"
+          }
+        ],
+        "parentOrganization": { "@id": "https://neuroinnowacje.pl/#org-ncni" }
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Executive NeuroCoaching",
+        "name": "Executive NeuroCoaching",
+        "provider": { "@id": "https://neuroinnowacje.pl/#localbusiness" },
+        "description": "Program dla liderów i managerów skupiony na zarządzaniu presją decyzyjną, optymalizacji rytmu pracy i odnowy oraz budowaniu odporności psychicznej.",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Liderzy, Managerowie, Przedsiębiorcy"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Wrocław"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "320",
+            "priceCurrency": "PLN",
+            "valueAddedTaxIncluded": true,
+            "description": "Ceny programów zaczynają się od 320 PLN"
+          }
+        }
+      },
+      {
+        "@type": "Service",
+        "serviceType": "NeuroCoaching dla Neuroróżnorodnych",
+        "name": "NeuroCoaching dla Neuroróżnorodnych (ADHD, ASD, WWO)",
+        "provider": { "@id": "https://neuroinnowacje.pl/#localbusiness" },
+        "description": "Specjalistyczne sesje dla dorosłych i dzieci (8+) z ADHD, spektrum autyzmu (ASD) i WWO. Skupiamy się na praktycznych strategiach samoregulacji i pracy na mocnych stronach.",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Osoby z ADHD, ASD, WWO (dorośli i dzieci 8+)"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Wrocław"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "320",
+            "priceCurrency": "PLN",
+            "valueAddedTaxIncluded": true,
+            "description": "Ceny programów zaczynają się od 320 PLN"
+          }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://neuroinnowacje.pl/coaching.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Coaching a psychoterapia – jaka jest różnica?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NeuroCoaching to praca rozwojowa (future-focused), skupiona na celach i budowaniu strategii. Nie jest to diagnoza ani leczenie. Psychoterapia (past-focused) zajmuje się leczeniem zaburzeń i głęboką pracą nad przeszłymi doświadczeniami. W sytuacjach klinicznych kierujemy do psychologa/psychiatry."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak szybko widać efekty neurocoachingu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pierwsze zmiany subiektywne (np. lepsza regulacja, większa świadomość) są odczuwalne często po 2-4 tygodniach. Mierzalne zmiany (np. w trendzie HRV, jakości snu, stałości koncentracji) budujemy w programach 8-12 tygodniowych."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy neurocoaching jest też dla dzieci?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Specjalizujemy się w pracy z dziećmi od 8. roku życia, szczególnie w kontekście ADHD, ASD i WWO, pomagając im budować strategie samoregulacji i koncentracji."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy mogę pracować online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Model hybrydowy jest najskuteczniejszy. Pomiary HRV i sesje VR/Zero-Gravity odbywają się na miejscu we Wrocławiu, natomiast regularne sesje coachingowe (1:1) prowadzimy online."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand brandlink" href="index.html" aria-label="NCNI — wróć do strony głównej">
+        <img class="logo" src="https://raw.githubusercontent.com/SolutionalKarol/neuroinnowacje/main/logo.png" alt="NCNI logo" />
+        <div class="title">
+          <b>NCNI — Naukowe Centrum Neuroinnowacji</b>
+          <span class="mini">VR • AI • Zero‑Gravity • Anti‑Aging</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="main-nav" role="navigation">
+        <a class="navbtn cta" href="index.html#oferta" onclick="toggleMenuOnNavClick()">Oferta</a>
+        <a class="navbtn ghost" href="index.html#oferta" onclick="sessionStorage.setItem('openTab', 'o-nas'); toggleMenuOnNavClick()">O nas</a>
+        <a class="navbtn ghost" href="index.html#kontakt" onclick="toggleMenuOnNavClick()">Kontakt</a>
+      </nav>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero hero--minimal" id="start">
+      <!-- NOWY UKŁAD 2-KOLUMNOWY DLA HERO -->
+      <div class="grid-2">
+        <div>
+          <span class="muted" style="font-size: 0.9rem; letter-spacing: 0.5px;">NCNI — VR • AI • Biofeedback • Wrocław / online</span>
+          <h1 style="font-size: 2.5rem; margin-top: 8px;">NeuroCoaching</h1>
+          <p class="tagline">Programy rozwoju oparte na neuronauce, VR i biofeedbacku. Pomagamy zwiększyć klarowność myślenia, odporność na stres i skuteczność działania — w mierzalnych ramach 4–12 tygodni.</p>
+          <div class="contact" style="margin-top:14px">
+            <a class="navbtn cta" href="index.html#rezerwacja">Umów konsultację 15’ (0 zł)</a>
+            <a class="navbtn ghost" href="#programy" onclick="scrollToEl('#programy')">Zobacz programy i ceny</a>
+          </div>
+        </div>
+        <div>
+          <!-- MIEJSCE NA OBRAZ "NANO BANANA" -->
+          <img src="LINK_DO_OBRAZKA_HERO.jpg" alt="Abstrakcyjna wizualizacja sieci neuronowej w kolorach NCNI" class="content-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+      NOWY KONTENER:
+      Zbieramy całą treść w jedną "kartę", aby design był spójny i "zbity",
+      a nie "rozlazły". Ujemny margines łączy ją wizualnie z hero.
+    -->
+    <div class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+      <div class="card" style="padding: 24px 28px;">
+
+        <!-- Czym jest -->
+         <section class="container" aria-labelledby="czym" style="padding: 0; margin-top: 16px;">
+           <h2 id="czym" class="section-title">Czym jest NeuroCoaching</h2>
+           <div class="grid">
+             <div class="card"><h3>Świadomość</h3><p class="muted">Porządkujemy cele i nawyki. Rozumiesz, jak Twój mózg reaguje na stres, presję i bodźce.</p></div>
+             <div class="card"><h3>Regulacja</h3><p class="muted">Uczysz się zarządzać energią i emocjami. Wykorzystujemy HRV/biofeedback i krótkie protokoły oddechowe.</p></div>
+             <div class="card"><h3>Wynik</h3><p class="muted">Przekładasz umiejętności na decyzje, koncentrację i trwałe nawyki. Postęp mierzymy — nie deklarujemy.</p></div>
+           </div>
+         </section>
+
+         <!-- Dla kogo -->
+         <section class="container" aria-labelledby="dla-kogo" style="padding: 0; margin-top: 24px;">
+           <h2 id="dla-kogo" class="section-title">Dla kogo</h2>
+           <div style="max-width: 900px; margin: 0 auto;">
+             <div class="card">
+               <ul>
+               <li>pracujesz pod presją decyzyjną lub czujesz zmęczenie informacyjne,</li>
+               <li>masz ADHD/ASD/WWO i potrzebujesz praktycznych strategii funkcjonowania,</li>
+               <li>chcesz poprawić koncentrację, sen, granice i zarządzanie energią.</li>
+             </ul>
+             </div>
+           </div>
+         </section>
+
+         <!-- Jak to działa -->
+         <section class="container" aria-labelledby="jak" style="padding: 0; margin-top: 24px;">
+           <h2 id="jak" class="section-title">Jak to działa</h2>
+           <div class="grid-2" style="max-width: 900px; margin: 0 auto; align-items: center;">
+             <div class="card">
+               <h3>1. Konsultacja 15’</h3>
+               <p class="muted">Kwalifikacja, dobór programu (telefon/online).</p>
+               <h3 style="margin-top: 1.5rem;">2. Intake 90’</h3>
+               <p class="muted">Cele, plan, pomiar HRV (spoczynek + oddech 6/min), mini-test uwagi. Kontrakt coachingowy.</p>
+             </div>
+            <!-- MIEJSCE NA DRUGI OBRAZ "NANO BANANA" -->
+            <div class="card"> <!-- ZMIANA: Obrazek też dostał tło karty dla spójności -->
+              <img src="LINK_DO_OBRAZKA_PROCES.jpg" alt="Wizualizacja procesu coachingu, od chaosu do porządku" class="content-image">
+            </div>
+           </div>
+         </section>
+
+        <!-- NOWA SEKCJA: NASI COACHOWIE -->
+        <section class="container" id="zespol" aria-labelledby="zespol-h" style="padding: 0; margin-top: 24px;">
+            <h2 id="zespol-h" class="section-title">Nasi Coachowie</h2>
+            <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
+                <article class="card team-card">
+                    <h4>dr hab. inż. Sebastian Kraszewski, prof. PWr</h4>
+                    Specjalizuje się w łączeniu nauki o mózgu z technologią: VR, Zero-Gravity, HR/HRV, LED oraz taVNS, przekładając to na mierzalne protokoły snu, koncentracji i regulacji stresu.
+                </p>
+                <details class="bio-details">
+                    <summary>Czytaj więcej o dorobku i filozofii pracy</summary>
+                    <div class="bio-content">
+                        <h4>Filozofia pracy: „strategia, nie przypadek”</h4>
+                        <p>Każdy protokół w NCNI jest mierzalny (HR/HRV, skale odczuć), powtarzalny (scenariusze minuta-po-minucie) i bezpieczny (jasne przeciwwskazania oraz alternatywa bez gogli VR). To kluczowe dla osób wysoko wrażliwych sensorycznie, po urazach, w stresie lub z bezsennością.</p>
+                         <h4>Standardy i szkolenia (2025)</h4>
+                         <ul>
+                            <li>EEG-Biofeedback — wprowadzenie, trening na aparaturze, zastosowania kliniczne (Wrocław, 20.10.2025).</li>
+                            <li>Psychotraumatologia — stres, PTSD u dorosłych i dzieci, podstawy psychoterapii PTSD (Wrocław, 16.10.2025).</li>
+                            <li>Trener Neuroróżnorodności — Certified Excellence USA (20.07.2025).</li>
+                         </ul>
+                    </div>
+                </details>
+                <p class="contact-reason muted">Kontakt w sprawach dot. programów dla neuroróżnorodności i B2B.</p>
+                 <div class="btnrow">
+                    <a href="mailto:s.kraszewski@ncni.pl" class="btn ghost">Skontaktuj się</a>
+                </div>
+            </article>
+            <article class="card team-card">
+                <h4>Karol Kiszło</h4>
+                <div class="role">Executive Director • Head of NeuroPerformance</div>
+                <p class="muted" style="margin: 0.5rem 0;">
+                    Jako pomysłodawca NCNI, łączę doświadczenie w komunikacji i zarządzaniu z pasją do technologii. Projektuję programy NeuroPerformance, wspierając liderów i zespoły w odzyskiwaniu równowagi.
+                </p>
+                 <details class="bio-details">
+                    <summary>Czytaj więcej o mojej drodze i filozofii pracy</summary>
+                    <div class="bio-content">
+                        <h4>Filozofia pracy: od doświadczenia do strategii</h4>
+                         <p>W NCNI odpowiadam za strategię i komunikację. Projektuję modele Focus & Flow, NeuroRegeneration i NeuroLeadership. Moją rolą jest budowanie mostu między światem nauki a rzeczywistością życia i pracy.</p>
+                         <blockquote>„Nie jestem naukowcem z laboratorium. Jestem praktykiem, który przeszedł przez systemy, rynki i emocje. NCNI powstało z życia – z potrzeby połączenia nauki i świadomości z doświadczeniem codzienności.”</blockquote>
+                        <h4>Obszary specjalizacji</h4>
+                        <ul>
+                            <li>Strategia komunikacji i rozwoju organizacji</li>
+                            <li>NeuroPerformance i Executive NeuroCoaching</li>
+                            <li>Neurodiversity & regulacja poznawcza</li>
+                            <li>VR / AI w rozwoju i terapii</li>
+                        </ul>
+                    </div>
+                </details>
+                <p class="contact-reason muted">Kontakt w sprawach dot. strategii i programów NeuroPerformance.</p>
+                 <div class="btnrow">
+                    <a href="mailto:k.kiszlo@ncni.pl" class="btn ghost">Skontaktuj się</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+     <!-- Programy i ceny - ZAKTUALIZOWANE CENY -->
+     <section id="programy" class="container" aria-labelledby="programy-h" style="padding: 0; margin-top: 24px;">
+       <h2 id="programy-h" class="section-title">Programy i ceny</h2>
+
+       <div class="grid">
+         <div class="card">
+           <h4>Sesja NeuroCoaching</h4>
+           <p class="muted" style="margin-top:0.5rem;">50 min • <span class="price-static">od 320 PLN</span></p>
+           <ul>
+             <li>praca celowa + mikro-interwencje,</li>
+             <li>zadania wdrożeniowe.</li>
+           </ul>
+           <div class="btnrow"><a class="btn ghost" href="index.html#rezerwacja">Umów konsultację</a></div>
+         </div>
+
+         <div class="card">
+           <h4>Executive NeuroCoaching</h4>
+           <p class="muted" style="margin-top:0.5rem;">60 min • <span class="price-static">od 320 PLN</span></p>
+           <ul>
+             <li>presja decyzyjna, rytm pracy/odnowy,</li>
+             <li>narzędzia dla liderów.</li>
+           </ul>
+           <div class="btnrow"><a class="btn ghost" href="index.html#rezerwacja">Umów konsultację</a></div>
+         </div>
+
+         <div class="card">
+           <h4>NeuroCoaching dla Neuroróżnorodnych</h4>
+           <p class="muted" style="margin-top:0.5rem;">50 min • <span class="price-static">od 320 PLN</span></p>
+           <ul>
+             <li>strategie ADHD/ASD/WWO,</li>
+             <li>samoregulacja, praca na mocnych stronach.</li>
+           </ul>
+           <div class="btnrow"><a class="btn ghost" href="index.html#rezerwacja">Umów konsultację</a></div>
+         </div>
+       </div>
+
+       <div class="grid" style="margin-top: 16px;">
+         <div class="card">
+           <h4>START • 4 tyg.</h4>
+           <p class="muted" style="margin-top:0.5rem;"><span class="price-static">Cena od 320 PLN</span> (4×50’ + raport)</p>
+           <ul><li>fundamenty: sen–oddech–uwaga–plan</li></ul>
+           <div class="btnrow"><a class="btn primary" href="index.html#rezerwacja">Wybierz START</a></div>
+         </div>
+
+         <div class="card">
+           <h4>PERFORMANCE • 8 tyg.</h4>
+           <p class="muted" style="margin-top:0.5rem;"><span class="price-static">Cena od 320 PLN</span> (8×50’ + HRV x2 + VR)</p>
+           <ul><li>koncentracja, decyzje, nawyki wysokiej skuteczności</li></ul>
+           <div class="btnrow"><a class="btn primary" href="index.html#rezerwacja">Wybierz PERFORMANCE</a></div>
+         </div>
+
+         <div class="card">
+           <h4>EXECUTIVE ELITE • 12 tyg.</h4>
+           <p class="muted" style="margin-top:0.5rem;"><span class="price-static">Cena od 320 PLN</span> (12×60’, NDA, raport kwartalny)</p>
+           <ul><li>harmonogram concierge, cele zarządcze, wsparcie e-mail</li></ul>
+           <div class="btnrow"><a class="btn primary" href="index.html#rezerwacja">Wybierz ELITE</a></div>
+         </div>
+       </div>
+     </section>
+
+     <!-- Co jest w sesji -->
+     <section class="container" aria-labelledby="w-sesji" style="padding: 0; margin-top: 24px;">
+       <h2 id="w-sesji" class="section-title">Co zawiera praca z NCNI</h2>
+       <div class="grid">
+         <div class="card"><h3>Biofeedback HRV</h3><p class="muted">Pomiar bazowy i porównawczy, oddech 6/min, praca nad rezerwą adaptacyjną.</p></div>
+         <div class="card"><h3>Protokoły VR</h3><p class="muted">Relaksacja prowadząca, ekspozycja na bodźce, trening koncentracji (na miejscu / według dostępności).</p></div>
+         <div class="card"><h3>Plan wdrożenia</h3><p class="muted">Checklisty, mikronawyki (10–15’/dzień), przegląd postępów co 4 tygodnie.</p></div>
+       </div>
+     </section>
+
+    <!-- NOWA SEKCJA: OPINIE -->
+    <section class="container" id="opinie" aria-labelledby="opinie-h" style="padding: 0; margin-top: 24px;">
+        <h2 id="opinie-h" class="section-title">Opinie</h2>
+        <div class="grid">
+            <article class="card testimonial-card">
+                <blockquote>Praca z Karolem nad strategią "NeuroPerformance" otworzyła mi oczy. Wreszcie mam narzędzia do zarządzania presją, które naprawdę działają. To nie jest zwykły coaching, to inżynieria własnej efektywności.</blockquote>
+                <footer>— Manager, Sektor IT</footer>
+            </article>
+            <article class="card testimonial-card">
+                <blockquote>Dzięki programowi dla ADHD (NeuroCoaching dla Neuroróżnorodnych) po raz pierwszy czuję, że mam kontrolę nad chaosem. Protokoły samoregulacji i praca nad nawykami zmieniły moje życie zawodowe.</blockquote>
+                <footer>— Kreatywny Freelancer</footer>
+            </article>
+            <article class="card testimonial-card">
+                <blockquote>Program Executive Elite to był strzał w dziesiątkę. Połączenie twardych danych (HRV) z sesjami 1:1 dało mi mierzalną poprawę w podejmowaniu decyzji i ogólnej energii do działania.</blockquote>
+                <footer>— Członek Zarządu</footer>
+            </article>
+        </div>
+    </section>
+
+     <!-- FAQ -->
+     <section class="container" id="faq-coaching" aria-labelledby="faq-h" style="padding: 0; margin-top: 24px;">
+       <h2 id="faq-h" class="section-title">FAQ</h2>
+       <div class="faq-container">
+         <details class="faq-item">
+           <summary>Coaching a psychoterapia – jaka jest różnica?</summary>
+           <div>NeuroCoaching to praca rozwojowa (future-focused), skupiona na celach i budowaniu strategii. Nie jest to diagnoza ani leczenie. Psychoterapia (past-focused) zajmuje się leczeniem zaburzeń i głęboką pracą nad przeszłymi doświadczeniami. W sytuacjach klinicznych kierujemy do psychologa/psychiatry.</div>
+         </details>
+         <details class="faq-item">
+           <summary>Jak szybko widać efekty neurocoachingu?</summary>
+           <div>Pierwsze zmiany subiektywne (np. lepsza regulacja, większa świadomość) są odczuwalne często po 2-4 tygodniach. Mierzalne zmiany (np. w trendzie HRV, jakości snu, stałości koncentracji) budujemy w programach 8-12 tygodniowych.</div>
+         </details>
+         <details class="faq-item">
+           <summary>Czy neurocoaching jest też dla dzieci?</summary>
+           <div>Tak. Specjalizujemy się w pracy z dziećmi od 8. roku życia, szczególnie w kontekście ADHD, ASD i WWO, pomagając im budować strategie samoregulacji i koncentracji.</div>
+         </details>
+         <details class="faq-item">
+           <summary>Czy mogę pracować online?</summary>
+           <div>Tak. Model hybrydowy jest najskuteczniejszy. Pomiary HRV i sesje VR/Zero-Gravity odbywają się na miejscu we Wrocławiu, natomiast regularne sesje coachingowe (1:1) prowadzimy online.</div>
+         </details>
+         <details class="faq-item">
+           <summary>Odwołania i płatności</summary>
+           <div>Odwołanie ≥24 h – bezpłatnie; <24 h – 100% ceny sesji. Płatności: Stripe/PayU, faktura VAT.</div>
+         </details>
+       </div>
+       <p class="muted" style="margin-top:12px; text-align: center; font-size: 0.9rem;">Uwaga: coaching nie zastępuje opieki medycznej. W razie wskazań kierujemy do specjalisty.</p>
+     </section>
+
+     <!-- Kontakt -->
+     <section class="container" id="kontakt" aria-labelledby="kontakt-h" style="padding: 0; margin-top: 24px;">
+       <h2 id="kontakt-h" class="section-title">Zacznij od konsultacji</h2>
+           <div style="max-width: 900px; margin: 0 auto;">
+           <div class="card" style="text-align: center;">
+                <p class="muted">Pierwszy krok to 15-minutowa, darmowa konsultacja online, aby omówić Twoje cele i sprawdzić, czy NCNI to odpowiednie miejsce.</p>
+             <p class="muted" style="margin-top: 1rem;">E-mail: <a href="mailto:kontakt@ncni.pl">kontakt@ncni.pl</a> • Tel.: <a href="tel:+48600608333">+48 600 608 333</a></p>
+             <div class="btnrow" style="justify-content: center; margin-top: 1rem;">
+                <a class="btn primary" href="index.html#rezerwacja" style="flex: 0 1 300px;">Umów darmową konsultację 15'</a>
+             </div>
+           </div>
+           </div>
+     </section>
+
+    </div> <!-- Koniec .card -->
+  </div> <!-- Koniec .container -->
+
+  </main>
+  
+  <!-- STOPKA - taka sama jak w index.html -->
+  <footer class="container" id="kontakt-stopka">
+    <div class="footgrid">
+      <div>
+        <h3>Kontakt & Lokalizacja</h3>
+        <p class="muted">ul. Stefana Żeromskiego 60/5a, <b>50‑312</b> Wrocław</p>
+        <div class="footer-contact-buttons">
+            <a href="tel:+48600608333" class="navbtn ghost">📞 600 608 333</a>
+            <a href="mailto:kontakt@ncni.pl" class="navbtn ghost">✉ kontakt@ncni.pl</a>
+            <a class="navbtn cta" href="index.html#rezerwacja">Zarezerwuj sesję</a>
+        </div>
+        <div class="social-links">
+          <a href="https://x.com/Neuroinnowacje" target="_blank" rel="noopener" aria-label="Profil NCNI na platformie X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+            </svg>
+          </a>
+          <a href="https://youtube.com/@Neuroinnowacje" target="_blank" rel="noopener" aria-label="Kanał NCNI na YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+          </a>
+        </div>
+        
+        <h4 style="margin-top: 24px; font-weight: 600; font-size: 1rem; color: var(--ink);">Dane Firmy</h4>
+        <ul class="direct-contact-list muted" style="gap: 4px; margin-top: 0; font-size: 0.9rem;">
+            <li>NAUKOWE CENTRUM NEUROINNOWACJI sp. z o.o.</li>
+            <li>KRS: 0001200984</li>
+            <li>NIP: 8982325965</li>
+            <li>REGON: 54303723800000</li>
+            <li style="margin-top: 8px;"><b>Rachunek Bankowy (IBAN):</b></li>
+            <li>PL46 1050 1575 1000 0090 8590 4721</li>
+        </ul>
+
+        <h4 style="margin-top: 24px; font-weight: 600; font-size: 1rem; color: var(--ink);">Kontakt bezpośredni z zespołem</h4>
+        <ul class="direct-contact-list">
+          <li><a href="mailto:m.gasior@ncni.pl"><span>Marlena Gąsior-Głogowska</span></a></li>
+          <li><a href="mailto:s.kraszewski@ncni.pl"><span>Sebastian Kraszewski</span></a></li>
+          <li><a href="mailto:k.kiszlo@ncni.pl"><span>Karol Kiszło</span></a></li>
+        </ul>
+      </div>
+      <div>
+          <h3 style="margin-top:0; margin-bottom: 12px;">Znajdź nas na mapie</h3>
+          <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.976527490076!2d17.05497231589574!3d51.12681497957451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c4b0f02371%3A0x8e2c0e35f1a5f6e3!2sStefana%20%C5%BBeromskiego%2060%2F5a%2C%2050-312%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1678886543210!5m2!1spl!2spl"  
+              width="600" height="450" style="border:0; filter: grayscale(1) invert(0.9) brightness(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+      </div>
+    </div>
+    <div class="copyright-container">
+        <p class="muted" style="margin-bottom: 1rem; font-style: italic;">„Twój mózg zasługuje na strategię, nie przypadek.”</p>
+        <p>© <span id="footer-year">2025</span> NCNI — Neuroinnowacje.pl. Wszelkie prawa zastrzeżone.</p>
+        <p class="muted">Designed & built by Karol Kiszło.</p>
+    </div>
+  </footer>
+
+  <!-- SKRYPTY - te same co w index.html dla spójności -->
+  <script>
+    function scrollToEl(sel){
+        const element = document.querySelector(sel);
+        if (element) {
+            element.scrollIntoView({behavior:'smooth'});
+        }
+    }
+
+    function toggleMenuOnNavClick() {
+        const mainNav = document.getElementById('main-nav');
+        const toggleButton = document.getElementById('mobile-menu-toggle');
+        if (mainNav.classList.contains('is-open')) {
+            mainNav.classList.remove('is-open');
+            toggleButton.classList.remove('is-active');
+            document.body.classList.remove('nav-open');
+            toggleButton.setAttribute('aria-expanded', 'false');
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded',()=>{
+      const toggleButton = document.getElementById('mobile-menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+      if (toggleButton && mainNav) {
+        const toggleMenu = () => {
+            const isExpanded = mainNav.classList.toggle('is-open');
+            toggleButton.classList.toggle('is-active');
+            document.body.classList.toggle('nav-open');
+            toggleButton.setAttribute('aria-expanded', 'false');
+        };
+        toggleButton.addEventListener('click', toggleMenu);
+      }
+
+      const yearSpan = document.getElementById('footer-year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+      
+      // Specjalna logika dla linku "O nas" z innej strony
+      const navLinks = document.querySelectorAll('.main-nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Pozwól na domyślną akcję (przejście do linku), ale zamknij menu mobilne
+            toggleMenuOnNavClick(); 
+        });
+      });
+    });
+  </script>
+</body>
+</html>
