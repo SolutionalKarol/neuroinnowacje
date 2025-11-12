@@ -65,7 +65,7 @@
     .navbtn:hover{transform: scale(1.05); border-color: rgba(255,255,255,.2);} 
     .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
     .hidden{display:none !important;}
-    .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#0f172a;color:#dbe6ff;cursor:pointer}
+    .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#0f172a;color:#dbe6ff;cursor:pointer; text-decoration: none; display: inline-block; font-size: 0.95rem; font-family: inherit; vertical-align: middle;}
     .segrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .cta{background:var(--grad);border:0;color:#051024;font-weight:700}
 
@@ -79,13 +79,13 @@
     /* TABS */
     .tabs{margin-top:20px}
     .tablist{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 16px;}
-    .tab{padding:10px 14px;border-radius:12px;border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer; font-family: inherit; font-size: 1rem; position: relative; transition: all .2s ease;}
-    .tab:hover{color: var(--ink);} 
+    .tab{padding:10px 14px;border-radius:12px;border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer; font-family: inherit; font-size: 1rem; position: relative; transition: all .2s ease; text-decoration: none; display: inline-block;}
+    .tab:hover{color: var(--ink); text-decoration: none;} 
     .tab.active{color:var(--ink);font-weight: 600;}
     .tab.active::after{content: ''; position: absolute; bottom: -17px; left: 10px; right: 10px; height: 2px; background: var(--grad);} 
     .panel{display:none}
     .panel:focus-visible { outline: none; }
-    .panel.active{display:block;animation:fade .25s ease}
+    .panel.active{display:block;animation:fade .2s ease}
     @keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
 
     /* GRIDS */
@@ -561,6 +561,9 @@
           <button class="pill" onclick="showOffer(); openTab('neurodiv')">Neuroróżnorodność</button>
           <a href="coaching.html" class="pill">Neuro Coaching</a>
           <button class="pill" onclick="showOffer(); openTab('dieta')">Dietetyka Kliniczna</button>
+          <!-- ==== NOWY LINK DODANY TUTAJ ==== -->
+          <a href="psychologia.html" class="pill">Psychologia</a>
+          <!-- ==== KONIEC EDYCJI ==== -->
         </div>
 
         <div class="contact" style="margin-top:14px">
@@ -662,8 +665,11 @@
     <section class="container tabs hidden" id="oferta">
       <div class="tablist" role="tablist" aria-label="Zakładki oferty">
         <button class="tab" id="tab-neurodiv" data-tab="neurodiv" role="tab" aria-selected="false" aria-controls="panel-neurodiv">Neuroróżnorodność</button>
-        <a href="coaching.html" class="tab" role="tab">NeuroCoaching</a>
+        <button class="tab" id="tab-coaching" data-tab="coaching" role="tab" aria-selected="false" aria-controls="panel-coaching">NeuroCoaching</button>
         <button class="tab" id="tab-dieta" data-tab="dieta" role="tab" aria-selected="false" aria-controls="panel-dieta">Dietetyka Kliniczna</button>
+        <!-- ==== ZMIANA: Link <a> na <button> ==== -->
+        <button class="tab" id="tab-psychologia" data-tab="psychologia" role="tab" aria-selected="false" aria-controls="panel-psychologia">Psychologia</button>
+        <!-- ==== KONIEC EDYCJI ==== -->
         <button class="tab active" id="tab-flagowe" data-tab="flagowe" role="tab" aria-selected="true" aria-controls="panel-flagowe">Flagowe sesje</button>
         <button class="tab" id="tab-rytualy" data-tab="rytualy" role="tab" aria-selected="false" aria-controls="panel-rytualy">Rytuały NCNI</button>
         <button class="tab" id="tab-device" data-tab="device" role="tab" aria-selected="false" aria-controls="panel-device">Device Lab</button>
@@ -725,8 +731,49 @@
         <p class="note">Przestrzeń przyjazna sensorycznie. Język szacunku. Możliwość trybu bez‑VR oraz sesji w duecie (DUO).</p>
       </div>
 
-      <!-- USUNIĘTA ZAKŁADKA: NEUROCOACHING -->
-      <!-- Treść przeniesiona do pliku coaching.html -->
+      <!-- ==== NOWA ZAKŁADKA: NEUROCOACHING ==== -->
+      <div class="panel" id="panel-coaching" role="tabpanel" tabindex="-1" aria-labelledby="tab-coaching">
+        <div class="grid">
+          <article class="card">
+            <h4>Life Coaching</h4>
+            <div class="meta">
+              <span class="chip">Rekomendowane</span>
+              <span class="chip price">od 320 PLN</span>
+            </div>
+            <div class="who"><b>Dla kogo:</b> Dla osób na życiowym zakręcie, czujących brak spełnienia lub szukających balansu między wymagającą karierą a życiem osobistym.</div>
+            <div class="effect"><b>Efekty:</b> Realna poprawa jakości życia. Zbudowanie zdrowych granic, autentyczna pewność siebie i klarowność w podejmowaniu decyzji zgodnych z Twoimi wartościami.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Coaching Kariery</h4>
+            <div class="meta">
+              <span class="chip">Rozwój Zawodowy</span>
+              <span class="chip price">od 320 PLN</span>
+            </div>
+            <div class="who"><b>Dla kogo:</b> Dla profesjonalistów stojących przed awansem, zmianą branży lub powrotem na rynek. Dla tych, którzy chcą, by ich praca miała większy sens.</div>
+            <div class="effect"><b>Efekty:</b> Opracowanie konkretnej, strategicznej mapy kariery. Identyfikacja unikalnych mocnych stron, przełamanie "szklanego sufitu" i wzmocnienie kompetencji liderskich.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Coaching Biznesowy</h4>
+            <div class="meta">
+              <span class="chip">Dla Liderów</span>
+              <span class="chip price">od 360 PLN</span>
+            </div>
+            <div class="who"><b>Dla kogo:</b> Dla managerów, liderów i przedsiębiorców, którzy zarządzają zespołami, presją decyzyjną i potrzebują strategicznego wsparcia w dynamicznym środowisku.</div>
+            <div class="effect"><b>Efekty:</b> Większa efektywność liderska. Zdolność podejmowania trafnych decyzji pod presją, lepsza komunikacja w zespole i adaptacja do zmian rynkowych.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zarezerwuj</a>
+            </div>
+          </article>
+        </div>
+      </div>
+      <!-- ==== KONIEC NOWEJ ZAKŁADKI ==== -->
+
 
       <!-- NOWA ZAKŁADKA: DIETETYKA KLINICZNA -->
       <div class="panel" id="panel-dieta" role="tabpanel" tabindex="-1" aria-labelledby="tab-dieta">
@@ -760,6 +807,76 @@
           </article>
         </div>
       </div>
+
+      <!-- ==== NOWA ZAKŁADKA: PSYCHOLOGIA ==== -->
+      <div class="panel" id="panel-psychologia" role="tabpanel" tabindex="-1" aria-labelledby="tab-psychologia">
+        <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+          <article class="card">
+            <h4>Przewlekły stres i wypalenie</h4>
+            <div class="meta">
+              <span class="chip">Regulacja</span>
+              <span class="chip price">Cena ustalana ind.</span>
+            </div>
+            <div class="who"><b>Obszar:</b> Wyciszenie układu współczulnego, odbudowa zasobów i prewencja nawrotów.</div>
+            <div class="effect"><b>Metody:</b> m.in. Biofeedback HRV, VR, Trening oddechowy.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zapytaj o wizytę</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Zaburzenia snu i koncentracji</h4>
+            <div class="meta">
+              <span class="chip">Neuroterapia</span>
+              <span class="chip price">Cena ustalana ind.</span>
+            </div>
+            <div class="who"><b>Obszar:</b> Przywrócenie naturalnych cykli snu i poprawa skupienia.</div>
+            <div class="effect"><b>Metody:</b> m.in. EEG/Neurofeedback, protokoły relaksacyjne.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zapytaj o wizytę</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Trudności w regulacji emocji</h4>
+            <div class="meta">
+              <span class="chip">Interocepcja</span>
+              <span class="chip price">Cena ustalana ind.</span>
+            </div>
+            <div class="who"><b>Obszar:</b> Praca nad świadomością sygnałów z ciała (interocepcja) i regulacją pobudzenia.</div>
+            <div class="effect"><b>Metody:</b> m.in. Biofeedback HRV, VR.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zapytaj o wizytę</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Lęk i fobie specyficzne</h4>
+            <div class="meta">
+              <span class="chip">Terapia Ekspozycyjna</span>
+              <span class="chip price">Cena ustalana ind.</span>
+            </div>
+            <div class="who"><b>Obszar:</b> Kontrolowana ekspozycja w wirtualnej rzeczywistości (VR-Exposure) jako bezpieczna metoda odwrażliwiania.</div>
+            <div class="effect"><b>Metody:</b> m.in. VR-Exposure, Biofeedback.</div>
+            <div class="btnrow">
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zapytaj o wizytę</a>
+            </div>
+          </article>
+        </div>
+        <div class="card" style="margin-top: 16px;">
+            <h4>Specjalizacja: Psychotraumatologia</h4>
+            <div class="meta">
+              <span class="chip" style="background: var(--accent); color: #061123; border:0;">Ścieżka specjalistyczna</span>
+              <span class="chip price" style="margin-left: auto;">Cena ustalana ind.</span>
+            </div>
+            <div class="who"><b>Obszar:</b> Zaawansowana diagnostyka (PCL-5, CAPS) i celowane interwencje neurotechnologiczne do bezpiecznego przetwarzania traumy i odzyskania stabilności.</div>
+            <div class="effect"><b>Metody:</b> Diagnostyka HRV/GSR, VR-Exposure, EEG-Neurofeedback.</div>
+            <div class="btnrow">
+              <a class="btn ghost" href="psychologia.html#psychotraumatologia">Czytaj więcej na podstronie</a>
+              <a class="btn primary" href="#rezerwacja" onclick="scrollToEl('#rezerwacja')">Zapytaj o wizytę</a>
+            </div>
+        </div>
+        <p class="note">Wszystkie usługi psychologiczne są prowadzone przez specjalistów. <a href="psychologia.html#zespol">Zobacz zespół</a>.</p>
+      </div>
+      <!-- ==== KONIEC NOWEJ ZAKŁADKI ==== -->
+
 
       <!-- FLAGOWE -->
       <div class="panel active" id="panel-flagowe" role="tabpanel" tabindex="-1" aria-labelledby="tab-flagowe">
@@ -1209,7 +1326,16 @@
         // Nowe usługi - Dietetyka
         dietaKonsultacja: { name: "Konsultacja neuro-dietetyczna", duration: "50 min", price: 380 },
         dietaPlan:        { name: "Plan żywieniowy (ADHD/Stres)", price: 450 },
-        dietaMikrobiota:  { name: "Optymalizacja mikrobioty", price: 360 }
+        dietaMikrobiota:  { name: "Optymalizacja mikrobioty", price: 360 },
+        // ==== NOWE WPISY DLA FORMULARZA ====
+        lifeCoaching:     { name: "Life Coaching", duration: "50 min", price: 320 },
+        careerCoaching:   { name: "Coaching Kariery", duration: "50 min", price: 320 },
+        businessCoaching: { name: "Coaching Biznesowy", duration: "50 min", price: 360 },
+        psychStres:       { name: "Psychologia: Stres i wypalenie", duration: "50 min", price: null },
+        psychSen:         { name: "Psychologia: Sen i koncentracja", duration: "50 min", price: null },
+        psychEmocje:      { name: "Psychologia: Regulacja emocji", duration: "50 min", price: null },
+        psychLek:         { name: "Psychologia: Lęk i fobie", duration: "50 min", price: null },
+        psychTrauma:      { name: "Specjalizacja: Psychotraumatologia", duration: "50 min", price: null }
     };
 
     const derivedData = {
@@ -1261,8 +1387,11 @@
         const panels = document.querySelectorAll('.panel');
 
         tabs.forEach(tab => {
-            tab.classList.remove('active');
-            tab.setAttribute('aria-selected', 'false');
+            // Tylko usuwaj 'active' z przycisków, nie z linków <a>
+            if (tab.tagName === 'BUTTON') {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            }
         });
         panels.forEach(panel => {
             panel.classList.remove('active');
@@ -1380,15 +1509,24 @@
         'Dla Neuroróżnorodności': [
             'metodaKraszewskiego', 'focusSprint', 'deepFocus', 'wwo', 'dysleksja', 'tiki'
         ],
-        // 'NeuroCoaching': [
-        //     'neuroCoaching', 'execCoaching', 'neurodivCoaching'
-        // ], // Przeniesione do coaching.html
+        // ==== NOWA GRUPA ====
+        'NeuroCoaching': [
+            'lifeCoaching', 'careerCoaching', 'businessCoaching'
+        ],
         'Dietetyka Kliniczna': [
             'dietaKonsultacja', 'dietaPlan', 'dietaMikrobiota'
+        ],
+        // ==== NOWA GRUPA ====
+        'Psychologia & Psychotraumatologia': [
+            'psychStres', 'psychSen', 'psychEmocje', 'psychLek', 'psychTrauma'
         ],
         'Device Lab (Anti-Aging & Vagus)': [
             'ledGlow', 'vagusCalm', 'sensoryBlackout'
         ]
+        // NOWE USŁUGI (Psychologia / Coaching) MOŻNA DODAĆ TUTAJ, jeśli mają być w formularzu
+        // 'Psychologia & Coaching': [
+        //     'psychologiaKonsultacja', 'coachingKariery', 'lifeCoaching'
+        // ]
       };
 
       for (const groupName in serviceGroups) {
@@ -1400,7 +1538,10 @@
             if (service && service.name) {
               const option = document.createElement('option');
               option.value = service.name;
-              option.textContent = `${service.name} (${service.price} PLN)`;
+              // ==== NOWA LOGIKA CENY ====
+              const priceText = service.price ? `${service.price} PLN` : "Cena ind.";
+              option.textContent = `${service.name} (${priceText})`;
+              // ==== KONIEC LOGIKI CENY ====
               optgroup.appendChild(option);
             }
           });
@@ -1432,12 +1573,15 @@
       // showRotatingTestimonials(); // USUNIĘTE WYWOŁANIE
       handleLocationHash();
 
-      document.querySelectorAll('.tab').forEach(btn => 
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openTab(btn.dataset.tab);
-        })
-      );
+      document.querySelectorAll('.tab').forEach(btn => {
+        // Dodajemy warunek, by nie przerywać domyślnej akcji dla linków <a>
+        if (btn.tagName === 'BUTTON') {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openTab(btn.dataset.tab);
+            });
+        }
+      });
 
       document.querySelectorAll('.submenu-tab').forEach(btn => 
         btn.addEventListener('click', (e) => {
