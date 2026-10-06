@@ -9,7 +9,7 @@ if ('IntersectionObserver' in window) {
       else link.removeAttribute('aria-current');
     });
   }, {rootMargin: '-15% 0px -45% 0px', threshold: 0});
-  menuLinks.forEach(link => {const section = document.querySelector(link.hash); if(section) observer.observe(section);});
+  menuLinks.forEach(link => {if (!link.hash || (link.pathname !== location.pathname && !(location.pathname === '/' && link.pathname === '/index.html'))) return; const section = document.getElementById(link.hash.slice(1)); if(section) observer.observe(section);});
 }
 
 // Videos load only when the visitor chooses to watch.
