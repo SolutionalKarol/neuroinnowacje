@@ -7,7 +7,8 @@ if origin and not re.fullmatch(r'https://[A-Za-z0-9.-]+',origin): raise SystemEx
 pages={
  'index.html':('Psycholog Wrocław, terapia i VR | Neuroinnowacje NCNI','Pomoc psychologiczna i terapia par we Wrocławiu oraz online. Daria Cerazy, Sebastian Kraszewski, ADHD, autyzm, wsparcie przy migrenie i fobiach. Poznaj ceny.'),
  'neuroroznorodnosc.html':('ADHD, autyzm i neuroróżnorodność Wrocław | Neuroinnowacje','Wsparcie przy ADHD, autyzmie i trudnościach w uczeniu się we Wrocławiu. Diagnostyka, psychoedukacja i codzienne strategie w NCNI. Poznaj możliwości pomocy.')}
-org={'@type':'Organization','@id':'https://ncni.pl/#organization','name':'Naukowe Centrum Neuroinnowacji sp. z o.o.','alternateName':'NCNI','url':'https://ncni.pl/','telephone':'+48600608333','email':'kontakt@ncni.pl','address':{'@type':'PostalAddress','streetAddress':'ul. Stefana Żeromskiego 60/5a','postalCode':'50-312','addressLocality':'Wrocław','addressCountry':'PL'}}
+org={'@type':['Organization','LocalBusiness'],'@id':'https://ncni.pl/#organization','name':'Naukowe Centrum Neuroinnowacji sp. z o.o.','alternateName':['NCNI','Neuroinnowacje'],'url':'https://ncni.pl/','telephone':'+48600608333','email':'kontakt@ncni.pl','priceRange':'220–450 zł','currenciesAccepted':'PLN','areaServed':{'@type':'City','name':'Wrocław'},'hasMap':'https://www.google.com/maps/search/?api=1&query=Stefana+Zeromskiego+60+Wroclaw','sameAs':['https://www.facebook.com/profile.php?id=61579420537737','https://www.instagram.com/ncni_pl/','https://www.linkedin.com/company/ncni','https://youtube.com/@neuroinnowacje'],'address':{'@type':'PostalAddress','streetAddress':'ul. Stefana Żeromskiego 60/5a','postalCode':'50-312','addressLocality':'Wrocław','addressRegion':'dolnośląskie','addressCountry':'PL'}}
+if origin:org.update({'logo':origin+'/assets/apple-touch-icon.png','image':origin+'/assets/og-neuroinnowacje.jpg'})
 people=[{'@type':'Person','@id':'https://ncni.pl/psycholog.html#daria-cerazy','name':'Daria Cerazy','jobTitle':'Psycholog, psychoterapeutka','sameAs':['https://dariacerazy.pl/o-mnie/']},{'@type':'Person','@id':'https://ncni.pl/kraszewski.html#sebastian-kraszewski','name':'Sebastian Kraszewski','jobTitle':'Dyrektor naukowy NCNI, profesor Politechniki Wrocławskiej','sameAs':['https://ncni.pl/kraszewski.html']}]
 for filename,(title,description) in pages.items():
  p=Path(filename);s=p.read_text()
@@ -36,21 +37,23 @@ for filename,(title,description) in pages.items():
     if tag=='section':self.inside=False
   faq=FAQParser();faq.feed(s)
   if faq.items:graph.append({'@type':'FAQPage','mainEntity':faq.items})
-  for name,price in [('Konsultacja psychologiczna','220'),('Psychoterapia par w języku polskim','300'),('Rozmowa z pomiarem HRV / EEG','450'),('Sesja NCNI.System','350')]:
+  for name,price in [('Konsultacja psychologiczna','220'),('Psychoterapia indywidualna w języku angielskim','250'),('Psychoterapia par w języku polskim','300'),('Terapia par w języku angielskim','320'),('Rozmowa z pomiarem HRV / EEG','450'),('Konsultacja wstępna z Sebastianem Kraszewskim','450'),('Psychoedukacja dla dorosłych z ADHD / ASD','300'),('Konsultacja: wysoka wrażliwość i migrena','350'),('NeuroMigra: plan i pierwsza wizyta','450'),('Indywidualna sesja biofeedback EEG / HRV','350'),('Sesja NCNI.System','350'),('Indywidualna sesja VR','350')]:
    graph.append({'@type':'Service','name':name,'provider':{'@id':org['@id']},'areaServed':{'@type':'City','name':'Wrocław'},'offers':{'@type':'Offer','price':price,'priceCurrency':'PLN'}})
  if url:graph.append({'@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':'pl-PL','publisher':{'@id':org['@id']}})
  tags=f'<title>{html.escape(title)}</title>\n<meta name="description" content="{html.escape(description,quote=True)}">\n<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">\n<meta property="og:title" content="{html.escape(title,quote=True)}">\n<meta property="og:description" content="{html.escape(description,quote=True)}">\n<meta property="og:type" content="website">\n<meta property="og:locale" content="pl_PL">\n<meta property="og:site_name" content="Neuroinnowacje · NCNI">\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="{html.escape(title,quote=True)}">\n<meta name="twitter:description" content="{html.escape(description,quote=True)}">\n'
- if url:tags+=f'<link rel="canonical" href="{url}">\n<meta property="og:url" content="{url}">\n<meta property="og:image" content="{origin}/assets/gabinet.webp">\n<meta property="og:image:alt" content="Gabinet NCNI we Wrocławiu">\n<meta name="twitter:image" content="{origin}/assets/gabinet.webp">\n'
+ if url:tags+=f'<link rel="canonical" href="{url}">\n<meta property="og:url" content="{url}">\n<meta property="og:image" content="{origin}/assets/og-neuroinnowacje.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="Gabinet NCNI we Wrocławiu">\n<meta name="twitter:image" content="{origin}/assets/og-neuroinnowacje.jpg">\n'
  tags+='<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('</','<\\/')+'</script>\n'
  # Remove only metadata generated by this script on prior runs.
  s=re.sub(r'<script type="application/ld\+json">.*?</script>','',s,flags=re.S)
+ s=re.sub(r'\n+</head>','\n</head>',s)
  s=s.replace('</head>','<!-- SEARCH METADATA START -->\n'+tags+'<!-- SEARCH METADATA END -->\n</head>')
  p.write_text(s)
 robots='User-agent: *\nAllow: /\n'
 if origin:
  robots+='\nSitemap: '+origin+'/sitemap.xml\n'
  from xml.sax.saxutils import escape
- Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+escape(origin+('/' if p=='index.html' else '/'+p))+'</loc></url>\n' for p in pages)+'</urlset>\n')
+ from datetime import date
+ Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+escape(origin+('/' if p=='index.html' else '/'+p))+'</loc><lastmod>'+date.today().isoformat()+'</lastmod></url>\n' for p in pages)+'</urlset>\n')
 Path('robots.txt').write_text(robots)
 for filename in ['coaching.html','psychologia.html']:
  p=Path(filename);s=p.read_text()
