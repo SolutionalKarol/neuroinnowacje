@@ -30,3 +30,4 @@
 
 .kid-list{margin:0 0 16px;padding-left:1.1em}.kid-list li{margin:4px 0}
 .footer-social{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:16px;padding-bottom:16px;font-size:12px}.footer-social span{opacity:.75}
+.lang-switch{display:flex;gap:2px;font-size:12px;font-weight:700;letter-spacing:.06em}.lang-switch a{padding:6px 7px;border-radius:4px;text-decoration:none;color:inherit;opacity:.65}.lang-switch a[aria-current],.lang-switch a:hover{opacity:1;background:rgba(52,89,72,.1)}
