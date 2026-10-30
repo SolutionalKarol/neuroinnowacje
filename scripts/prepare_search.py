@@ -5,8 +5,8 @@ parser=argparse.ArgumentParser();parser.add_argument('--origin');args=parser.par
 origin=(args.origin or '').rstrip('/')
 if origin and not re.fullmatch(r'https://[A-Za-z0-9.-]+',origin): raise SystemExit('Use the confirmed HTTPS production origin, without a path.')
 pages={
- 'index.html':('Psycholog Wrocław, terapia i VR | Neuroinnowacje NCNI','Pomoc psychologiczna i terapia par we Wrocławiu oraz online. Daria Cerazy, Sebastian Kraszewski, ADHD, autyzm, wsparcie przy migrenie i fobiach. Poznaj ceny.'),
- 'neuroroznorodnosc.html':('ADHD, autyzm i neuroróżnorodność Wrocław | Neuroinnowacje','Wsparcie przy ADHD, autyzmie i trudnościach w uczeniu się we Wrocławiu. Diagnostyka, psychoedukacja i codzienne strategie w NCNI. Poznaj możliwości pomocy.')}
+ 'index.html':('Psycholog Wrocław: empatia, terapia i technologia | Neuroinnowacje','Pomoc psychologiczna z empatią i zrozumieniem, we Wrocławiu i online. Psychoterapia, terapia par, ADHD, dyskalkulia i fobie. Technologia wspiera pracę z człowiekiem.'),
+ 'neuroroznorodnosc.html':('ADHD, autyzm i neuroróżnorodność Wrocław | Neuroinnowacje','Wsparcie przy ADHD, autyzmie i trudnościach w uczeniu się we Wrocławiu. Ze zrozumieniem i bez oceniania: diagnostyka, psychoedukacja i codzienne strategie. Poznaj możliwości pomocy.')}
 org={'@type':['Organization','LocalBusiness'],'@id':'https://ncni.pl/#organization','name':'Naukowe Centrum Neuroinnowacji sp. z o.o.','alternateName':['NCNI','Neuroinnowacje'],'url':'https://ncni.pl/','telephone':'+48600608333','email':'kontakt@ncni.pl','priceRange':'220–450 zł','currenciesAccepted':'PLN','areaServed':{'@type':'City','name':'Wrocław'},'hasMap':'https://www.google.com/maps/search/?api=1&query=Stefana+Zeromskiego+60+Wroclaw','sameAs':['https://www.facebook.com/profile.php?id=61579420537737','https://www.instagram.com/ncni_pl/','https://www.linkedin.com/company/ncni','https://youtube.com/@neuroinnowacje'],'openingHoursSpecification':[{'@type':'OpeningHoursSpecification','dayOfWeek':['Monday','Tuesday','Wednesday','Thursday','Friday'],'opens':'09:00','closes':'20:00'},{'@type':'OpeningHoursSpecification','dayOfWeek':'Saturday','opens':'10:00','closes':'14:00'}],'address':{'@type':'PostalAddress','streetAddress':'ul. Stefana Żeromskiego 60/5a','postalCode':'50-312','addressLocality':'Wrocław','addressRegion':'dolnośląskie','addressCountry':'PL'}}
 if origin:org.update({'logo':origin+'/assets/apple-touch-icon.png','image':origin+'/assets/og-neuroinnowacje.jpg'})
 people=[{'@type':'Person','@id':'https://ncni.pl/psycholog.html#daria-cerazy','name':'Daria Cerazy','jobTitle':'Psycholog, psychoterapeutka','sameAs':['https://dariacerazy.pl/o-mnie/']},{'@type':'Person','@id':'https://ncni.pl/kraszewski.html#sebastian-kraszewski','name':'Sebastian Kraszewski','jobTitle':'Dyrektor naukowy NCNI, profesor Politechniki Wrocławskiej','sameAs':['https://ncni.pl/kraszewski.html']}]
@@ -17,7 +17,7 @@ for filename,(title,description) in pages.items():
  s=re.sub(r'<link rel="canonical"[^>]*>','',s)
  s=re.sub(r'<!-- SEARCH METADATA START -->.*?<!-- SEARCH METADATA END -->','',s,flags=re.S)
  url=origin+('/' if filename=='index.html' else '/'+filename) if origin else None
- graph=[org,{'@type':'Brand','name':'Neuroinnowacje','description':'Pomoc psychologiczna i wsparcie w NCNI we Wrocławiu.'}]
+ graph=[org,{'@type':'Brand','name':'Neuroinnowacje','description':'Pomoc psychologiczna i technologia we Wrocławiu: empatia, zrozumienie i uważna praca z człowiekiem.'}]
  if filename=='index.html':
   graph+=people
   from html.parser import HTMLParser
