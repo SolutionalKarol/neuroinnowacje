@@ -29,3 +29,4 @@
 @media(max-width:800px){.portrait{border-radius:160px 160px 8px 8px;max-width:420px}.kid-card{padding:24px 22px}.kid-card h3{font-size:22px}.about-facts strong{font-size:21px}}
 
 .kid-list{margin:0 0 16px;padding-left:1.1em}.kid-list li{margin:4px 0}
+.footer-social{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:16px;padding-bottom:16px;font-size:12px}.footer-social span{opacity:.75}
