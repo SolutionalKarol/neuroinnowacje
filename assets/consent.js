@@ -65,8 +65,15 @@
   const box = document.createElement('div');
   box.className = 'consent';
   box.setAttribute('role', 'dialog');
-  box.setAttribute('aria-label', 'Ustawienia plików cookies');
-  box.innerHTML = '<p>Za Twoją zgodą użyjemy Google Analytics do statystyk odwiedzin. Możesz odmówić lub później zmienić wybór w ustawieniach cookies w stopce. <a href="https://ncni.pl/regulamin.html">Regulamin i prywatność</a></p><div><button type="button" class="button small" data-choice="granted">Akceptuję statystyki</button><button type="button" class="button small" data-choice="denied">Odrzucam statystyki</button></div>';
+  const lang = document.documentElement.lang;
+  const texts = {
+   en: ['Cookie settings', 'With your consent, we will use Google Analytics to count visits. You can decline or change your choice later in the cookie settings in the footer.', 'Terms and privacy (PL)', 'Accept statistics', 'Decline statistics'],
+   fr: ['Paramètres des cookies', 'Avec votre accord, nous utiliserons Google Analytics pour mesurer les visites. Vous pouvez refuser ou modifier votre choix plus tard dans les paramètres des cookies, en bas de page.', 'Conditions et confidentialité (PL)', 'J’accepte les statistiques', 'Je refuse les statistiques'],
+   pl: ['Ustawienia plików cookies', 'Za Twoją zgodą użyjemy Google Analytics do statystyk odwiedzin. Możesz odmówić lub później zmienić wybór w ustawieniach cookies w stopce.', 'Regulamin i prywatność', 'Akceptuję statystyki', 'Odrzucam statystyki']
+  };
+  const t = texts[lang] || texts.pl;
+  box.setAttribute('aria-label', t[0]);
+  box.innerHTML = '<p>' + t[1] + ' <a href="https://ncni.pl/regulamin.html">' + t[2] + '</a></p><div><button type="button" class="button small" data-choice="granted">' + t[3] + '</button><button type="button" class="button small" data-choice="denied">' + t[4] + '</button></div>';
   box.addEventListener('click', event => {
    const value = event.target.dataset && event.target.dataset.choice;
    if (!['granted', 'denied'].includes(value)) return;
