@@ -5,7 +5,7 @@ parser=argparse.ArgumentParser();parser.add_argument('--origin');args=parser.par
 origin=(args.origin or '').rstrip('/')
 if origin and not re.fullmatch(r'https://[A-Za-z0-9.-]+',origin): raise SystemExit('Use the confirmed HTTPS production origin, without a path.')
 pages={
- 'index.html':('Psychologia, VR i pomiary HRV / EEG Wrocław | Neuroinnowacje','Pomoc psychologiczna we Wrocławiu i online. Poznaj sesje VR, relaksację i rozmowę z pomiarem HRV lub EEG w NCNI. Sprawdź przebieg spotkań i ceny.'),
+ 'index.html':('Psychologia, VR i pomiary HRV / EEG Wrocław | Neuroinnowacje','Psycholog i mentoring naukowy we Wrocławiu. Wsparcie przy ADHD, dysleksji, dyskalkulii i fobiach, w tym lęku przed lataniem. Poznaj VR oraz pomiary HRV i EEG.'),
  'en.html':('Psychologist in Wrocław, therapy in English | Neuroinnowacje','Psychotherapy and couples therapy in English in Wrocław and online. Empathy first, technology as support: VR for phobias, ADHD and learning support. See prices.'),
  'fr.html':('Consultations en français à Wrocław | Neuroinnowacje','Consultations en français à Wrocław et en ligne avec le prof. Sebastian Kraszewski : empathie d’abord, technologie en soutien. Phobies, TDAH, dyscalculie. Tarifs.'),
  'neuroroznorodnosc.html':('ADHD, autyzm i neuroróżnorodność Wrocław | Neuroinnowacje','Wsparcie przy ADHD, autyzmie i trudnościach w uczeniu się we Wrocławiu. Ze zrozumieniem i bez oceniania: diagnostyka, psychoedukacja i codzienne strategie. Poznaj możliwości pomocy.')}
