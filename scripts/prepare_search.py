@@ -5,7 +5,6 @@ parser=argparse.ArgumentParser();parser.add_argument('--origin');args=parser.par
 origin=(args.origin or '').rstrip('/')
 if origin and not re.fullmatch(r'https://[A-Za-z0-9.-]+',origin): raise SystemExit('Use the confirmed HTTPS production origin, without a path.')
 pages={
- 'technologie.html':('VR, HRV i EEG — jak korzystamy z technologii | Neuroinnowacje','Jak wygląda sesja VR i rozmowa z pomiarem HRV lub EEG w NCNI we Wrocławiu? Poznaj przebieg spotkania i zastosowania technologii.'),
  'index.html':('Psycholog Wrocław: empatia, terapia i technologia | Neuroinnowacje','Pomoc psychologiczna z empatią i zrozumieniem, we Wrocławiu i online. Psychoterapia, terapia par, ADHD, dyskalkulia i fobie. Technologia wspiera pracę z człowiekiem.'),
  'en.html':('Psychologist in Wrocław, therapy in English | Neuroinnowacje','Psychotherapy and couples therapy in English in Wrocław and online. Empathy first, technology as support: VR for phobias, ADHD and learning support. See prices.'),
  'fr.html':('Consultations en français à Wrocław | Neuroinnowacje','Consultations en français à Wrocław et en ligne avec le prof. Sebastian Kraszewski : empathie d’abord, technologie en soutien. Phobies, TDAH, dyscalculie. Tarifs.'),
