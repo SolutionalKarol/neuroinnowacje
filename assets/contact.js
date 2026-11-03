@@ -13,7 +13,7 @@ if(contactForm)contactForm.addEventListener('submit',async event=>{
   const response=await fetch('api/contact.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...fields,token})});
   const result=await response.json();
   if(!response.ok||!result.ok)throw new Error(result.message||'connection');
-  status.textContent='Wiadomość została przyjęta do wysyłki. Rejestracja odpowie na podany adres e-mail. Termin spotkania potwierdzimy w odpowiedzi.';
+  status.textContent='Dziękujemy za wiadomość. Skontaktujemy się z Tobą mailowo, żeby ustalić szczegóły.';
   contactForm.reset();
  }catch(error){
   status.textContent=error.message==='connection'||error instanceof SyntaxError?'Nie udało się wysłać wiadomości. Napisz na kontakt@ncni.pl lub zadzwoń: 600 608 333.':error.message;
