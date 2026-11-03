@@ -1,9 +1,10 @@
-# Formularz kontaktowy — OVH
+# Formularz — Formspree na OVH
 
-Wgrać razem: `api/contact.php`, `assets/contact.js`, `assets/contact.css`, `assets/kiszlo-studio.png` i `index.html`.
+Formularz wysyła do https://formspree.io/f/moeepgpy. Odbiorcę należy potwierdzić w panelu Formspree: neuroinnowacje@gmail.com. PHP mail() nie jest już używane.
 
-Wymagania: PHP 7.4+, sesje PHP, zapisywalny katalog tymczasowy i działająca funkcja mail() na OVH. Odbiorca jest stały: kontakt@ncni.pl. Nadawca techniczny: kontakt@ncni.pl; przed publikacją należy potwierdzić jego dopuszczenie w konfiguracji poczty OVH i ustawienia SPF/DKIM. E-mail odwiedzającego trafia wyłącznie do Reply-To.
+Na OVH podmień pliki, zachowując foldery:
+- index.html
+- assets/contact.js
+- api/contact.php (wyłącza poprzednią wysyłkę PHP)
 
-Przed uruchomieniem: sprawdzić składnię PHP, odpowiedź GET z tokenem, poprawny POST z tej samej domeny, odbiór testowej wiadomości w skrzynce (także Spam), odpowiedź na adres odwiedzającego, komunikaty błędów i limit wysyłki. Sukces mail() oznacza przyjęcie przez serwer pocztowy, nie potwierdza dostarczenia.
-
-Nie wykonano testu dostarczenia na OVH. Lokalny serwer statyczny nie obsługuje PHP i formularz pokaże błąd zamiast pozornego potwierdzenia wysłania. Treści wiadomości nie są zapisywane w logach aplikacji ani wysyłane do analityki. Mechanizm limitu przechowuje w katalogu tymczasowym jedynie czasy prób w pliku nazwanym skrótem adresu IP; warto uwzględnić te pliki w okresowym sprzątaniu katalogu tymczasowego hostingu.
+Odśwież stronę, wpisz krótką wiadomość testową i sprawdź ją w Formspree oraz w Gmailu, także w Spamie. Potwierdzenie na stronie oznacza przyjęcie przez Formspree, nie sprawdzenie skrzynki odbiorczej. Test dostarczenia nie został jeszcze wykonany. Publikacja na GitHubie nie aktualizuje automatycznie OVH.
