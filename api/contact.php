@@ -32,7 +32,7 @@ $attempts = is_array($attempts) ? array_values(array_filter($attempts, static fu
 if (count($attempts)>=5 || ($attempts && end($attempts)>time()-60)) { flock($rate, LOCK_UN); fclose($rate); reply(429, ['ok'=>false, 'message'=>'Odczekaj chwilę przed kolejną wiadomością lub napisz na kontakt@ncni.pl.']); }
 $attempts[]=time(); ftruncate($rate,0); rewind($rate); fwrite($rate,json_encode($attempts)); flock($rate,LOCK_UN); fclose($rate);
 $body="Wiadomość z neuroinnowacje.pl\n\nImię: ".$name."\nE-mail: ".$email."\n\n".$message;
-$headers=['From: Neuroinnowacje <kontakt@neuroinnowacje.pl>', 'Reply-To: '.$email, 'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8'];
+$headers=['From: Neuroinnowacje <kontakt@ncni.pl>', 'Reply-To: '.$email, 'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8'];
 $sent=mail('kontakt@ncni.pl', 'Kontakt z neuroinnowacje.pl', $body, implode("\r\n", $headers));
 if (!$sent) reply(503, ['ok'=>false, 'message'=>'Nie udało się wysłać wiadomości. Napisz bezpośrednio na kontakt@ncni.pl.']);
 reply(200, ['ok'=>true]);
