@@ -2,7 +2,7 @@
 
 Wgrać razem: `api/contact.php`, `assets/contact.js`, `assets/contact.css`, `assets/kiszlo-studio.png` i `index.html`.
 
-Wymagania: PHP 7.4+, sesje PHP, zapisywalny katalog tymczasowy i działająca funkcja mail() na OVH. Odbiorca jest stały: kontakt@ncni.pl. Nadawca techniczny: kontakt@neuroinnowacje.pl; przed publikacją należy potwierdzić jego dopuszczenie w konfiguracji poczty OVH i ustawienia SPF/DKIM. E-mail odwiedzającego trafia wyłącznie do Reply-To.
+Wymagania: PHP 7.4+, sesje PHP, zapisywalny katalog tymczasowy i działająca funkcja mail() na OVH. Odbiorca jest stały: kontakt@ncni.pl. Nadawca techniczny: kontakt@ncni.pl; przed publikacją należy potwierdzić jego dopuszczenie w konfiguracji poczty OVH i ustawienia SPF/DKIM. E-mail odwiedzającego trafia wyłącznie do Reply-To.
 
 Przed uruchomieniem: sprawdzić składnię PHP, odpowiedź GET z tokenem, poprawny POST z tej samej domeny, odbiór testowej wiadomości w skrzynce (także Spam), odpowiedź na adres odwiedzającego, komunikaty błędów i limit wysyłki. Sukces mail() oznacza przyjęcie przez serwer pocztowy, nie potwierdza dostarczenia.
 
