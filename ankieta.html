@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f4ee">
+<title>Wywiad przed wizytą | NCNI</title>
+<link rel="icon" href="assets/logo.webp">
+<style>
+:root{--paper:#f6f4ee;--ink:#243c33;--muted:#58645d;--green:#345948;--sage:#e5eadd;--line:#d5d9cc;--accent:#b26848;--white:#fffef9;--err:#8a382b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6}
+.wrap{width:min(780px,calc(100% - 32px));margin:0 auto;padding:28px 0 60px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px;letter-spacing:-.4px;margin-bottom:26px}
+.brand img{width:40px;height:40px;object-fit:contain}
+.brand small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.3px}
+h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(32px,6vw,46px);line-height:1.1;letter-spacing:-1.2px;margin:0 0 12px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:25px;margin:0 0 4px}
+h3{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin:26px 0 12px}
+.part{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin:0 0 4px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 24px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px;margin-bottom:18px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+fieldset[disabled]{display:none}
+label.f{display:block;font-weight:600;font-size:14px;margin:0 0 14px}
+label.f small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=password],input[type=number],textarea{display:block;width:100%;margin-top:6px;font:inherit;font-weight:400;padding:12px 14px;border:1px solid #c3c9bb;border-radius:6px;background:#fff;color:var(--ink)}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.q{margin:0 0 20px}
+.q>p{font-weight:600;font-size:15px;margin:0 0 8px}
+.q>p small{font-weight:400;color:var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;border:1px solid var(--line);border-radius:30px;padding:8px 14px;background:#fff}
+.opts label:has(input:checked){border-color:var(--green);background:var(--sage)}
+.opts input,.list input,.scale input,.decl input{accent-color:var(--green)}
+.list label{display:flex;align-items:flex-start;gap:9px;font-size:14px;margin-bottom:8px;cursor:pointer}
+.list input{margin-top:4px}
+.q .more{margin-top:8px}
+.scale{width:100%;border-collapse:collapse;font-size:14px}
+.scale th{font-weight:600;font-size:12px;color:var(--muted);padding:4px 2px}
+.scale td{border-top:1px solid var(--line);padding:9px 2px;text-align:center}
+.scale td:first-child{text-align:left;padding-right:8px}
+.scale input{width:20px;height:20px}
+.decl{background:var(--sage);border-radius:8px;padding:16px;font-size:13px}
+.decl label{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;cursor:pointer}
+.decl label:last-child{margin-bottom:0}
+.decl input{width:20px;height:20px;flex-shrink:0;margin-top:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border:0;border-radius:6px;background:var(--green);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer;width:100%}
+.btn:hover{background:#244233}.btn:disabled{opacity:.6;cursor:wait}
+.msg{margin:12px 0 0;font-size:14px;min-height:1em}.msg.err{color:var(--err)}
+.foot{font-size:11px;color:var(--muted);margin-top:30px;text-align:center}
+[hidden]{display:none!important}
+@media(max-width:640px){.row{grid-template-columns:1fr}.card{padding:18px}.scale{font-size:13px}.scale th{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="brand"><img src="assets/logo.webp" alt=""><div>Naukowe Centrum Neuroinnowacji<small>NCNI · Wrocław · tel. 600 608 333</small></div></div>
+
+ <section id="step-pin">
+  <h1>Wywiad przed wizytą</h1>
+  <p class="lead">Wpisz PIN, który dostałeś/dostałaś od nas razem z linkiem.</p>
+  <div class="card">
+   <form id="pin-form" autocomplete="off">
+    <label class="f">PIN<input type="password" id="pin" inputmode="numeric" autocomplete="off" required></label>
+    <button class="btn" type="submit">Dalej</button>
+    <p class="msg err" id="pin-msg" role="alert"></p>
+   </form>
+  </div>
+  <p class="foot">Nie masz PIN-u? Zadzwoń: <a href="tel:+48600608333">600 608 333</a></p>
+ </section>
+
+ <section id="step-form" hidden>
+  <h1>Wywiad przed wizytą</h1>
+  <p class="lead">Wypełnienie zajmuje ok. 10–15 minut. Na pytanie, na które nie znasz odpowiedzi, wystarczy nie odpowiadać. Resztę omówimy na miejscu.</p>
+  <form id="survey" novalidate>
+
+   <!-- ============ CZĘŚĆ 1: WYWIAD KWALIFIKACYJNY ============ -->
+   <div class="card">
+    <p class="part">Część 1</p><h2>Wywiad kwalifikacyjny</h2>
+    <h3>I. Dane</h3>
+    <div class="q"><p>Kto wypełnia ankietę?</p><div class="opts">
+     <label><input type="radio" name="Wypełnia" value="osoba, której dotyczy wizyta" checked> osoba, której dotyczy wizyta</label>
+     <label><input type="radio" name="Wypełnia" value="rodzic / opiekun"> rodzic / opiekun</label></div></div>
+    <div class="row">
+     <label class="f">Imię i nazwisko osoby, której dotyczy wizyta<input type="text" name="Imię i nazwisko" id="imie" required></label>
+     <label class="f">Data urodzenia<input type="text" name="Data urodzenia" placeholder="np. 12.03.2008"></label>
+    </div>
+    <div class="row">
+     <label class="f">Telefon<input type="tel" name="Telefon" id="telefon" required></label>
+     <label class="f">E-mail<input type="email" name="E-mail" id="email"></label>
+    </div>
+    <div class="row">
+     <label class="f">PESEL <small>(opcjonalnie)</small><input type="text" name="PESEL" inputmode="numeric"></label>
+     <label class="f">Termin wizyty <small>(jeśli znasz)</small><input type="text" name="Termin wizyty" id="termin" placeholder="np. czw. 12.11, 17:00"></label>
+    </div>
+    <label class="f">Adres zamieszkania <small>(opcjonalnie)</small><input type="text" name="Adres"></label>
+    <div class="row">
+     <label class="f">Osoba do kontaktu w nagłych wypadkach<input type="text" name="Osoba kontaktowa (nagłe wypadki)"></label>
+     <label class="f">Jej telefon<input type="tel" name="Telefon osoby kontaktowej"></label>
+    </div>
+
+    <h3>II. Historia medyczna</h3>
+    <div class="q"><p>1. Aktualne diagnozy medyczne lub psychologiczne</p><div class="opts">
+     <label><input type="radio" name="1. Diagnozy" value="tak"> tak</label><label><input type="radio" name="1. Diagnozy" value="nie"> nie</label></div>
+     <textarea class="more" name="1. Diagnozy – jakie" placeholder="Jeśli tak, jakie?"></textarea></div>
+    <div class="q"><p>2. Przyjmowane leki</p><div class="opts">
+     <label><input type="radio" name="2. Leki" value="tak"> tak</label><label><input type="radio" name="2. Leki" value="nie"> nie</label></div>
+     <textarea class="more" name="2. Leki – nazwa, dawka, jak często" placeholder="Nazwa leku, dawka, jak często"></textarea></div>
+    <div class="q"><p>3. Czy występowały w przeszłości lub obecnie:</p><div class="list">
+     <label><input type="checkbox" name="3. Schorzenia" value="padaczka lub napady drgawkowe"> padaczka lub napady drgawkowe</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="udar mózgu"> udar mózgu</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="uraz głowy / wstrząśnienie mózgu"> uraz głowy / wstrząśnienie mózgu</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="zaburzenia neurologiczne"> zaburzenia neurologiczne</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="zaburzenia serca / rozrusznik"> zaburzenia serca / wszczepiony rozrusznik</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="ciąża (aktualna lub planowana)"> ciąża (aktualna lub planowana)</label>
+     <label><input type="checkbox" name="3. Schorzenia" value="implant ślimakowy / stymulator mózgu"> implant ślimakowy / stymulator mózgu</label></div>
+     <input type="text" class="more" name="3. Inne istotne schorzenia" placeholder="Inne istotne schorzenia"></div>
+    <div class="q"><p>4. Hospitalizacja psychiatryczna kiedykolwiek</p><div class="opts">
+     <label><input type="radio" name="4. Hospitalizacja psychiatryczna" value="tak"> tak</label><label><input type="radio" name="4. Hospitalizacja psychiatryczna" value="nie"> nie</label></div>
+     <input type="text" class="more" name="4. Hospitalizacja – przyczyna i data" placeholder="Jeśli tak, przyczyna i data"></div>
+
+    <h3>III. Cel i objawy</h3>
+    <div class="q"><p>5. Główny cel zgłoszenia na biofeedback <small>(można kilka)</small></p><div class="list">
+     <label><input type="checkbox" name="5. Cel" value="ADHD / koncentracja"> ADHD / problemy z koncentracją</label>
+     <label><input type="checkbox" name="5. Cel" value="stres przewlekły"> stres przewlekły</label>
+     <label><input type="checkbox" name="5. Cel" value="lęk / napady paniki"> zaburzenia lękowe / napady paniki</label>
+     <label><input type="checkbox" name="5. Cel" value="obniżony nastrój"> depresja / obniżony nastrój</label>
+     <label><input type="checkbox" name="5. Cel" value="sen"> zaburzenia snu</label>
+     <label><input type="checkbox" name="5. Cel" value="ból przewlekły"> chroniczny ból (migreny, plecy, napięcie mięśni)</label>
+     <label><input type="checkbox" name="5. Cel" value="regulacja emocji"> problemy emocjonalne / regulacja emocji</label>
+     <label><input type="checkbox" name="5. Cel" value="wsparcie w chorobie neurologicznej"> wsparcie w chorobie neurologicznej</label>
+     <label><input type="checkbox" name="5. Cel" value="funkcje poznawcze / peak performance"> funkcje poznawcze / peak performance</label></div>
+     <input type="text" class="more" name="5. Cel – inne" placeholder="Inne"></div>
+    <div class="q"><p>6. Nasilenie objawów w ostatnim miesiącu <small>(0 = brak, 5 = bardzo nasilone)</small></p>
+     <table class="scale" id="scale"><tr><th></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></table></div>
+    <label class="f">7. Kiedy objawy pojawiły się po raz pierwszy?<input type="text" name="7. Początek objawów"></label>
+    <label class="f">8. Co mogło być przyczyną objawów?<textarea name="8. Możliwa przyczyna"></textarea></label>
+
+    <h3>IV. Styl życia</h3>
+    <div class="row">
+     <label class="f">9. Średnio godzin snu na dobę<input type="text" name="9. Sen – godzin na dobę" inputmode="decimal"></label>
+     <div class="q"><p>Jakość snu</p><div class="opts">
+      <label><input type="radio" name="9. Jakość snu" value="dobra"> dobra</label><label><input type="radio" name="9. Jakość snu" value="przeciętna"> przeciętna</label><label><input type="radio" name="9. Jakość snu" value="słaba"> słaba</label></div></div>
+    </div>
+    <div class="q"><p>Problemy ze snem</p><div class="opts">
+     <label><input type="checkbox" name="9. Problemy ze snem" value="trudno zasnąć"> trudno zasnąć</label><label><input type="checkbox" name="9. Problemy ze snem" value="budzenie w nocy"> budzenie w nocy</label><label><input type="checkbox" name="9. Problemy ze snem" value="wczesne budzenie"> wczesne budzenie</label><label><input type="checkbox" name="9. Problemy ze snem" value="brak"> brak</label></div></div>
+    <div class="row">
+     <label class="f">10. Regularne posiłki dziennie<input type="text" name="10. Posiłki dziennie"></label>
+     <label class="f">Kawa / energetyki dziennie<input type="text" name="10. Kawa / energetyki dziennie"></label>
+    </div>
+    <div class="q"><p>Alkohol</p><div class="opts">
+     <label><input type="radio" name="10. Alkohol" value="brak"> brak</label><label><input type="radio" name="10. Alkohol" value="okazjonalnie"> okazjonalnie</label><label><input type="radio" name="10. Alkohol" value="regularnie"> regularnie</label></div></div>
+    <label class="f">11. Aktywność fizyczna: jaka?<input type="text" name="11. Aktywność – rodzaj"></label>
+    <div class="q"><p>Jak często?</p><div class="opts">
+     <label><input type="radio" name="11. Aktywność – częstotliwość" value="codziennie"> codziennie</label><label><input type="radio" name="11. Aktywność – częstotliwość" value="kilka razy w tygodniu"> kilka razy w tygodniu</label><label><input type="radio" name="11. Aktywność – częstotliwość" value="rzadko"> rzadko</label><label><input type="radio" name="11. Aktywność – częstotliwość" value="brak"> brak</label></div></div>
+    <div class="q"><p>12. Palenie tytoniu</p><div class="opts">
+     <label><input type="radio" name="12. Palenie" value="tak"> tak</label><label><input type="radio" name="12. Palenie" value="nie"> nie</label><label><input type="radio" name="12. Palenie" value="rzucił(a)"> rzuciłem/am</label></div>
+     <input type="text" class="more" name="12. Palenie – ile / od kiedy nie" placeholder="Ile dziennie albo kiedy rzucone"></div>
+    <label class="f">Inne substancje psychoaktywne <small>(jeśli tak, jakie)</small><input type="text" name="12. Inne substancje"></label>
+    <div class="q"><p>13. Techniki relaksacyjne</p><div class="opts">
+     <label><input type="checkbox" name="13. Relaksacja" value="medytacja"> medytacja</label><label><input type="checkbox" name="13. Relaksacja" value="joga"> joga</label><label><input type="checkbox" name="13. Relaksacja" value="mindfulness"> mindfulness</label><label><input type="checkbox" name="13. Relaksacja" value="ćwiczenia oddechowe"> ćwiczenia oddechowe</label></div>
+     <input type="text" class="more" name="13. Relaksacja – inne" placeholder="Inne"></div>
+
+    <h3>V. Dotychczasowa terapia</h3>
+    <label class="f">14. Psychoterapia <small>(rodzaj, okres)</small><input type="text" name="14. Psychoterapia"></label>
+    <label class="f">Farmakoterapia psychiatryczna <small>(jakie leki)</small><input type="text" name="14. Farmakoterapia"></label>
+    <label class="f">Biofeedback / neurofeedback <small>(gdzie, kiedy)</small><input type="text" name="14. Biofeedback / neurofeedback wcześniej"></label>
+    <label class="f">Inne formy terapii <small>(np. akupunktura, osteopatia, SI)</small><input type="text" name="14. Inne terapie"></label>
+    <div class="q"><p>15. Efekty dotychczasowej terapii</p><div class="opts">
+     <label><input type="radio" name="15. Efekty terapii" value="znaczna poprawa"> znaczna poprawa</label><label><input type="radio" name="15. Efekty terapii" value="umiarkowana poprawa"> umiarkowana poprawa</label><label><input type="radio" name="15. Efekty terapii" value="brak poprawy"> brak poprawy</label><label><input type="radio" name="15. Efekty terapii" value="pogorszenie"> pogorszenie</label><label><input type="radio" name="15. Efekty terapii" value="nie dotyczy"> nie dotyczy</label></div></div>
+
+    <h3>VI. Motywacja i oczekiwania</h3>
+    <label class="f">16. Co skłoniło do wyboru biofeedbacku w NCNI?<textarea name="16. Dlaczego NCNI"></textarea></label>
+    <label class="f">17. Oczekiwania wobec terapii<textarea name="17. Oczekiwania"></textarea></label>
+    <div class="q"><p>18. Gotowość do regularnych sesji <small>(1–2 razy w tygodniu przez kilka miesięcy)</small></p><div class="opts">
+     <label><input type="radio" name="18. Gotowość" value="bardzo wysoka"> bardzo wysoka</label><label><input type="radio" name="18. Gotowość" value="wysoka"> wysoka</label><label><input type="radio" name="18. Gotowość" value="średnia"> średnia</label><label><input type="radio" name="18. Gotowość" value="niska"> niska</label></div></div>
+    <label class="f">19. Dodatkowe uwagi ważne dla terapeuty<textarea name="19. Uwagi"></textarea></label>
+   </div>
+
+   <!-- wybór części 2, gdy link jej nie podaje -->
+   <div class="card" id="cz2-choice" hidden>
+    <div class="q" style="margin:0"><p>Część 2 ankiety</p><div class="opts">
+     <label><input type="radio" name="_cz2" value="" checked> bez części 2</label>
+     <label><input type="radio" name="_cz2" value="autyzm"> autyzm</label>
+     <label><input type="radio" name="_cz2" value="dyskalkulia"> trudności z liczbami</label></div></div>
+   </div>
+
+   <!-- ============ CZĘŚĆ 2: AUTYZM ============ -->
+   <fieldset class="card" data-module="autyzm" disabled>
+    <p class="part">Część 2</p><h2>Autyzm: co warto wiedzieć przed sesją</h2>
+    <p class="sub">Te pytania pomagają nam przygotować sesję tak, żeby była komfortowa: czujniki, światło, dźwięki, tempo.</p>
+    <h3>Diagnoza i wsparcie</h3>
+    <div class="row">
+     <label class="f">Kiedy postawiono diagnozę spektrum autyzmu?<input type="text" name="A1. Diagnoza – kiedy"></label>
+     <label class="f">Kto ją postawił? <small>(poradnia, psychiatra, ośrodek)</small><input type="text" name="A1. Diagnoza – kto"></label>
+    </div>
+    <div class="q"><p>A2. Inne rozpoznania lub trudności współwystępujące</p><div class="opts">
+     <label><input type="checkbox" name="A2. Współwystępowanie" value="ADHD"> ADHD</label><label><input type="checkbox" name="A2. Współwystępowanie" value="lęk"> lęk</label><label><input type="checkbox" name="A2. Współwystępowanie" value="obniżony nastrój"> obniżony nastrój</label><label><input type="checkbox" name="A2. Współwystępowanie" value="padaczka"> padaczka</label><label><input type="checkbox" name="A2. Współwystępowanie" value="tiki"> tiki</label><label><input type="checkbox" name="A2. Współwystępowanie" value="zaburzenia snu"> zaburzenia snu</label><label><input type="checkbox" name="A2. Współwystępowanie" value="trudności z jedzeniem"> trudności z jedzeniem</label><label><input type="checkbox" name="A2. Współwystępowanie" value="niepełnosprawność intelektualna"> niepełnosprawność intelektualna</label></div></div>
+    <label class="f">A3. Obecne formy wsparcia <small>(np. TUS, SI, logopeda, terapia, asystent, nauczyciel wspomagający)</small><input type="text" name="A3. Obecne wsparcie"></label>
+
+    <h3>Komunikacja</h3>
+    <div class="q"><p>A4. Jak najłatwiej się porozumieć?</p><div class="opts">
+     <label><input type="checkbox" name="A4. Komunikacja" value="swobodna mowa"> swobodna mowa</label><label><input type="checkbox" name="A4. Komunikacja" value="krótkie zdania"> krótkie, proste zdania</label><label><input type="checkbox" name="A4. Komunikacja" value="pisanie / czat"> pisanie / czat</label><label><input type="checkbox" name="A4. Komunikacja" value="obrazki / AAC"> obrazki / AAC</label><label><input type="checkbox" name="A4. Komunikacja" value="przez opiekuna"> przez opiekuna</label></div></div>
+    <label class="f">A5. Jak pokazuje, że coś jest nie tak, boli albo jest za dużo?<textarea name="A5. Sygnał dyskomfortu"></textarea></label>
+    <div class="q"><p>A6. Czy lepiej, żeby z góry wiedział(a), co się wydarzy (plan sesji krok po kroku)?</p><div class="opts">
+     <label><input type="radio" name="A6. Plan z góry" value="tak, bardzo ważne"> tak, bardzo ważne</label><label><input type="radio" name="A6. Plan z góry" value="pomaga"> pomaga</label><label><input type="radio" name="A6. Plan z góry" value="bez znaczenia"> bez znaczenia</label></div></div>
+
+    <h3>Zmysły (ważne przy czujnikach)</h3>
+    <div class="q"><p>A7. Co przeszkadza lub przeciąża? <small>(zaznacz wszystko, co pasuje)</small></p><div class="list">
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="głośne lub nagłe dźwięki"> głośne lub nagłe dźwięki</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="jasne / migające światło"> jasne lub migające światło, ekrany</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="dotyk obcych osób"> dotyk obcych osób</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="coś na głowie (czepek, opaska, słuchawki)"> coś na głowie (czepek EEG, opaska, słuchawki)</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="coś na skórze (elektrody, żel, pas na klatkę)"> coś na skórze (elektrody, żel, pas na klatkę piersiową)</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="zapachy"> zapachy</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="nowe miejsca / obcy ludzie"> nowe miejsca, obcy ludzie</label>
+     <label><input type="checkbox" name="A7. Przeciążenia zmysłowe" value="czekanie"> czekanie</label></div></div>
+    <div class="q"><p>A8. Czy zaakceptuje czujnik na palcu, uchu lub pas na klatce piersiowej?</p><div class="opts">
+     <label><input type="radio" name="A8. Akceptacja czujników" value="tak"> tak</label><label><input type="radio" name="A8. Akceptacja czujników" value="po oswojeniu"> po oswojeniu</label><label><input type="radio" name="A8. Akceptacja czujników" value="raczej nie"> raczej nie</label><label><input type="radio" name="A8. Akceptacja czujników" value="nie wiem"> nie wiem</label></div></div>
+    <div class="q"><p>A9. Ile czasu wytrzymuje spokojnie przy jednym zadaniu, siedząc?</p><div class="opts">
+     <label><input type="radio" name="A9. Czas skupienia" value="do 10 min"> do 10 min</label><label><input type="radio" name="A9. Czas skupienia" value="10–20 min"> 10–20 min</label><label><input type="radio" name="A9. Czas skupienia" value="20–40 min"> 20–40 min</label><label><input type="radio" name="A9. Czas skupienia" value="ponad 40 min"> ponad 40 min</label></div></div>
+    <label class="f">A10. Co szczególnie lubi lub uspokaja? <small>(np. dźwięki, kolory, przedmioty)</small><input type="text" name="A10. Co uspokaja / co lubi zmysłowo"></label>
+
+    <h3>Emocje i przeciążenie</h3>
+    <div class="q"><p>A11. Jak często zdarzają się silne przeciążenia (meltdown, shutdown, wybuchy)?</p><div class="opts">
+     <label><input type="radio" name="A11. Przeciążenia – jak często" value="prawie nigdy"> prawie nigdy</label><label><input type="radio" name="A11. Przeciążenia – jak często" value="raz w miesiącu"> raz w miesiącu</label><label><input type="radio" name="A11. Przeciążenia – jak często" value="co tydzień"> co tydzień</label><label><input type="radio" name="A11. Przeciążenia – jak często" value="prawie codziennie"> prawie codziennie</label></div></div>
+    <label class="f">A12. Co zwykle je wywołuje i jakie są pierwsze sygnały?<textarea name="A12. Wyzwalacze i pierwsze sygnały"></textarea></label>
+    <label class="f">A13. Co pomaga wtedy wrócić do równowagi? Czego unikać?<textarea name="A13. Co pomaga / czego unikać"></textarea></label>
+
+    <h3>Codzienność i mocne strony</h3>
+    <div class="q"><p>A14. Trudności w codzienności</p><div class="list">
+     <label><input type="checkbox" name="A14. Codzienność" value="zmiany planu"> zmiany planu, nowe sytuacje</label>
+     <label><input type="checkbox" name="A14. Codzienność" value="relacje z rówieśnikami"> nawiązywanie i utrzymywanie relacji</label>
+     <label><input type="checkbox" name="A14. Codzienność" value="szkoła / praca"> funkcjonowanie w szkole / pracy</label>
+     <label><input type="checkbox" name="A14. Codzienność" value="samodzielność"> samodzielność (ubieranie, jedzenie, higiena)</label>
+     <label><input type="checkbox" name="A14. Codzienność" value="rytuały / powtarzalne zachowania"> silne rytuały, powtarzalne zachowania</label>
+     <label><input type="checkbox" name="A14. Codzienność" value="sen"> sen</label></div></div>
+    <label class="f">A15. Szczególne zainteresowania <small>(pomogą nam dobrać sceny VR i nagrody w treningu)</small><input type="text" name="A15. Zainteresowania"></label>
+    <label class="f">A16. Mocne strony, w czym jest dobry/dobra?<input type="text" name="A16. Mocne strony"></label>
+    <div class="q"><p>A17. Czy na sesji ma być obecny rodzic / opiekun?</p><div class="opts">
+     <label><input type="radio" name="A17. Opiekun na sesji" value="tak"> tak</label><label><input type="radio" name="A17. Opiekun na sesji" value="na początku"> tylko na początku</label><label><input type="radio" name="A17. Opiekun na sesji" value="nie"> nie</label></div></div>
+    <label class="f">A18. Co jeszcze pomoże nam przygotować się do spotkania?<textarea name="A18. Wskazówki dla nas"></textarea></label>
+   </fieldset>
+
+   <!-- ============ CZĘŚĆ 2: DYSKALKULIA ============ -->
+   <fieldset class="card" data-module="dyskalkulia" disabled>
+    <p class="part">Część 2</p><h2>Trudności z liczbami</h2>
+    <div class="q"><p>D1. Kiedy pojawiły się trudności z liczbami?</p><div class="opts">
+     <label><input type="radio" name="D1. Początek trudności" value="przedszkole/zerówka"> przedszkole / zerówka</label><label><input type="radio" name="D1. Początek trudności" value="klasy 1–3"> klasy 1–3</label><label><input type="radio" name="D1. Początek trudności" value="klasa 4 lub później"> klasa 4 lub później</label><label><input type="radio" name="D1. Początek trudności" value="nie wiem"> nie wiem</label></div></div>
+    <div class="row"><label class="f">D2. Ostatnia ocena z matematyki<input type="text" name="D2. Ocena matematyka"></label><label class="f">z języka polskiego<input type="text" name="D2. Ocena polski"></label></div>
+    <div class="q"><p>D3. Opinia z poradni</p><div class="opts">
+     <label><input type="checkbox" name="D3. Opinia z poradni" value="nie było"> nie było</label><label><input type="checkbox" name="D3. Opinia z poradni" value="dysleksja"> dysleksja</label><label><input type="checkbox" name="D3. Opinia z poradni" value="dyskalkulia"> dyskalkulia</label><label><input type="checkbox" name="D3. Opinia z poradni" value="ADHD"> uwaga / ADHD</label></div></div>
+    <div class="q"><p>D4. Co zauważasz?</p><div class="list">
+     <label><input type="checkbox" name="D4. Objawy" value="liczy na palcach proste działania"> liczy na palcach proste działania</label>
+     <label><input type="checkbox" name="D4. Objawy" value="nie pamięta tabliczki mnożenia"> nie pamięta tabliczki mnożenia</label>
+     <label><input type="checkbox" name="D4. Objawy" value="myli się przy zegarze lub pieniądzach"> myli się przy zegarze lub pieniądzach</label>
+     <label><input type="checkbox" name="D4. Objawy" value="nie wie, jak zabrać się do zadania z treścią"> nie wie, jak zabrać się do zadania z treścią</label>
+     <label><input type="checkbox" name="D4. Objawy" value="przestawia cyfry, myli znaki"> przestawia cyfry, myli znaki</label>
+     <label><input type="checkbox" name="D4. Objawy" value="w domu umie, na sprawdzianie się myli"> w domu umie, na sprawdzianie się myli</label>
+     <label><input type="checkbox" name="D4. Objawy" value="denerwuje się lub unika matematyki"> denerwuje się, płacze lub unika matematyki</label></div></div>
+    <label class="f">D5. Czego chcesz się dowiedzieć po spotkaniu?<textarea name="D5. Pytanie do nas"></textarea></label>
+   </fieldset>
+
+   <!-- ============ OŚWIADCZENIE ============ -->
+   <div class="card">
+    <h2 style="margin-bottom:12px">Oświadczenie</h2>
+    <div class="decl">
+     <label><input type="checkbox" id="decl1" name="Oświadczenie: dane prawdziwe" value="tak"><span>Podane informacje są prawdziwe i kompletne według mojej najlepszej wiedzy. Poinformuję terapeutę o zmianach w stanie zdrowia.</span></label>
+     <label><input type="checkbox" id="decl2" name="Oświadczenie: biofeedback wspomagający" value="tak"><span>Rozumiem, że biofeedback jest metodą wspomagającą i nie zastępuje leczenia medycznego.</span></label>
+     <label><input type="checkbox" id="decl3" name="Zgoda na przetwarzanie danych" value="tak"><span>Zgadzam się, żeby NCNI sp. z o.o. (ul. Stefana Żeromskiego 60/5A, Wrocław) przetwarzało te dane, w tym o zdrowiu, tylko w celu przygotowania i prowadzenia sesji. Mogę tę zgodę wycofać.</span></label>
+    </div>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <p style="margin:18px 0 0"><button class="btn" type="submit">Wyślij ankietę</button></p>
+    <p class="msg" id="send-msg" role="status"></p>
+   </div>
+  </form>
+ </section>
+
+ <section id="step-done" hidden>
+  <h1>Dziękujemy!</h1>
+  <p class="lead">Ankieta dotarła do nas. Do zobaczenia na wizycie.</p>
+  <div class="card"><p style="margin:0">Naukowe Centrum Neuroinnowacji<br>ul. Stefana Żeromskiego 60/5A, Wrocław<br>tel. <a href="tel:+48600608333">600 608 333</a></p></div>
+ </section>
+
+ <p class="foot">© 2026 Naukowe Centrum Neuroinnowacji sp. z o.o.</p>
+</div>
+
+<script>
+'use strict';
+// PIN do ankiety. Zmień tutaj, jeśli chcesz inny.
+const PIN = '3333';
+const ENDPOINT = 'https://formspree.io/f/moeepgpy';
+const MODULES = {autyzm:'autyzm', dyskalkulia:'trudności z liczbami'};
+
+const $ = s => document.querySelector(s);
+const params = new URLSearchParams(location.search);
+const survey = $('#survey');
+
+// Skala objawów (pyt. 6)
+['Trudności z koncentracją','Napięcie psychiczne / stres','Lęk / niepokój','Obniżony nastrój','Problemy ze snem','Drażliwość / wybuchy złości','Zmęczenie / brak energii','Ból głowy / migreny','Napięcie mięśniowe','Trudności w relacjach'].forEach(s=>{
+ const tr=document.createElement('tr'); const td=document.createElement('td'); td.textContent=s; tr.appendChild(td);
+ for(let i=0;i<=5;i++){const c=document.createElement('td');const r=document.createElement('input');r.type='radio';r.name='6. '+s+' (0–5)';r.value=i;r.setAttribute('aria-label',s+': '+i);c.appendChild(r);tr.appendChild(c);}
+ $('#scale').appendChild(tr);
+});
+
+// Część 2: z linku (?cz2=autyzm) albo wybór w ankiecie
+function setModule(m){
+ survey.querySelectorAll('fieldset[data-module]').forEach(f=>f.disabled = f.dataset.module !== m);
+}
+const fromLink = (params.get('cz2')||'').toLowerCase();
+if(MODULES[fromLink]) setModule(fromLink);
+else { $('#cz2-choice').hidden = false; survey.querySelectorAll('input[name=_cz2]').forEach(r=>r.addEventListener('change',()=>setModule(r.value))); }
+
+function openForm(){
+ $('#step-pin').hidden = true; $('#step-form').hidden = false;
+ try{ sessionStorage.setItem('ankieta_pin_ok','1'); }catch(e){}
+ window.scrollTo(0,0);
+}
+try{ if(sessionStorage.getItem('ankieta_pin_ok')==='1') openForm(); }catch(e){}
+if(params.get('pin') === PIN) openForm();
+$('#pin-form').addEventListener('submit', e => {
+ e.preventDefault();
+ if($('#pin').value.trim() === PIN) openForm();
+ else $('#pin-msg').textContent = 'Nieprawidłowy PIN. Sprawdź wiadomość od nas lub zadzwoń: 600 608 333.';
+});
+if(params.get('imie')) $('#imie').value = params.get('imie');
+if(params.get('termin')) $('#termin').value = params.get('termin');
+
+survey.addEventListener('submit', async e => {
+ e.preventDefault();
+ const msg = $('#send-msg'), btn = survey.querySelector('button[type=submit]');
+ msg.className = 'msg';
+ if(!$('#imie').value.trim() || !$('#telefon').value.trim()){ msg.className='msg err'; msg.textContent='Wpisz imię i nazwisko oraz telefon (na górze ankiety).'; return; }
+ if(!$('#decl1').checked || !$('#decl2').checked || !$('#decl3').checked){ msg.className='msg err'; msg.textContent='Zaznacz trzy pola w oświadczeniu.'; return; }
+ if(btn.disabled) return;
+ btn.disabled = true; msg.textContent = 'Wysyłanie…';
+ const raw = new FormData(survey);   // pola z ukrytej części 2 są pomijane (fieldset disabled)
+ const active = survey.querySelector('fieldset[data-module]:not([disabled])');
+ const fd = new FormData();
+ fd.append('_subject', 'Ankieta przed wizytą – ' + $('#imie').value.trim() + (active ? ' – ' + MODULES[active.dataset.module] : '') + ($('#termin').value.trim() ? ' – ' + $('#termin').value.trim() : ''));
+ fd.append('Część 2', active ? MODULES[active.dataset.module] : 'brak');
+ const seen = new Set();
+ for(const [key] of raw){
+  if(seen.has(key) || key.startsWith('_')) continue; seen.add(key);
+  const v = raw.getAll(key).map(x=>String(x).trim()).filter(Boolean).join('; ');
+  if(v) fd.append(key, v);
+ }
+ if($('#email').value.trim()) fd.append('email', $('#email').value.trim());
+ if(raw.get('_gotcha')) fd.append('_gotcha', raw.get('_gotcha'));
+ const ctrl = new AbortController(); const t = setTimeout(()=>ctrl.abort(), 20000);
+ try{
+  const r = await fetch(ENDPOINT, {method:'POST', body:fd, headers:{Accept:'application/json'}, signal:ctrl.signal});
+  const j = await r.json().catch(()=>({}));
+  if(!r.ok || j.ok !== true){ msg.className='msg err'; msg.textContent = r.status===429 ? 'Za dużo prób. Spróbuj za chwilę lub zadzwoń: 600 608 333.' : 'Nie udało się wysłać. Spróbuj ponownie lub zadzwoń: 600 608 333.'; return; }
+  $('#step-form').hidden = true; $('#step-done').hidden = false; window.scrollTo(0,0);
+  try{ sessionStorage.removeItem('ankieta_pin_ok'); }catch(e){}
+ }catch(err){
+  msg.className='msg err'; msg.textContent='Nie udało się potwierdzić wysłania. Nie wysyłaj od razu ponownie; zadzwoń: 600 608 333.';
+ }finally{ clearTimeout(t); btn.disabled = false; }
+});
+</script>
+</body>
+</html>
